@@ -47,6 +47,29 @@ const config = {
         },
       }),
     ],
+    [
+      // https://github.com/rohit-gohri/redocusaurus/
+      // https://redocusaurus.vercel.app/docs
+      'redocusaurus',
+      {
+        // Plugin Options for loading OpenAPI files
+        specs: [
+          {
+            id: 'planning-api',
+            spec: 'api/planning.yml',
+            route: '/api/planning',
+            layout: {
+              title: 'API for Planning and Scheduling'
+            }
+          },
+        ],
+        // Theme Options for modifying how redoc renders them
+        theme: {
+          // Change with your site colors
+          primaryColor: '#ff9c5f',
+        },
+      },
+    ],
   ],
 
   themeConfig:
