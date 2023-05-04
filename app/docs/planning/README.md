@@ -1,10 +1,3 @@
----
-id: planning-scheduling
-title: Planning and Scheduling
-sidebar_label: Planning and Scheduling
-slug: /
----
-
 # Planning and Scheduling
 
 The SETU working group on Planning and Scheduling has developed three new message specifications based on HR Open version 4.3:
