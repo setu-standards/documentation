@@ -1,4 +1,4 @@
-# Scenario 2: Planning is fully done in the Staffing Customer's system
+# Scenario 2: planning done in the system of the staffing customer
 
 In the second scenario, the staffing customer is responsible for the planning. The staffing customer receives information about the human resource constraints (e.g, availability) and other human resource data of the staffing supplier. Then, the staffing customer creates a schedule that includes the flexible workers. This schedule (PlanningAssignment) is communicated back to the staffing supplier. The supplier can provide updates on constraints and availabilities (e.g. due to illness or leave), as a consequence the staffing customer creates a new schedule and sends it back to the supplier. This scenario is most likely when a flexible worker works exclusively for the client. Please refer to the picture below:
 

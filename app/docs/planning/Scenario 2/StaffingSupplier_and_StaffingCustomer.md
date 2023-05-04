@@ -1,4 +1,4 @@
-# Customer's Planning System and Supplier's Backoffice
+# Customer's planning system and supplier's backoffice
 
 ## Sequence diagram:
 
