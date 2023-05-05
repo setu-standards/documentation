@@ -3,7 +3,7 @@ module.exports = {
     "README",
     {
       type: "category",
-      label: "Planning and Scheduling",
+      label: "Planning and Scheduling v0.9",
       collapsed: false,
       link: {type: 'doc', id: 'planning/README'},
       items: [ 

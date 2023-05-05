@@ -1,6 +1,13 @@
 # Planning and Scheduling
 
-The SETU working group on Planning and Scheduling has developed three new message specifications based on HR Open version 4.3:
+:::caution
+The SETU standard for planning and scheduling is currently under review. The documentation in this section is about version 0.9.
+
+Version 1.0 is expected to be released by the SETU board on the 20th of June '23.
+:::
+
+## Introduction
+The SETU standard for planning and scheduling is currently under review. The documentation in this section is about version 0.9.
 
 - **PlanningConstraints**, which is used for exchanging information on the constraints that need to be taken into account for the planning of an individual worker related to a specific assignment;
 - **PlanningRequest**, which is used by the customer to request the planning of workers for a certain position;

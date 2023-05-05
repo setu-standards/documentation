@@ -1,5 +1,11 @@
 # Scenario 1: planning done in the system of the staffing supplier
 
+:::caution
+The SETU standard for planning and scheduling is currently under review. The documentation in this section is about version 0.9.
+
+Version 1.0 is expected to be released by the SETU board on the 20th of June '23.
+:::
+
 In the first scenario, the staffing supplier is responsible for the planning. The staffing customer can make a PlanningRequest for a shift on a certain position and indicate any preferences. The planning system of the staffing supplier will create a schedule using the PlanningConstraints as defined in the backoffice. The created schedule is shared with the staffing customer (PlanningAssignment).
 
 If there is a planning system on the staffing customer's side, the received schedule will be taken over by the staffing customer.
