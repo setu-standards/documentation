@@ -1,3 +1,7 @@
+---
+slug: /
+---
+
 # SETU Documentation
 
 Welcome to the SETU documentation page! Here, you will find information to understand and use the SETU standards effectively. Our documenetation is designed to provide you with step-by-step instructions, explanations, and examples of how the SETU standards can be used.
