@@ -6,15 +6,13 @@ The SETU standard for planning and scheduling is currently under review. The doc
 Version 1.0 is expected to be released by the SETU board on the 20th of June '23.
 :::
 
-## Sequence diagram:
+This scenario involves communication between a staffing supplier's backoffice system and a staffing customer's planning system. The staffing customer sends a _GET /planning/constraints_ to retrieve the availability information for a human resource, and the staffing supplier responds with a status code 200 and the requested planning constraints.
 
-### A typical flow with updates and cancellation between the backoffice system of a **staffing supplier** and the **planning system of a staffing customer**.
+The staffing supplier can also send the planning constraints of other human resources by creating a _POST /planning/constraints_, and the planning system of the staffing customer responds with a status code 201 to indicate success.
 
-This scenario involves communication between a staffing supplier's backoffice system and a staffing customer's planning system. The customer sends a _GET /planning/constraints_ to retrieve the availability information for a human resource, and the staffing supplier responds with a status code 200 and the requested planning constraints.
+The planning system notifies the staffing supplier of the new assignment by sending a _POST /planning/assignments_, and the staffing supplier responds with a status code 201.
 
-The staffing supplier also sends the planning constraints of other human resources by then creates a _POST /planning/constraint_, and the planning system of the staffing customer responds with a status code 201 to indicate success. The planning system notifies the supplier of the new assignment by sending a _POST /planning/assignments_, and the supplier responds with a status code 201.
-
-Later on, the supplier may want to add a planning line to the planning constraint by sending a _POST /planning/constraint/{id}/periodic-lines_, and the planning system responds with a status code 201 to indicate success. Finally, the supplier is notified of the updated assignment by the planning system sending a _PUT /planning/assignments/{id},_ and the supplier responds with a status code 201.
+Later on, the staffing supplier may want to add a planning line to the planning constraint by sending a _POST /planning/constraints/{id}/periodic-lines_, and the planning system responds with a status code 201 to indicate success. Finally, the staffing supplier is notified of the updated assignment by the planning system sending a _PUT /planning/assignments/{id},_ and the staffing supplier responds with a status code 201.
 
 ```mermaid
 sequenceDiagram
@@ -25,22 +23,22 @@ sequenceDiagram
     Planning ->>+ Customer: GET /planning/constraints
     Customer ->>- Planning: 200 + PlanningConstraints
 
-    Note over Customer,Planning: The customer has a planning constraint
-    Customer ->>+ Planning: POST /planning/constraint
+    Note over Customer,Planning: Additional availability information of a human resource <br/> sent to the staffing customer
+    Customer ->>+ Planning: POST /planning/constraints
     Planning ->>- Customer: 201
 
-    Note over Customer,Planning: The assignment is notified to supplier
+    Note over Customer,Planning: The assignment is notified to staffing supplier
     Planning ->>+ Customer: POST /planning/assignments
     Customer ->>- Planning: 201
 
-    Note over Customer,Planning: The customer has an additional planning constraint
-    Customer ->>+ Planning: POST /planning/constraint/{id-A}/periodic-lines
+    Note over Customer,Planning: The staffing supplier has an additional planning constraint
+    Customer ->>+ Planning: POST /planning/constraints/{id-A}/periodic-lines
     Planning ->>- Customer: 201
 
-    Note over Customer,Planning: The supplier is notified about <br/> the updated assignment
+    Note over Customer,Planning: The staffing supplier is notified about <br/> the updated assignment
     Planning ->>+ Customer: PUT /planning/assignments/{id-B}
     Customer ->>- Planning: 201
 
 ```
 
-<figcaption align = "center">Diagram.3 - the backoffice system of a staffing supplier and the planning system of a staffing customer.</figcaption>
+<figcaption align = "center">Diagram 3 - Flow between the backoffice system of the staffing supplier and the planning system of the staffing customer.</figcaption>

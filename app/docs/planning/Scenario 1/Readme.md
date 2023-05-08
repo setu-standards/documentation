@@ -1,4 +1,4 @@
-# Scenario 1: planning done in the system of the staffing supplier
+# Scenario 1: planning in the system of the staffing supplier
 
 :::caution
 The SETU standard for planning and scheduling is currently under review. The documentation in this section is about version 0.9.
@@ -17,7 +17,7 @@ If changes to the schedule are necessary, an update to the PlanningRequest can b
 A number of situations that are supported by scenario 1:
 
 1. Information on the human resource come from the internal backoffice system of the staffing supplier to be used in the planning system of the staffing supplier.
-2. The staffing supplier might also do the planning for the client's permanent employees. In this case, the HR information of the employee will come from the client instead of the staffing customer's backoffice.
-3. A representative of the staffing customer does the planning in the staffing supplier's systems.
+2. The staffing supplier might also do the planning for the client's permanent employees. In this case, the HR information of the employee will come from the staffing customer instead of the staffing supplier's backoffice.
+3. A representative of the staffing customer creates the planning in the staffing supplier's systems.
 
 To help users better understand how these endpoints in different systems work together, the following pages include a series of sequence diagrams that illustrate the flow of REST calls in a particular scenario. These diagrams provide a visual representation of how the API can be used.

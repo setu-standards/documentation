@@ -26,7 +26,7 @@ module.exports = {
           ],
         },
         "planning/api", 
-        "planning/Standarized response codes",
+        "planning/Standardised response codes",
         "planning/FAQ"
       ],
     },
