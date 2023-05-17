@@ -66,7 +66,7 @@ const config = {
         // Theme Options for modifying how redoc renders them
         theme: {
           // Change with your site colors
-          primaryColor: '#ff9c5f',
+          primaryColor: '#0060AA',
         },
       },
     ],
@@ -82,13 +82,31 @@ const config = {
           src: 'img/logo-setu.png',
           
         },
-        items: [    
+        items: [
           {
             to: '/',
-            label: 'Documentatie',
+            label: 'Documentation',
             position: "left",
             className: "header-text",
             
+          },
+          {
+            to: 'https://setu.nl',
+            label: 'SETU website',
+            position: "right",
+            className: "header-text",
+          },
+          {
+            to: 'https://setu.semantic-treehouse.nl',
+            label: 'SETU standards portal',
+            position: "right",
+            className: "header-text",
+          },
+          {
+            to: 'https://github.com/setu-standards',
+            label: 'SETU github',
+            position: "right",
+            className: "header-text",
           },
         ],
       },

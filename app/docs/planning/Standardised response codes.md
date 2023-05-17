@@ -1,0 +1,16 @@
+Section [API specifications](api.mdx) contains the OpenAPI specification of the SETU Planning and Scheduling messages, but it does not include all the standard responses recommended by the SETU. This section will cover the common response codes.
+
+All API endpoints **must** implement HTTP response codes according to the [IETF RFC 7231 specification](https://tools.ietf.org/html/rfc7231). A couple of common response codes are listed below. The codes used in the accompanied OAS files are also included in this list. SETU recommends to implement these codes for the described situations.
+
+| Code | Description | SETU usage note |
+| --- | --- | --- |
+| 200 | OK | Standard response for successful request. |
+| 201 | Created | Successful request, resource is created. In case of a POST request, the 201 response indicates that the request is successfully received and the resource is created, i.e. **synchronous process.** |
+| 202 | Accepted | Successful request, resource is not (yet) created. In case of a POST request, the 202 response indicates that the request is successfully received, but the resource is not (yet) created, i.e. **asynchronous process.** |
+| 204 | No Content | Response for a successful DELETE operation. |
+| 400 | Bad request | The request is invalid. E.g.:<br/>• Malformed XML syntax;<br/>• Missing mandatory parameter;<br/>• Invalid request body;<br/>• Unsupported version of request body: e.g. a SETU Invoice 2.0 is sent, while the API only supports version 1.3 and v1.4. Or an older/deprecated version of the message is sent, which the API doesn’t support anymore. |
+| 401 | Unauthorized | The request lacks valid authentication credentials for the resource. |
+| 403 | Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource. |
+| 404 | Resource not found | The resource is not known. E.g.:<br/>• The assignment (identifier) of the UPDATE request is not known.<br/>• The combination of method (POST) and path (/rfq) is not implemented. Alternatively, return 405 – Method not allowed.<br/>• The API path is not recognized at all. |
+| 500 | Internal Server Error | _Self-describing_ |
+| 503 | Service Unavailable | _Self-describing_ |

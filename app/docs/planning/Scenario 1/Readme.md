@@ -1,15 +1,23 @@
-# Scenario 1:
+# Scenario 1: planning in the system of the staffing supplier
 
-## Planning entirly done in the Staffing Supplier's systems
+:::caution
+The SETU standard for planning and scheduling is currently under review. The documentation in this section is about version 0.9.
 
-In the first scenario, the staffing supplier is responsible for the planning. The staffing customer can make a request for a shift and indicate any preferences. The planning system of the staffing supplier will create a schedule and share it with the staffing customer. If there is a planning system on the staffing customer's side, this schedule will be taken over by the staffing customer. If changes to the schedule are necessary, an update to the request will be made. The staffing supplier processes this and shares a new schedule with the client. Please refer to the figure below:
+Version 1.0 is expected to be released by the SETU board on the 20th of June '23.
+:::
+
+In the first scenario, the staffing supplier is responsible for the planning. The staffing customer can make a PlanningRequest for a shift on a certain position and indicate any preferences. The planning system of the staffing supplier will create a schedule using the PlanningConstraints as defined in the backoffice. The created schedule is shared with the staffing customer (PlanningAssignment).
+
+If there is a planning system on the staffing customer's side, the received schedule will be taken over by the staffing customer.
+
+If changes to the schedule are necessary, an update to the PlanningRequest can be made. The staffing supplier processes this and shares a new schedule with the client.
 
 ![](../../../static/img/Scenario1.png)
 
-A number of situations that also fall under scenario 1:
+A number of situations that are supported by scenario 1:
 
-1. The HR information of the human resource come from the internal backoffice system of the staffing supplier to the planning system of the staffing supplier
-2. The staffing supplier also does the planning for the staffing customer permanent employees. In this case, the HR information of the employee will come from the staffing customer instead of from the staffing supplier back office.
-3. A representative of the staffing customer does the planning in the staffing supplier's systems.
+1. Information on the human resource come from the internal backoffice system of the staffing supplier to be used in the planning system of the staffing supplier.
+2. The staffing supplier might also do the planning for the client's permanent employees. In this case, the HR information of the employee will come from the staffing customer instead of the staffing supplier's backoffice.
+3. A representative of the staffing customer creates the planning in the staffing supplier's systems.
 
-To help users better understand how these endpoints in different systsems work together, the following pages include a series of sequence diagrams that illustrate the flow of REST calls in a particular scenario. These diagrams provide a visual representation of how the API can be used.
+To help users better understand how these endpoints in different systems work together, the following pages include a series of sequence diagrams that illustrate the flow of REST calls in a particular scenario. These diagrams provide a visual representation of how the API can be used.
