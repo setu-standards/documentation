@@ -22,11 +22,9 @@ tags:
     description: Set of APIs to be implemented by the planning software
   - name: "Scenario 1 | Customer backoffice APIs"
     description: Set of APIs to be implemented by the backoffice of the customer
-  - name: "Scenario 1 | Supplier backoffice APIs"
-    description: Set of APIs to be implemented by the backoffice of the supplier
   - name: "Scenario 2 | Planning software APIs"
     description: Set of APIs to be implemented by the planning software
-  - name: "Scenario 2 | Staffing customer backoffice APIs"
+  - name: "Scenario 2 | Staffing supplier backoffice APIs"
     description: Set of APIs to be implemented by the backoffice of the staffing supplier
 
 paths:
@@ -132,6 +130,9 @@ paths:
         description: |
           Complete planning request message as specified by SETU.
           See message specification https://setu.semantic-treehouse.nl/#/Message_32_model/MessageModel_8116e1aa-18f1-488e-845b-537a3b2d8a67
+          
+             Restriction:
+            - In case of a PUT (REST APIs and Action codes), it is not possible to modify the element 'position id ref', 'position task/id ref', or 'position location ref' under the container element 'position profile'. Modifying the content of these elements can result in a new planning request or assignment, and for this purpose, a POST is intended.
         content:
           application/xml:
             schema:
@@ -238,7 +239,6 @@ paths:
     get:
       tags: ["Planning request", "Scenario 1 | Planning software APIs"]
       summary: Get the information about an existing planning request line
-      deprecated: true
       parameters:
         - in: path
           name: id
@@ -375,7 +375,7 @@ paths:
   
   /planning/assignments:
     post:
-      tags: ["Planning assignment", "Scenario 1 | Customer backoffice APIs", "Scenario 2 | Staffing customer backoffice APIs"]
+      tags: ["Planning assignment", "Scenario 1 | Customer backoffice APIs", "Scenario 2 | Staffing supplier backoffice APIs"]
       summary: Submit a new planning assignment
       parameters:
         - in: header
@@ -441,7 +441,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/planning-assignment'
     put:
-      tags: ["Planning assignment", "Scenario 1 | Customer backoffice APIs", "Scenario 2 | Staffing customer backoffice APIs"]
+      tags: ["Planning assignment", "Scenario 1 | Customer backoffice APIs", "Scenario 2 | Staffing supplier backoffice APIs"]
       summary: Update an existing planning assignment as a whole. The request body replaces all previous shared information of the resource
       parameters:
         - in: path
@@ -463,6 +463,9 @@ paths:
         description: |
           Complete planning assignment message as specified by SETU.
           See message specification https://setu.semantic-treehouse.nl/#/Message_32_model/MessageModel_2c67bb3d-b1c1-423b-90d5-8cac64eda603
+          
+          Restriction:
+            - In case of a PUT (REST APIs and Action codes), it is not possible to modify the element 'position id ref', 'position task/id ref', or 'position location ref' under the container element 'position profile'. Modifying the content of these elements can result in a new planning request or assignment, and for this purpose, a POST is intended.
         content:
           application/xml:
             schema:
@@ -481,7 +484,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/planning-assignment'
     delete:
-      tags: ["Planning assignment", "Scenario 1 | Customer backoffice APIs", "Scenario 2 | Staffing customer backoffice APIs"]
+      tags: ["Planning assignment", "Scenario 1 | Customer backoffice APIs", "Scenario 2 | Staffing supplier backoffice APIs"]
       summary: Remove an existing planning assignment
       parameters:
         - in: path
@@ -494,6 +497,170 @@ paths:
       responses:
         '204':
           description: The planning assignment is succesfully removed
+          
+  /planning/assignments/{id}/periodic-lines:
+    post:
+      tags: ["Planning assignment", "Scenario 1 | Customer backoffice APIs", "Scenario 2 | Staffing supplier backoffice APIs"]
+      summary: Add a new periodic planning line to an existing planning assignment
+      parameters:
+        - in: path
+          name: id
+          description: The identifier of the planning assignment as a whole
+          required: true
+          schema:
+            type: string
+          example: 049b4540-620f-434a-bfd1-d09f9e8cdc8c
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: application/xml
+            enum:
+              - application/xml
+              - application/json
+      requestBody:
+        description: |
+          A periodic planning assignment line. This is a subset of the Planning assignment message specification.
+          See message specification https://setu.semantic-treehouse.nl/#/Message_32_model/MessageModel_2c67bb3d-b1c1-423b-90d5-8cac64eda603
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/planning-periodic-line'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/planning-periodic-line'
+      responses:
+        '200':
+          description: The created planning request line
+  
+  /planning/assignments/{id}/single-lines:
+    post:
+      tags: ["Planning assignment", "Scenario 1 | Customer backoffice APIs", "Scenario 2 | Staffing supplier backoffice APIs"]
+      summary: Add a new single planning line to an existing planning assignment
+      parameters:
+        - in: path
+          name: id
+          description: The identifier of the planning assignment as a whole
+          required: true
+          schema:
+            type: string
+          example: 049b4540-620f-434a-bfd1-d09f9e8cdc8c
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: application/xml
+            enum:
+              - application/xml
+              - application/json
+      requestBody:
+        description: |
+          A single planning assignment line. This is a subset of the Planning assignment message specification.
+          See message specification https://setu.semantic-treehouse.nl/#/Message_32_model/MessageModel_2c67bb3d-b1c1-423b-90d5-8cac64eda603
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/planning-single-line'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/planning-single-line'
+      responses:
+        '200':
+          description: The created planning request line
+  
+  /planning/assignments/{id}/lines/{lineId}:
+    get:
+      tags: ["Planning assignment", "Scenario 1 | Planning software APIs", "Scenario 2 | Planning software APIs"]
+      summary: Get the information about an existing planning assignment line
+      parameters:
+        - in: path
+          name: id
+          description: The identifier of the planning assignment as a whole
+          required: true
+          schema:
+            type: string
+          example: 049b4540-620f-434a-bfd1-d09f9e8cdc8c
+        - in: path
+          name: lineId
+          description: The identifier of a specific line within the planning assignment
+          required: true
+          schema:
+            type: string
+          example: 0d281aa5-5000-4b29-81f9-16fb4e69557b
+        - in: header
+          name: Accept
+          schema:
+            type: string
+            example: application/xml
+            enum:
+              - application/xml
+              - application/json
+      responses:
+        '200':
+          description: The planning assignment line (periodic or single line)
+    put:
+      tags: ["Planning assignment", "Scenario 1 | Customer backoffice APIs", "Scenario 2 | Staffing supplier backoffice APIs"]
+      summary: Update an existing planning assignment line
+      parameters:
+        - in: path
+          name: id
+          description: The identifier of the planning assignment as a whole
+          required: true
+          schema:
+            type: string
+          example: 049b4540-620f-434a-bfd1-d09f9e8cdc8c
+        - in: path
+          name: lineId
+          description: The identifier of a specific line within the planning assignment
+          required: true
+          schema:
+            type: string
+          example: 0d281aa5-5000-4b29-81f9-16fb4e69557b
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: application/xml
+            enum:
+              - application/xml
+              - application/json
+      requestBody:
+        description: A planning assignment line (periodic or single line)
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/planning-assignment-line'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/planning-assignment-line'
+      responses:
+        '200':
+          description: The planning assignment line (periodic or single line)
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/planning-assignment-line'
+    delete:
+      tags: ["Planning assignment", "Scenario 1 | Customer backoffice APIs", "Scenario 2 | Staffing supplier backoffice APIs"]
+      summary: Remove an existing planning assignment line
+      parameters:
+        - in: path
+          name: id
+          description: The identifier of the planning assignment as a whole
+          required: true
+          schema:
+            type: string
+          example: 049b4540-620f-434a-bfd1-d09f9e8cdc8c
+        - in: path
+          name: lineId
+          description: The identifier of a specific line within the planning request
+          required: true
+          schema:
+            type: string
+          example: 0d281aa5-5000-4b29-81f9-16fb4e69557b
+      responses:
+        '200':
+          description: The planning assignment line is succesfully removed
 
 ############################################################
 ################ PLANNING CONSTRAINTS ######################
@@ -501,7 +668,7 @@ paths:
 
   /planning/constraints:
     get:
-      tags: ["Planning constraints", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Planning software APIs"]
+      tags: ["Planning constraints", "Scenario 1 | Planning software APIs", "Scenario 2 | Planning software APIs"]
       summary: Get availability information for a human resource
       parameters:
         - in: query
@@ -536,7 +703,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/planning-constraints'
     post:
-      tags: ["Planning constraints", "Scenario 1 | Planning software APIs", "Customer | Supplier backoffice APIs", "Scenario 2 | Planning software APIs"]
+      tags: ["Planning constraints", "Scenario 1 | Planning software APIs", "Scenario 2 | Planning software APIs"]
       summary: Submit additional availability information of a human resource by means of a planning constraints object
       parameters:
         - in: header
@@ -571,7 +738,7 @@ paths:
 
   /planning/constraints/{id}:
     get:
-      tags: ["Planning constraints", "Scenario 1 | Supplier backoffice APIs", "Scenario 1 | Customer backoffice APIs", "Scenario 2 | Planning software APIs"]
+      tags: ["Planning constraints", "Scenario 1 | Planning software APIs", "Scenario 2 | Planning software APIs"]
       summary: Get information about an existing planning constraints object
       parameters:
         - in: path
@@ -732,7 +899,6 @@ paths:
     get:
       tags: ["Planning constraints", "Scenario 1 | Planning software APIs", "Scenario 2 | Planning software APIs"]
       summary: Get information about an existing availability line
-      deprecated: true
       parameters:
         - in: path
           name: id
@@ -836,10 +1002,13 @@ paths:
 components:
   schemas:
     planning-request:
-      # $ref: 'https://setu.semantic-treehouse.nl/api/v1/fit/message/Message_5a40d5a0-a6ff-42c7-ab50-481151fae450/json/schema?format=yaml'
-     type: object
-     xml:
-       name: 'PlanningRequest'
+      type: object
+      xml:
+        name: 'PlanningRequest'
+     # $ref: 'https://setu.semantic-treehouse.nl/api/v1/fit/message/Message_5a40d5a0-a6ff-42c7-ab50-481151fae450/json/schema?format=yaml'
+   #   type: object
+ #     xml:
+  #      name: 'PlanningRequest'
     planning-request-line:
       oneOf:
         - $ref: '#/components/schemas/planning-periodic-line'
@@ -848,6 +1017,10 @@ components:
       type: object
       xml:
         name: 'PlanningAssignment'
+    planning-assignment-line:
+      oneOf:
+        - $ref: '#/components/schemas/planning-periodic-line'
+        - $ref: '#/components/schemas/planning-single-line'
     planning-constraints:
       type: object
       xml:

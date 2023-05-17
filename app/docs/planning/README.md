@@ -4,9 +4,12 @@
 The SETU standard for planning and scheduling is currently under review. The documentation in this section is about version 0.9.
 
 Version 1.0 is expected to be released by the SETU board on the 20th of June '23.
+
+Would you like to contribute? Please refer to the following page: [Public Consultation](./Public%20consultation/public-consultation.md)
 :::
 
 ## Introduction
+
 The SETU standard for planning and scheduling is currently under review. The documentation in this section is about version 0.9.
 
 - **PlanningConstraints**, which is used for exchanging information on the constraints that need to be taken into account for the planning of an individual worker related to a specific assignment;

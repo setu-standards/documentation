@@ -3,10 +3,23 @@ module.exports = {
     "README",
     {
       type: "category",
-      label: "Planning and Scheduling v0.9",
+      label: "Planning and Scheduling v1.0 DRAFT",
       collapsed: false,
       link: {type: 'doc', id: 'planning/README'},
       items: [ 
+        {
+          type: "category",
+          label: "Public Consultation",
+          collapsed: false,
+          link: {type: 'doc', id: 'planning/Public consultation/public-consultation'},
+          items: [
+            {
+              type: 'doc',
+              id: 'planning/Public consultation/review of planningstandards',
+              label: "How to review?",
+            },
+          ],
+        },
         {
           type: "category",
           label: "Scenario 1",
@@ -27,6 +40,13 @@ module.exports = {
         },
         "planning/api", 
         "planning/Standardised response codes",
+        {
+          type: "category",
+          label: "Change log",
+          collapsed: true,
+          link: {type: 'doc', id: 'planning/Change log/Readme'},
+          items: ['planning/Change log/changelog v0.9 - v1.0'], 
+        },
         "planning/FAQ"
       ],
     },
