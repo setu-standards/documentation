@@ -39,6 +39,21 @@ module.exports = {
           ],
         },
         "planning/api", 
+        {
+          type: "category",
+          label: "API Message Exchange",
+          collapsed: true,
+          link: {type: 'doc', id: 'planning/API documentation/readme'},
+          items: [
+            {
+              type: 'category',
+              label: "Handling Identifiers",
+              collapsed: true, 
+              link: {type: 'doc', id: 'planning/API documentation/identifiers'},
+              items: ["planning/API documentation/example"],
+            }, "planning/API documentation/asynchroon_synchroon", 
+          ],
+        },
         "planning/Standardised response codes",
         {
           type: "category",
