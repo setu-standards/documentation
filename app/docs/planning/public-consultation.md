@@ -1,4 +1,18 @@
-# How to review the SETU Standard for Planning & Scheduling v1.0 DRAFT?
+# Public consultation of SETU Standard for Planning & Scheduling v1.0 DRAFT
+
+## Introduction
+In the past period, the working group on Planning data has worked on the development of the SETU Standard for Planning & Scheduling. This standard makes it possible to exchange planning data between back-office software of staffing suppliers and planning systems, and between different planning systems. With this, the SETU fulfills an explicit wish of its community to develop a standard for the exchange of planning data.
+
+We would like to invite you to take note of this and to provide us with comments on the SETU Standard for Planning & Scheduling v1.0 DRAFT. It contains the following message specifications:
+
+## About the public consultation
+Responses from this public consultation will be considered by SETU, discussed with the working group and, where necessary, the draft versions will be adjusted before they are given the RELEASE status.
+
+This consultation runs from 15 May 2023 to 15 June 2023.
+
+If you have any questions, please send them to info@setu.nl.
+
+## How to review?
 
 The management and maintance of these message specifications are carried out in our [SETU standards portal](https://setu.semantic-treehouse.nl/#/Home). The message specifications can be found here:
 
@@ -15,3 +29,4 @@ Review comments for the public consultation can be submitted via the SETU standa
 ![](./Q%26A.png)
 
 A login is required to submit your comments, but logging in can be done with an existing Microsoft, LinkedIn, Google or GitHub. Only your e-mail address will be have with us, so we can get in contact with you if we have other questions about your review comment(s).
+

@@ -6,20 +6,12 @@ module.exports = {
       label: "Planning and Scheduling v1.0 DRAFT",
       collapsed: false,
       link: {type: 'doc', id: 'planning/README'},
-      items: [ 
+      items: [
         {
-          type: "category",
-          label: "Public Consultation",
-          collapsed: false,
-          link: {type: 'doc', id: 'planning/Public consultation/public-consultation'},
-          items: [
-            {
-              type: 'doc',
-              id: 'planning/Public consultation/review of planningstandards',
-              label: "How to review?",
-            },
-          ],
-        },
+          type: 'doc',
+          id: 'planning/public-consultation',
+          label: "Public consultation",
+        }, 
         {
           type: "category",
           label: "Scenario 1",
