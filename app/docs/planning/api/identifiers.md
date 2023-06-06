@@ -1,6 +1,6 @@
 # Handling identifiers
 
-This documentation page takes into account the following identifiers:
+For the exchange of planning messages, multiple identifiers come into play. In this documentation page, we will go through the IDs and specify their functions. The following ID are taken into account:
 
 - A new universally unique identifier (UUID) for modifying existing planning messages
 - The included document id in the planning message (i.e., requestBody) itself

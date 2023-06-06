@@ -34,10 +34,6 @@ module.exports = {
           type: "category",
           label: "API documentation",
           collapsed: true,
-          link: {
-            type: 'doc',
-            id: 'planning/api/readme',
-          },
           items: [
             'planning/api/oas',
             'planning/api/synchronous',
