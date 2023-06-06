@@ -1,39 +1,22 @@
-# Synchronous vs asynchronous process
+# Synchronous vs asynchronous request handling
 
-During API exchange, three crucial levels come into play:
+For processing the planning and scheduling request we can distinguish three different levels:
 
-- the technical processing of schemas
-- the functional processing of content
-- the generating functional responses.
+1. The business process level where a business transaction is supported by different messages (e.g. a planning request is fullfilled by a planning assignment)
+2. The functional level of an individual requet (e.g. a planning request can be processed by the business)
+3. The technical level of a single API call (e.g. a planning request message is valid according to schema and a 200 response is returned)
 
-The first two levels are essential as they ensure effective validation and processing of both the technical and functional aspects of message exchange. The third process relates to identifying which resource needs to be posted, updated or even deleted depending on the incoming API call. On this page, we will briefly discuss how the SETU standard for planning and scheduling deals with the above processes. Consensus on these processes ensures consistent and reliable data exchange.
+The synchronous handling of a request implies direct handling of the request and that the requestor waits for the response. For asynchronous handling the request is made, but the requestor doesn't wait for the response and gets or checks for a response at a later stage.
+
+This section of the documentation describes which levels are required to be handled synchronous vs asynchronous.
+
+## Business process level
+On the business process level the requests are handled **asynchronous**. When a planning request is made, the planning assignment doesn't follow in the immediate response.
+
+## Functional level
+On the functional level of an indiviual request, all requests need to be handled **synchronous**. This means that e.g. a planning request needs to be accepted or rejected when the API request is made. It becomes the responsibility of the server (the called system) to handle the request. This includes informing the client (the requestor) about a successful next step in the business proces (e.g. a planning assignment), but also informing the client if the request cannot be fulfilled for whatever reason.
 
 ## Technical processing of planning messages:
+On technical level, because of the nature of REST, the API call is always handled **synchronous**. A request is processed and a technical response is returned immediately. A incoming request always requires content validation agains the schema.
 
-This level involves the validation and processing of data schemas. It includes tasks such as validating incoming data against a schema or transforming data to meet the required schema. Typically, this level is handled synchronously.
-
-## Functional processing of content:
-
-This level encompasses the processing of data based, and validating whether the received content about planning information can be realised. It involves analyzing, validating, and processing the received content, as well as performing the associated actions. For example, checking if a planning request can be fulfilled or not. Similar to the technical processing of schemas, this level is also typically handled synchronously.
-
-The synchronous nature of these levels ensures that data validation and functional logic are handled in a direct and consistent manner, with the client receiving in reasonable time feedback on the status or results of the operations. The HTTP response 202 cannot be used for the exchange of planning messages as it refers to an asynchronous process. While the HTTP response 201 or 200 indicates that the message has been approved both technically and functionally.
-
-## Generating a functional responses:
-
-This process focuses on the functional response to an incoming API call. It involves determining whether a particular API call affects an existing resource. This also entails identifying the resource that needs to be posted, updated, or even deleted. These actions are performed by the receiving party of the API call. For example, as a response to a planning request, the receiving party may need to send a planning assignment back. Another scenario is when a planning request is modified, which might require the receiving party to update and send an existing planning assignment as a response. Within the SETU standard for planning and scheduling, it is not expected to receive an immediate functional response. Therefore, this process is typically asynchronous by default.
-
-## Overview
-
-| Process                                                                                                                                                 | Asynchrous or synchronous |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------ |
-| **Technical processing of planning messages:** the validation and processing of data schemas                                                            | Synchronous               |
-| **Functional processing of content:** processing of data based, and validating whether the received content about planning information can be realised. | Synchronous               |
-| **Generating functional responses:** a functional response to an API call                                                                               | Asynchrous                |
-
-**Remark**: The HTTP response 201 or 200 relates to the first two process, indicating that the message has been approved both technically and functionally.
-
-
-
-
-
-
+Because of the choice to handle requests on functional level **synchronous**, a successfull POST request needs to be responded with a `201 Created`. The standard HTTP response code `202 Accepted`, that indicates that the request is received but the resource is not created yet, is therefore not allowed.
