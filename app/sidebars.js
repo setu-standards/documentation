@@ -30,23 +30,22 @@ module.exports = {
             "planning/Scenario 2/StaffingSupplier_and_StaffingCustomer", 
           ],
         },
-        "planning/api", 
         {
           type: "category",
-          label: "API Message Exchange",
+          label: "API documentation",
           collapsed: true,
-          link: {type: 'doc', id: 'planning/API documentation/readme'},
+          link: {
+            type: 'doc',
+            id: 'planning/api/readme',
+          },
           items: [
-            {
-              type: 'category',
-              label: "Handling Identifiers",
-              collapsed: true, 
-              link: {type: 'doc', id: 'planning/API documentation/identifiers'},
-              items: ["planning/API documentation/example"],
-            }, "planning/API documentation/asynchroon_synchroon", 
+            'planning/api/oas',
+            'planning/api/synchronous',
+            'planning/api/identifiers',
+            'planning/api/response-codes',
+            'planning/api/examples',
           ],
         },
-        "planning/Standardised response codes",
         {
           type: "category",
           label: "Change log",

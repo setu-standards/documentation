@@ -1,4 +1,4 @@
-# Message exchange through API specifications
+# API documentation
 
 During the exchange of planning messages, multiple identifiers come into play. In this documentation page, we will go through the IDs and specify their functions. The following ID are taken into account:
 

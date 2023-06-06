@@ -1,4 +1,4 @@
-# How to handle the different identifiers in the exchange of planning messages?
+# Handling identifiers
 
 This documentation page takes into account the following identifiers:
 
@@ -24,7 +24,7 @@ In each planning resource, it is possible to include multiple planninglines. In 
 
 This identifier is used to refer to the specific line, which can also be used to make HTTP calls. The identifiers can be used to perform POST, PUT, DELETE, or GET operations at the line level of a particular planning resource. This is possible because the lines are contained within a message, and by using the newly received UUID, the receiver can identify which message and the corresponding lines are being referred to.
 
-# How to integrate and provide a new UUID with POST method?
+## How to integrate and provide a new UUID with POST method?
 
 This section provides some explanatory text about how to provide a UUID (Universally Unique Identifier) in the response to the requester of your API endpoint:
 
@@ -32,7 +32,6 @@ This section provides some explanatory text about how to provide a UUID (Univers
 - Include the UUID in the API response: Once you have generated the UUID, you should include the UUID in the **‘Location’** headers of your API response. Within the headers section, the **Location** header is defined with a description and a schema. The schema specifies that the header value should be of type string. In the API specifications, the example field provides an example value for the Location header, which is in this case /planning/request/123. You can replace this example with the appropriate return ID for your API.
 
 ```yaml
-
 paths:
   /planning/request:
     post:
@@ -55,8 +54,6 @@ paths:
               schema:
                 type: string
               example: /planning/request/123
-
-
 ```
 
 All in all, in case of a POST method, the Location header should be included in the response with the ID for accessing and modifying the newly created resource.

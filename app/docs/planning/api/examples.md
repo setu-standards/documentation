@@ -76,8 +76,4 @@ sequenceDiagram
     Note over Customer,Planning: Since the planning request and planning assignment are <br> interrelated the planning system knows the exact item <br> that needs to be posted, updated, or even deleted.
     Customer ->>+ Planning: PUT /planning/requests/123/lines/{1}
     Planning ->>- Customer: 200 + requestBody
-
-
-
-
 ```
