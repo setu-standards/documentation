@@ -2,58 +2,74 @@
 
 For the exchange of planning messages, multiple identifiers come into play. In this documentation page, we will go through the IDs and specify their functions. The following ID are taken into account:
 
-- A new universally unique identifier (UUID) for modifying existing planning messages
-- The included document id in the planning message (i.e., requestBody) itself
-- The identifier to refer to a specific line in a particular planning message
+1. A resource identifier for the (request) messages assigned by the API server for planning constraints, planning requests and planning assignments
+2. The included document id in the message body itself
+3. A identifier to refer to a specific line in a particular message
 
-## New UUID for modifying planning message via API endpoint:
+## 1. Resource identifiers
+When a new request is made (e.g. `POST /planning/request`) the API server assigns a new identifier to the created resource. Typically this is a UUID. This resource identifier is how the API server knows the resource and is different from the document id in the message body itself assigned by the API client.
 
-How do we make changes to an existing document or resource that has been posted to an API endpoint? When you send your message or document to an API endpoint using the POST method, we have chosen that you will receive a newly generated UUID along with the orginal document in the response message. This UUID is provided by the party that integrated the API endpoint.
-
-This ID allows the integrating party to associate your document or resource with its own system. Afterwards, the newly communicated ID can be utilized by the creator of the document or resource to reference the recently created resource and retrieve relevant information by making a GET request. Furthermore, the ID can also be used by the creator to modify or delete their created resources using methods such as PUT, DELETE, or even a POST of a planningline.
-
-How to integrate and provide a new UUID with POST method? Please refer this [section](#how-to-integrate-and-provide-a-new-uuid-with-post-method)
-
-## Document ID in the requestBody:
-
-By providing the document ID in the request body, you are indicating to the API endpoint which document or resource you are referring to from your point of view. It helps the receiver of the message to identify the exact item that needs to be posted, updated, or even deleted. For example, a planning request may result in a planning assignment that includes a reference to this planning request by using the same unique identifier which is included in the planning request itself under the element 'document id ref'. As a result, they are interconnected, and in this case, the planningsystem is aware that any changes made to that planning request can potentially impact a planning assignment.
-
-## Line ID in the requestBody
-
-In each planning resource, it is possible to include multiple planninglines. In the case of a PlanningRequest, these can be periodic planning requests or single requests, while in the PlanningConstraint message, the lines are about the constraints and availability of a human resource. Each of these lines has its own identifier specified in the message itself under the 'planning line id' element. This container element allows you to provide the ID of the planning line and the organization that issues that identifier.
-
-This identifier is used to refer to the specific line, which can also be used to make HTTP calls. The identifiers can be used to perform POST, PUT, DELETE, or GET operations at the line level of a particular planning resource. This is possible because the lines are contained within a message, and by using the newly received UUID, the receiver can identify which message and the corresponding lines are being referred to.
-
-## How to integrate and provide a new UUID with POST method?
-
-This section provides some explanatory text about how to provide a UUID (Universally Unique Identifier) in the response to the requester of your API endpoint:
-
-- Generate a UUID: You can use a UUID library or function provided by your programming language or framework to generate a UUID.
-- Include the UUID in the API response: Once you have generated the UUID, you should include the UUID in the **‘Location’** headers of your API response. Within the headers section, the **Location** header is defined with a description and a schema. The schema specifies that the header value should be of type string. In the API specifications, the example field provides an example value for the Location header, which is in this case /planning/request/123. You can replace this example with the appropriate return ID for your API.
-
-```yaml
-paths:
-  /planning/request:
-    post:
-
-    ...
-
-      responses:
-        '201':
-          description: Resource created successfully
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/planning-request'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/planning-request'
-          headers:
-            Location:
-              description: ID of the newly created resource
-              schema:
-                type: string
-              example: /planning/request/123
+The resource identifier is returned in the API response as part of the response header `Location`. E.g.
+```
+HTTP/1.1 201 Created
+Location: /planning/request/c93efb20-1acd-447b-87e7-fadb108d8a0e
 ```
 
-All in all, in case of a POST method, the Location header should be included in the response with the ID for accessing and modifying the newly created resource.
+This allows the API client to perform GET, PUT and DELETE calls on this resource at a later stage according to the [API specification](oas.mdx)
+
+## 2. Document identifier in the request message
+The planning messages also have a document identifier. This identifier is how the API client knows the request. Any identifier format can be used as long as it is unique within the scope of the issuing party (e.g. the staffing customer)
+
+```xml
+<PlanningRequest>
+  <documentId>
+    <value>46f7b984e63</value>
+    <schemeAgencyId>Customer</schemeAgencyId>
+  </documentId>
+  ...
+</PlanningRequest>
+```
+
+This document id is important for the business process, because it is refered to by other messages. E.g. a planning assignment has a referens to a planning request identifier that it fulfills.
+
+```xml
+<PlanningAssignment>
+  <documentId>
+    <value>2b7e1be8ccf</value>
+    <schemeAgencyId>Customer</schemeAgencyId>
+  </documentId>
+  ...
+  <planningRequestReference>
+    <documentId>
+      <value>46f7b984e63</value> <!-- Reference to the planning request in the example above -->
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </documentId>
+  </planningRequestReference>
+  ...
+</PlanningAssignment>
+```
+
+## 3. Line identifiers in the request message
+
+In all planning messages it is possible to specify multiple lines. In the case of a planning request these are periodic vs single planning request lines; for the planning constraint message, the lines are about the periodic vs single availability of a human resource. Each of these lines has its own identifier specified in the message itself  provided by the `line id` element. E.g.:
+
+```xml
+<periodicAvailabilityLine>
+    <lineId>
+      <value>1</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </lineId>
+    ...
+<periodicAvailabilityLine>
+<periodicAvailabilityLine>
+    <lineId>
+      <value>2</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </lineId>
+    ...
+<periodicAvailabilityLine>
+```
+
+The line identifiers need to be unique within the scope of the message. Therefore it is allowed to number them sequentially starting with '1', but using a UUID or other identifier format is also allowed.
+
+**NOTE** that the line identifiers are also used as part of certain REST api paths. They are combined with the resource identifier as specified in the [section above](#1-resource-identifiers). E.g. `PUT /planning/requests/c93efb20-1acd-447b-87e7-fadb108d8a0e/lines/2` to update information about line 2 in the created planning request.
