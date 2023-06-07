@@ -6,20 +6,12 @@ module.exports = {
       label: "Planning and Scheduling v1.0 DRAFT",
       collapsed: false,
       link: {type: 'doc', id: 'planning/README'},
-      items: [ 
+      items: [
         {
-          type: "category",
-          label: "Public Consultation",
-          collapsed: false,
-          link: {type: 'doc', id: 'planning/Public consultation/public-consultation'},
-          items: [
-            {
-              type: 'doc',
-              id: 'planning/Public consultation/review of planningstandards',
-              label: "How to review?",
-            },
-          ],
-        },
+          type: 'doc',
+          id: 'planning/public-consultation',
+          label: "Public consultation",
+        }, 
         {
           type: "category",
           label: "Scenario 1",
@@ -38,8 +30,17 @@ module.exports = {
             "planning/Scenario 2/StaffingSupplier_and_StaffingCustomer", 
           ],
         },
-        "planning/api", 
-        "planning/Standardised response codes",
+        {
+          type: "category",
+          label: "API documentation",
+          collapsed: true,
+          items: [
+            'planning/api/oas',
+            'planning/api/synchronous',
+            'planning/api/identifiers',
+            'planning/api/response-codes',
+          ],
+        },
         {
           type: "category",
           label: "Change log",

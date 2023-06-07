@@ -17,3 +17,7 @@ Indeed, the Open API specs currently do not include IDs at the planninglines (Pe
 This should not be an issue for synchronous processing of the SETU Planning and Scheduling messages. If the receiver is unable to process the /planning/..., this can be indicated through a response with a 400 series error code.
 
 Regarding asynchronous processing of planning requests, it is currently not possible to indicate errors in processing. This has not come up before. Please reach out to us if you consider working out this issue necessary.
+
+**Is it also possible to perform modifications to existing resources using either the obtained UUID or the document ID??**
+
+Currently only the newly received UUID can be used by the creator to modify or delete their created resources using methods such as PUT, DELETE, or even a POST of a planningline. The SETU is exploring options to enable modifications using both identifiers. This would mean that the integrating party of the API endpoint would also need to store the document ID. One possible approach is to include both the document ID and the newly generated UUID associated with the resource in the API response. By including both identifiers, both organisations will have visibility of both identifiers and can use them accordingly.

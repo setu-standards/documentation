@@ -5,7 +5,7 @@ The SETU standard for planning and scheduling is currently under review. The doc
 
 Version 1.0 is expected to be released by the SETU board on the 20th of June '23.
 
-Would you like to contribute? Please refer to the following page: [Public Consultation](./Public%20consultation/public-consultation.md)
+Would you like to contribute? Please refer to the following page: [Public Consultation](./public-consultation.md)
 :::
 
 ## Introduction
