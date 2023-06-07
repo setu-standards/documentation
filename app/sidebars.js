@@ -39,7 +39,6 @@ module.exports = {
             'planning/api/synchronous',
             'planning/api/identifiers',
             'planning/api/response-codes',
-            'planning/api/examples',
           ],
         },
         {
