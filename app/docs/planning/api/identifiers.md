@@ -1,15 +1,17 @@
 # Handling identifiers
 
-For the exchange of planning messages, multiple identifiers come into play. In this documentation page, we will go through the IDs and specify their functions. The following ID are taken into account:
+When it comes to the exchange of planning messages, multiple identifiers come into play. This documentation page will walk you through the IDs and specify their functions. The following ID are taken into account:
 
 1. A resource identifier for the (request) messages assigned by the API server for planning constraints, planning requests and planning assignments
-2. The included document id in the message body itself
-3. A identifier to refer to a specific line in a particular message
+2. The document ID included in the message body itself
+3. An identifier used to reference a specific line in a particular message
 
 ## 1. Resource identifiers
-When a new request is made (e.g. `POST /planning/request`) the API server assigns a new identifier to the created resource. Typically this is a UUID. This resource identifier is how the API server knows the resource and is different from the document id in the message body itself assigned by the API client.
+
+When a new request is made (e.g. `POST /planning/request`) the API server assigns a new identifier to the created resource, typically this is a UUID. This resource identifier, assigned by the API server, is distinct from the document ID in the message body, which is assigned by the API client.
 
 The resource identifier is returned in the API response as part of the response header `Location`. E.g.
+
 ```
 HTTP/1.1 201 Created
 Location: /planning/request/c93efb20-1acd-447b-87e7-fadb108d8a0e
@@ -17,8 +19,32 @@ Location: /planning/request/c93efb20-1acd-447b-87e7-fadb108d8a0e
 
 This allows the API client to perform GET, PUT and DELETE calls on this resource at a later stage according to the [API specification](oas.mdx)
 
+#### Processing Example
+
+<details>
+<summary>Example explanation</summary>
+This example illustrates the process of the usage of the resource identifiers. A planning request is created by making a POST request to the API server. Subsequently, the API server generates a resource identifier (UUID) for the newly created planning request. As a result, the staffing customer is able to modify the newly created planning request by using the received resource identifier.
+</details>
+
+```mermaid
+sequenceDiagram
+    participant Customer as Backoffice <br/> staffing customer
+    participant Planning as Planning system <br/> staffing supplier
+
+    Note over Customer,Planning: The staffing customer has a planning request
+    Customer ->>+ Planning: POST /planning/requests
+    Planning ->>- Customer: 201 + requestBody + /planning/request/c93efb20-1acd-447b-87e7-fadb108d8a0e
+
+
+    Note over Customer,Planning: The staffing customer updates an existing planning request
+    Customer ->>+ Planning: PUT /planning/requests/c93efb20-1acd-447b-87e7-fadb108d8a0e
+    Planning ->>- Customer: 200 + requestBody
+
+```
+
 ## 2. Document identifier in the request message
-The planning messages also have a document identifier. This identifier is how the API client knows the request. Any identifier format can be used as long as it is unique within the scope of the issuing party (e.g. the staffing customer)
+
+The planning messages also include a document identifier. This identifier is how the API client identifies the request. Any identifier format can be used as long as it is unique within the scope of the issuing party (e.g. the staffing customer).
 
 ```xml
 <PlanningRequest>
@@ -30,7 +56,7 @@ The planning messages also have a document identifier. This identifier is how th
 </PlanningRequest>
 ```
 
-This document id is important for the business process, because it is refered to by other messages. E.g. a planning assignment has a referens to a planning request identifier that it fulfills.
+This document ID is important for the business process, as it is referenced by other messages. For example, a planning assignment can refer to a planning request identifier that it fulfills.
 
 ```xml
 <PlanningAssignment>
@@ -49,9 +75,40 @@ This document id is important for the business process, because it is refered to
 </PlanningAssignment>
 ```
 
+#### Processing Example
+
+<details>
+<summary>Example explanation</summary>
+The document ID helps the receiver to identify whether interrelated resource (e.g., a planning assignment) require modification. Let us consider a scenario where the planning request is interlinked with a planning assignment. An update to an existing planning request requires the staffing supplier to also update the planning assignment.
+</details>
+
+```mermaid
+sequenceDiagram
+    participant Customer as Backoffice <br/> staffing customer
+    participant Planning as Planning system <br/> staffing supplier
+
+    Note over Customer,Planning: Recall that the requestBody containts a document ID
+    Customer ->>+ Planning: POST /planning/requests
+    Planning ->>- Customer: 201 + requestBody + /planning/request/c93efb20-1acd-447b-87e7-fadb108d8a0e
+
+    Note over Customer,Planning: As a response a planning assignment is created with a <br> reference to this planning request via its document ID.
+    Planning ->>+ Customer: POST /planning/assignment
+    Customer ->>- Planning: 201 + requestBody + planning/assignment/88d8046c-050c-11ee-be56-0242ac120002
+
+
+    Note over Customer,Planning: The staffing customer updates an existing planning request
+    Customer ->>+ Planning: PUT /planning/requests/c93efb20-1acd-447b-87e7-fadb108d8a0e
+    Planning ->>- Customer: 200 + requestBody
+
+
+    Note over Customer,Planning: Since the planning request and planning assignment are <br> interrelated the planning system knows the exact item <br> that needs to be posted, updated, or even deleted.
+    Planning ->>+ Customer: PUT /planning/assignment/88d8046c-050c-11ee-be56-0242ac120002/lines/{1}
+    Customer ->>- Planning: 200 + requestBody
+```
+
 ## 3. Line identifiers in the request message
 
-In all planning messages it is possible to specify multiple lines. In the case of a planning request these are periodic vs single planning request lines; for the planning constraint message, the lines are about the periodic vs single availability of a human resource. Each of these lines has its own identifier specified in the message itself  provided by the `line id` element. E.g.:
+In all planning messages, it is possible to specify multiple planning lines. In the case of a planning request, these lines can be either periodic or single planning request lines. For the planning constraint message, the lines include periodic and single availability of a human resource. Each line within these messages has its own identifier specified in the message itself, provided by the `line id` element. For example:
 
 ```xml
 <periodicAvailabilityLine>
@@ -72,4 +129,34 @@ In all planning messages it is possible to specify multiple lines. In the case o
 
 The line identifiers need to be unique within the scope of the message. Therefore it is allowed to number them sequentially starting with '1', but using a UUID or other identifier format is also allowed.
 
-**NOTE** that the line identifiers are also used as part of certain REST api paths. They are combined with the resource identifier as specified in the [section above](#1-resource-identifiers). E.g. `PUT /planning/requests/c93efb20-1acd-447b-87e7-fadb108d8a0e/lines/2` to update information about line 2 in the created planning request.
+**NOTE** that the line identifiers are also used as part of certain REST api paths. They are combined with the **resource identifiers** as specified in the [section above](#1-resource-identifiers). For example, `PUT /planning/requests/c93efb20-1acd-447b-87e7-fadb108d8a0e/lines/2` can be used to update the information about a planningline with line ID '2' within a created planning request known by its resource identifier (UUID) as 'c93efb20-1acd-447b-87e7-fadb108d8a0e'.
+
+#### Processing Example
+
+<details>
+<summary>Example explanation</summary>
+In this scenario, we have a planning request with a single planning line. The creator of this resource intends to make two actions: modifying an existing planning line and posting a new planning line. The process begins with the staffing customer creating a planning request by sending a POST request to the API server. The planning system receives the request and responds with a 201 status code along with the request body and a UUID for the planning request, such as "c93efb20-1acd-447b-87e7-fadb108d8a0e".
+
+Next, the staffing customer wants to modify one of the lines in the existing planning request. They send a PUT request to the API server, where "{2}" represents the line ID to be updated. The staffing customer also wants to add a new planning line. They send a POST request to the API server, where "{3}" represents the new line ID.
+
+</details>
+
+```mermaid
+sequenceDiagram
+    participant Customer as Backoffice <br/> staffing customer
+    participant Planning as Planning system <br/> staffing supplier
+
+    Note over Customer,Planning: The staffing customer has a planning request
+    Customer ->>+ Planning: POST /planning/requests
+    Planning ->>- Customer: 201 + requestBody + /planning/request/c93efb20-1acd-447b-87e7-fadb108d8a0e
+
+
+    Note over Customer,Planning: The staffing customer updates one of the lines<br/>in the existing planning request
+    Customer ->>+ Planning: PUT /planning/requests/c93efb20-1acd-447b-87e7-fadb108d8a0e/lines/{2}
+    Planning ->>- Customer: 200 + requestBody
+
+    Note over Customer,Planning: The staffing customer creates a new planning line
+    Customer ->>+ Planning: POST /planning/requests/c93efb20-1acd-447b-87e7-fadb108d8a0e/lines/{3}
+    Planning ->>- Customer: 200 + requestBody
+
+```
