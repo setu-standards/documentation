@@ -1,5 +1,15 @@
+---
+title: API specification (OAS)
+hide_table_of_contents: true
+---
+
 This OpenAPI specification defines a set of APIs for the exchange of the SETU Planning and Scheduling messages. The SETU created three standardised messages to exchange information about human resource constraints, requesting a planning for a particular position, and planning an assignment. The messages include _'PlanningConstraints', 'PlanningRequest', and 'PlanningAssignment'_. The APIs are designed to be mainly implemented by planning software and the backoffice system of both the staffing customer and staffing supplier. This page provides documentation about the OpenAPI specification.
 
 The APIs are organized into tags for easy navigation and include descriptions for each set of APIs. The available tags include _'Planning constraints,' 'Planning request,' and 'Planning assignment,'_ which include the API calls related to the different set of SETU Planning and Scheduling messages. Additionally, this API specification also provides tags for different scenarios that might be encountered during the use of the SETU API for Planning and Scheduling. These scenarios include _'Scenario 1 | Planning software APIs'_ and _'Scenario 1 | Customer backoffice APIs'_, as well as _'Scenario 2 | Planning software APIs'_ and _'Scenario 2 | Staffing customer backoffice APIs'_. These tags group together the API calls that are available for a specific scenario, making it easier for developers to understand which endpoints are necessary to implement in each case.
 
 The request body of each API call in the OpenAPI specification is also available in Semantic Treehouse. The request body is based on the standardised message structure developed by SETU in Semantic Treehouse. This ensures that the request and response data of the API calls adhere to a common and standardised format, facilitating interoperability and ease of use across different software systems. More information about the SETU standards can be found [here](https://setu.semantic-treehouse.nl/#/Projects).
+
+
+import ApiDocMdx from "@theme/ApiDocMdx";
+
+<ApiDocMdx id="planning-api" />

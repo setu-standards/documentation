@@ -12,7 +12,7 @@ const config = {
   url: 'https://standard.setu.nl',
   baseUrl: '/docs/',
   onBrokenLinks: 'warn', // TODO: set to throw
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenMarkdownLinks: 'throw',
   favicon: 'img/favicon.ico',
   markdown: {
     mermaid: true,
