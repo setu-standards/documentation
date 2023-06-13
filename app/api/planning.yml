@@ -6,26 +6,26 @@ info:
     Moreover, the API allows to exchange information regarding human resource availability (constraints), planning request, and planning assignment.
   license:
     name: MIT
-  version: 0.9.2
+  version: 1.0
 externalDocs:
   description: More about SETU
   url: https://www.setu.nl
 
 tags:
-  - name: "Planning constraints"
-    description: Set of APIs for availability registration of human resources
-  - name: "Planning request"
-    description: Set of APIs for requesting fulfillment of a position
-  - name: "Planning assignment"
-    description: Set of APIs for communicating assignment of human resources to a position
+  - name: "Planning Constraints"
+    description: Set of APIs for availability registration of human resources.
+  - name: "Planning Request"
+    description: Set of APIs for requesting fulfillment of a position.
+  - name: "Planning Assignment"
+    description: Set of APIs for communicating assignment of human resources to a position.
   - name: "Scenario 1 | Planning software APIs"
-    description: Set of APIs to be implemented by the planning software
+    description: Set of APIs to be implemented by the planning software.
   - name: "Scenario 1 | Customer backoffice APIs"
-    description: Set of APIs to be implemented by the backoffice of the customer
+    description: Set of APIs to be implemented by the backoffice of the customer.
   - name: "Scenario 2 | Planning software APIs"
-    description: Set of APIs to be implemented by the planning software
+    description: Set of APIs to be implemented by the planning software.
   - name: "Scenario 2 | Staffing supplier backoffice APIs"
-    description: Set of APIs to be implemented by the backoffice of the staffing supplier
+    description: Set of APIs to be implemented by the backoffice of the staffing supplier.
 
 paths:
 ############################################################
