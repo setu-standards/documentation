@@ -3,7 +3,9 @@ info:
   title: SETU API for Planning and Scheduling
   description: |
     Set of API specifications that allows for exchange of information related to the planning and scheduling of flexworkers.
-    Moreover, the API allows to exchange information regarding human resource availability (constraints), planning request, and planning assignment.
+    Moreover, the API allows to exchange information regarding human resource availability (constraints), planning request, and planning assignment. 
+    
+    The JSON and XML schema's for the requestBody of each API call can be found on the [SETU GitHub](https://github.com/setu-standards/xml-specifications/tree/main/setu-planning)
   license:
     name: MIT
   version: 1.0
