@@ -1,11 +1,5 @@
 # Supplier's planning and backoffice system
 
-:::caution
-The SETU standard for planning and scheduling is currently under review. The documentation in this section is about version 0.9.
-
-Version 1.0 is expected to be released by the SETU board on the 20th of June '23.
-:::
-
 The sequence diagram below involves communication between a staffing supplier's backoffice system and its planning system. The planning system sends a _GET /planning/constraints/hrID_ to retrieve availability information about a human resource. The API server of the backoffice system then responds with a status code 200 and the planning constraints of a particular human resource.
 
 The backoffice system of the staffing supplier may also want to exchange the planning constraints of other human resources. This can be done by sending a _POST /planning/constraints_, and the planning system responds with a status code 201 + the requestBody + an unique resource identifier to indicate success.

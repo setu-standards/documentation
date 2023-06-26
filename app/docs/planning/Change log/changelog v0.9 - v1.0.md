@@ -1,6 +1,6 @@
 # From v0.9 to v1.0
 
-During the last working session of the working group Planning and Schedulling, consensus has been reach to some final changes to the DRAFT 1.0 version of the Planning & Scheduling standard. This documentation page presents the change log documenting the journey from v0.9 to draft v1.0.The change log serves as a comprehensive record of the modifications, refinements, and new additions made in v1.0 for all the three message specification and the API specifications.
+During the last working session of the working group Planning and Schedulling, consensus has been reach to some final changes to the DRAFT 1.0 version of the Planning & Scheduling standard. This documentation page presents the change log documenting the journey from v0.9 to draft v1.0. The change log serves as a comprehensive record of the modifications, refinements, and new additions made in v1.0 for all the three message specification and the API specifications.
 
 ## Planning Constraints
 

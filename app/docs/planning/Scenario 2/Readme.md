@@ -1,11 +1,5 @@
 # Scenario 2: planning in the system of the staffing customer
 
-:::caution
-The SETU standard for planning and scheduling is currently under review. The documentation in this section is about version 0.9.
-
-Version 1.0 is expected to be released by the SETU board on the 20th of June '23.
-:::
-
 In the second scenario, the staffing customer is responsible for the planning. The staffing customer receives PlanningConstraints about the human resource (e.g, availability) and other human resource data of the staffing supplier. Then, the staffing customer creates a schedule that includes the flexible workers. This schedule (PlanningAssignment) is communicated back to the staffing supplier. The staffing supplier can provide updates on constraints and availabilities (e.g. due to illness or leave), as a consequence the staffing customer creates a new schedule and sends it back to the staffing supplier. This scenario is most likely when a flexible worker works exclusively for the client.
 
 ![](../../../static/img/Scenario%202.png)

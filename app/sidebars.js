@@ -3,15 +3,10 @@ module.exports = {
     "README",
     {
       type: "category",
-      label: "Planning and Scheduling v1.0 DRAFT",
+      label: "Planning and Scheduling v1.0",
       collapsed: false,
       link: {type: 'doc', id: 'planning/README'},
       items: [
-        {
-          type: 'doc',
-          id: 'planning/public-consultation',
-          label: "Public consultation",
-        }, 
         {
           type: "category",
           label: "Scenario 1",

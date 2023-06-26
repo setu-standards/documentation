@@ -1,11 +1,5 @@
 # Supplier's planning system and customer's backoffice
 
-:::caution
-The SETU standard for planning and scheduling is currently under review. The documentation in this section is about version 0.9.
-
-Version 1.0 is expected to be released by the SETU board on the 20th of June '23.
-:::
-
 In this scenario, a staffing customer's backoffice system communicates with a staffing supplier's planning system. The staffing customer sends a planning request by sending a _POST /planning/requests_, and the planning system might respond with a status code 201 (planning request is created) + requestBody + the location (e.g., /planning/request/ID) to indicate success. The planning system may notify the staffing customer of the planning assignment by sending a _POST /planning/assignments_, and the customer may respond with a status code 201 to indicate successful creation.
 
 Later on, the staffing customer may want to update one of the lines in the planning request. To do this, the customer sends a _PUT /planning/requests/{id}/lines/{lineId}_. The ../requests/{id} denotes the unique identifier of the planning request, which is assigned by the API server, and {lineId} denotes the unique identifier of a planning line in a planning request, assigned by the API requestor. The planning system may respond with a status code 200 if the update is successful. As a result, the planning system notifies the staffing customer of the updated assignment by sending a _PUT /planning/assignments/{id}_, and the customer responds with a status code 200.

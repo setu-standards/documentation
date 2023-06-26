@@ -1,16 +1,10 @@
 # Planning and Scheduling
 
-:::caution
-The SETU standard for planning and scheduling is currently under review. The documentation in this section is about version 0.9.
-
-Version 1.0 is expected to be released by the SETU board on the 20th of June '23.
-
-Would you like to contribute? Please refer to the following page: [Public Consultation](./public-consultation.md)
-:::
+The SETU Standard for Planning and Scheduling is released on the 20th of June 2023. The standard can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/#/Projects).
 
 ## Introduction
 
-The SETU standard for planning and scheduling is currently under review. The documentation in this section is about version 0.9.
+The SETU Standard for Planning and Scheduling contains three message specifications:
 
 - **PlanningConstraints**, which is used for exchanging information on the constraints that need to be taken into account for the planning of an individual worker related to a specific assignment;
 - **PlanningRequest**, which is used by the customer to request the planning of workers for a certain position;
@@ -26,3 +20,8 @@ During the development of the Planning and Scheduling messages, the SETU working
 2. The planning is done entirely in the system of the staffing customer.
 
 The following sections will cover both scenarios and their corresponding [API specifications](api).
+
+## Public consultation
+A public consultation was performed from 15 May 2023 to 15 June 2023.
+
+Interested parties were invited to review the delivered standard and provide review comments. Those responses were considered by the SETU, discussed with the working group and, where necessary, the draft version adjusted before final publication.
