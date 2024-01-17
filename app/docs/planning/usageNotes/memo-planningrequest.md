@@ -2,7 +2,7 @@
 
 ## Introduction 
 
-During the implementation of the Planning Standard, different interpretations were identified regarding the *Planning Request*-message when requesting multiple flexible workers for the same position at the same time and location. This note serves to clarify the situation, provide support for any discussions in the working group, and will subsequently be added as an explanation to the standard.
+During the implementation of the Planning Standard, different interpretations were identified regarding the ***Planning Request*-message v1.0** when requesting multiple flexible workers for the same position at the same time and location. This note serves to clarify the situation, provide support for any discussions in the working group, and will subsequently be added as an explanation to the standard.
 
 The issue revolves around specifying position profiles with multiple human resources. There are two different approaches.
 
