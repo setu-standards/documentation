@@ -38,6 +38,13 @@ module.exports = {
         },
         {
           type: "category",
+          label: "Usage notes",
+          collapsed: true,
+          link: {type: 'doc', id: 'planning/usageNotes/Readme'},
+          items: ['planning/usageNotes/memo-planningrequest'], 
+        },
+        {
+          type: "category",
           label: "Change log",
           collapsed: true,
           link: {type: 'doc', id: 'planning/Change log/Readme'},
