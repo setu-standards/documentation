@@ -1,5 +1,4 @@
 # Exchange of SETU Messages via SOAP
-
 SETU planning and scheduling messages can be exchanged via both SOAP and REST APIs. To exchange SETU messages via REST APIs, [specifications](../oas.mdx) for the REST API and [related documentation](../../api/) have been developed in collaboration with the working group. However, there has been no documentation so far about the exchange of SETU messages via SOAP web services.
 
 This document has been prepared due to the [change request](https://setu.semantic-treehouse.nl/issue/ChangeRequest_c03692a9-3af4-4f0e-8879-f110bf1a5171) to provide more insight into sending SETU scheduling messages via SOAP.
@@ -12,7 +11,6 @@ To make adjustments, the action codes defined in the message can be used. In thi
 In contrast to REST APIs, where a resource identifier is used, SOAP services resend the entire message, including the documentID. This allows the receiving party to identify which previously sent message the changes apply to.
 
 ## Example
-
 The staffing supplier initially sends a planning assignment to the back-office of the staffing customer with an action code 'POST' and a document ID in the payload itself. The customer receives this message and responds a '200' status code and the same requestbody.
 
 Later, when the supplier updates a line in the existing planning assignment, they resend the modified assignment with an action code 'PUT' and the same document ID. 
