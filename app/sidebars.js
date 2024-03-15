@@ -41,7 +41,7 @@ module.exports = {
           label: "Usage notes",
           collapsed: true,
           link: {type: 'doc', id: 'planning/usageNotes/Readme'},
-          items: ['planning/usageNotes/memo-planningrequest'], 
+          items: ['planning/usageNotes/memo-planningrequest', 'planning/usageNotes/soap-webservices-documentatie'], 
         },
         {
           type: "category",
