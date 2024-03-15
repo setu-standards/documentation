@@ -2,9 +2,6 @@
 
 :::info
 At this moment in time, the SETU will not develop SOAP specifications for Planning and Scheduling messages. Within the development of the SETU v2.0 standards, we will further address the issues regarding SOAP and REST APIs.
-
-
-
 :::
 
 The planning and scheduling messages can be exchanged via both SOAP and REST APIs. For REST APIs, [specifications](../api/oas.mdx) and [related documentation](../../api/) have been developed in collaboration with the working group. However, there has been no documentation so far about the exchange of SETU messages via SOAP web services.
@@ -12,13 +9,12 @@ The planning and scheduling messages can be exchanged via both SOAP and REST API
 In response to the [change request](https://setu.semantic-treehouse.nl/issue/ChangeRequest_c03692a9-3af4-4f0e-8879-f110bf1a5171), the SETU does recognizes the need for clarification regarding the Resource Identifier for SOAP web services, hence this temporary documentation.
 
 
-
-## Handling changes in SOAP web services
-With the various REST calls (POST, PUT, DELETE, GET) of the REST APIs, adjustments can easily be made to previously sent messages. However, SOAP web services do not have these standardized calls. To keep this as generic as possible, the SETU has defined [action codes](https://setu.semantic-treehouse.nl/message-model-tree/Message_ab110a9b-56e0-44d8-9120-c4c5afa0020d?showElems=Element_1fad0577-5ad4-4cce-b612-bd3e859f6811) in their standards. However, handling changes for previously sent messages to a SOAP API endpoint proves to be a challenge.
+## Handling Changes in SOAP Web Services
+With the various REST calls (POST, PUT, DELETE, GET) of the REST APIs, adjustments can easily be made to previously sent messages. However, SOAP web services do not have these standardized calls. To keep this as generic as possible, the SETU has defined action codes in their standards. However, handling changes in previously sent messages to a SOAP API endpoint proves to be a challenge.
 
 To make adjustments, the action codes defined in the message can be used. In this case, a label indicating whether it is a POST, DELETE, PUT, or GET can be provided. In practice, the message is resent with the processed changes and the corresponding label of the action code. This allows the receiving party to be aware of the changes made in the message.
 
-In contrast to REST APIs, where a resource identifier is used, with SOAP services the entire message is sent again, including the documentID. This allows the receiving party to identify which previously sent message the changes apply to. This implies that the **documentID** can serve as the identifier for determining the earlier sent message.
+In contrast to REST APIs, where a resource identifier is used, SOAP services resend the entire message, including the documentID. This allows the receiving party to identify which previously sent message the changes apply to.
 
 ## Example
 
