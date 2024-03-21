@@ -1,12 +1,10 @@
 # Clarification SOAP
 
 :::info
-At this moment in time, the SETU will not develop SOAP specifications for Planning and Scheduling messages. Within the development of the SETU v2.0 standards, we will further address the issues regarding SOAP and REST APIs.
+The SETU will not develop SOAP specifications for Planning and Scheduling messages and for the SETU v2.0 messages. The planning and scheduling messages are designed to be used in combination with REST APIs. However, we acknowledge that not everyone has made this transition yet. For such circumstances, this documentation page provides some clarifications.
 :::
 
-The planning and scheduling messages can be exchanged via both SOAP and REST APIs. For REST APIs, [specifications](../api/oas.mdx) and [related documentation](../../api/) have been developed in collaboration with the working group. However, there has been no documentation so far about the exchange of SETU messages via SOAP web services.
-
-In response to the [change request](https://setu.semantic-treehouse.nl/issue/ChangeRequest_c03692a9-3af4-4f0e-8879-f110bf1a5171), the SETU does recognizes the need for clarification regarding the Resource Identifier for SOAP web services, hence this temporary documentation.
+In response to the [change request](https://setu.semantic-treehouse.nl/issue/ChangeRequest_c03692a9-3af4-4f0e-8879-f110bf1a5171), this page clarifies the use of the Resource Identifier for SOAP web services.
 
 
 ## Handling Changes in SOAP Web Services
