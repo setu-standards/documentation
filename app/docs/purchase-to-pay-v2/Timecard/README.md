@@ -1,5 +1,5 @@
 # Timecard
-The SETU Standard for Reporting Time and Expenses will be released at the end of 2024. The standard can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/specifications). There you can also find example messages and validation artifacts in both XML and JSON. The REST API specifications are specified in this documentation.
+The SETU Standard for Reporting Time and Expenses version 2.0 will be released at the end of 2024. The standard can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/specifications). There you can also find example messages and validation artifacts in both XML and JSON. The REST API specifications are specified in this documentation.
 
 ## Scope
 The SETU Standard for Reporting Time and Expenses is targeted at the process of reporting time & expenses in the staffing industry. It contains information models that describe the moments (when) and the content (what) of information exchange. It deals with capturing and electronically sending time recording information and expense related information, including corrections.
