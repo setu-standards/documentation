@@ -9,11 +9,29 @@ module.exports = {
       items: [
         {
           type: "category",
+          label: "Ordering & Selection",
+          collapsed: true,
+          link: {type: 'doc', id: 'purchase-to-pay-v2/OrderingSelection/README'},
+          items: [
+            "purchase-to-pay-v2/OrderingSelection/Processes", 
+          ],
+        },
+        {
+          type: "category",
           label: "Timecard",
           collapsed: true,
           link: {type: 'doc', id: 'purchase-to-pay-v2/Timecard/README'},
           items: [
             "purchase-to-pay-v2/Timecard/Processes", 
+          ],
+        },
+        {
+          type: "category",
+          label: "Usage notes",
+          collapsed: true,
+          link: {type: 'doc', id: 'purchase-to-pay-v2/UsageNotes/README'},
+          items: [
+            "purchase-to-pay-v2/UsageNotes/Identifiers-overview", 
           ],
         }
       ]
