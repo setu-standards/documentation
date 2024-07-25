@@ -3,6 +3,23 @@ module.exports = {
     "README",
     {
       type: "category",
+      label: "Purchase to Pay v2.0",
+      collapsed: false,
+      link: {type: 'doc', id: 'purchase-to-pay-v2/README'},
+      items: [
+        {
+          type: "category",
+          label: "Timecard",
+          collapsed: true,
+          link: {type: 'doc', id: 'purchase-to-pay-v2/Timecard/README'},
+          items: [
+            "purchase-to-pay-v2/Timecard/Processes", 
+          ],
+        }
+      ]
+    },
+    {
+      type: "category",
       label: "Planning and Scheduling v1.0",
       collapsed: false,
       link: {type: 'doc', id: 'planning/README'},
