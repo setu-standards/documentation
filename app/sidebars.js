@@ -29,7 +29,6 @@ module.exports = {
           type: "category",
           label: "Usage notes",
           collapsed: true,
-          link: {type: 'doc', id: 'purchase-to-pay-v2/UsageNotes/README'},
           items: [
             "purchase-to-pay-v2/UsageNotes/Identifiers-overview", 
           ],
