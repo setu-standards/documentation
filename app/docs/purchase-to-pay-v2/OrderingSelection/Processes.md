@@ -1,5 +1,19 @@
 # Supported processes
 
+## Staffing Order
+The Staffing Order message can be used at two different process steps. In the Staffing Order message itself the `order type` element must be used to specify for which of those two process steps the message is being exchanged:
+- The **Staffing Order 'RFQ'** is used by the staffing customer to send a request for quotation to the staffing supplier to request worker(s).
+- The **Staffing Order 'Order'** used by the staffing customer to send a procurement order to the staffing supplier to order the candidate worker(s) as proposed by the staffing supplier (in the Human Resource message).
+
+The Staffing Order message facilitates two different use cases:
+1. The Staffing Order, regardless of the order type used (either `RFQ` or `Order`), is used to request one worker for a position. Then at least the identifier and/or name of the requested worker must be specified.
+2. The Staffing Order `RFQ` can be used to request multiple workers for one position. The amount of workers requested is indicated by the `position open quantity` element. The identifiers and names of the requested workers cannot be specified in the Staffing Order `RFQ`. In the Staffing Order `Order` is not allowed to use the `position open quantity` element. Therefore a Staffing Order `Order` message needs to be send for each ordered worker.
+
+## Human Resource
+The content of the Human Resource message is tailored to where in the process the message is exchanged, especially to take into account the exchange of privacy-sensitive information: 
+- If the **regular Human Resource message** is exchanged as an offer in response to the request for quotation (Staffing Order = 'RFQ'), the message may only contain limited personal data. Only the formatted name of the worker is shared, not the entire name. In addition, no contact details of the worker are exchanged and only limited address details, such as where the worker lives.
+- After the assignment has been created by the staffing supplier, the suppler is allowed to also share the privacy-sensitive additional personal and contact information of the worker with the staffing customer. This situation is described as the **Human Resource message with additional information**. This message contains the full name of the worker, all contact and address information of the worker, and other personal data only required when the assignment comes into effect, such as legal document (passport) information.
+
 ## Regular staffing process
 ![Visual representation of the regular staffing process.](../../../static/img/OrderingSelection-process-1.png)
 
