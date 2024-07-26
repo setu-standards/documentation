@@ -1,4 +1,11 @@
 # Ordering & Selection
+
+:::caution
+The SETU Standard for Ordering & Selection, Assignment and Reporting Time & Expenses (Timecard) v2.0 are currently under review. The documentation in this section is a draft and subject to change.
+
+We expect to release the final documentation at the end of 2024.
+:::
+
 The SETU Standard for Ordering & Selection consists of two message specifications:
 - **Staffing Order** is used by a staffing customer to request and order (an) employee(s) for an open position.
 - **Human Resource** is used by the staffing supplier to match a human resource to an open position.

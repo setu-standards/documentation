@@ -1,5 +1,11 @@
 # Purchase to Pay v2.0
 
+:::caution
+The SETU Standard for Ordering & Selection, Assignment and Reporting Time & Expenses (Timecard) v2.0 are currently under review. The documentation in this section is a draft and subject to change.
+
+We expect to release the final documentation at the end of 2024.
+:::
+
 ## Introduction
 The SETU specified multiple message specifications to exchange purchase to pay information in the flexible staffing industry. The 'Purchase to pay' standards with a 2.0 version are the:
  - **SETU Standard for Ordering and Selection** is used for matching a human resource to an open position. It deals with electronically sending ordering and selection related information, including updates. This standard consists of two message specifications:
