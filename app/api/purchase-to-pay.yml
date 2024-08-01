@@ -1,0 +1,410 @@
+openapi: 3.0.2
+info:
+  title: SETU API for Purchase to Pay
+  description: |
+    Set of API specifications that allows for the exchange of information related to purchase-to-pay processes.
+    The JSON and XML schemas for the requestBody of each API call can be found on the SETU GitHub.
+  license:
+    name: MIT
+  version: '1.0'
+externalDocs:
+  description: More about SETU
+  url: https://www.setu.nl
+
+tags:
+  - name: Purchase to Pay
+    description: Set of APIs for purchase-to-pay processes.
+  - name: Staffing Order
+    description: Staffing Order is used by a staffing customer to request and order (an) employee(s) for an open position.
+  - name: Human Resource
+    description: Human Resource is used by the staffing supplier to match a human resource to an open position.
+  - name: Assignment
+    description: The Assignment is used to confirm the placement.
+  - name: Timecard
+    description: The SETU Standard for Reporting Time and Expenses is targeted at the process of reporting time & expenses in the staffing industry. 
+  - name: Invoice
+    description: The SETU Standard for Invoicing is targeted at the process of invoicing in the staffing industry. It deals with electronically sending invoicing information, including corrections. The standard supports the exchange of invoicing information between two organizations; this implies that multi-party collaborations are out of scope.
+
+paths:
+  /purchase-to-pay/staffing-order:
+    post:
+      tags: 
+        - Staffing Order
+      summary: Create a new staffing order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StaffingOrder'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/StaffingOrder'
+      responses:
+        '201':
+          description: Created
+
+  /purchase-to-pay/staffing-order/{id}:
+    get:
+      tags: 
+        - Staffing Order
+      summary: Retrieve an existing staffing order
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaffingOrder'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/StaffingOrder'
+    put:
+      tags: 
+        - Staffing Order
+      summary: Update an existing staffing order
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StaffingOrder'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/StaffingOrder'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      tags: 
+        - Staffing Order
+      summary: Delete an existing staffing order
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deleted
+
+  /purchase-to-pay/human-resource:
+    post:
+      tags: 
+        - Human Resource
+      summary: Create a new human resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HumanResource'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/HumanResource'
+      responses:
+        '201':
+          description: Created
+
+  /purchase-to-pay/human-resource/{id}:
+    get:
+      tags: 
+        - Human Resource
+      summary: Retrieve an existing human resource
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HumanResource'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HumanResource'
+    put:
+      tags: 
+        - Human Resource
+      summary: Update an existing human resource
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HumanResource'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/HumanResource'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      tags:
+        - Human Resource
+      summary: Delete an existing human resource
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deleted
+
+  /purchase-to-pay/assignment:
+    post:
+      tags: 
+        - Assignment
+      summary: Create a new assignment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Assignment'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Assignment'
+      responses:
+        '201':
+          description: Created
+
+  /purchase-to-pay/assignment/{id}:
+    get:
+      tags: 
+        - Assignment
+      summary: Retrieve an existing assignment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assignment'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Assignment'
+    put:
+      tags: 
+        - Assignment
+      summary: Update an existing assignment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Assignment'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Assignment'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      tags: 
+        - Assignment
+      summary: Delete an existing assignment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deleted
+
+  /purchase-to-pay/timecard:
+    post:
+      tags: 
+        - Timecard
+      summary: Create a new timecard
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Timecard'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Timecard'
+      responses:
+        '201':
+          description: Created
+
+  /purchase-to-pay/timecard/{id}:
+    get:
+      tags: 
+        - Timecard
+      summary: Retrieve an existing timecard
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Timecard'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Timecard'
+    put:
+      tags: 
+        - Timecard
+      summary: Update an existing timecard
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Timecard'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Timecard'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      tags: 
+        - Timecard
+      summary: Delete an existing timecard
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deleted
+
+  /purchase-to-pay/invoice:
+    post:
+      tags: 
+        - Invoice
+      summary: Create a new invoice
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+      responses:
+        '201':
+          description: Created
+
+  /purchase-to-pay/invoice/{id}:
+    get:
+      tags: 
+        - Invoice
+      summary: Retrieve an existing invoice
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+    put:
+      tags: 
+        - Invoice
+      summary: Update an existing invoice
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      tags: 
+        - Invoice
+      summary: Delete an existing invoice
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Deleted
+
+components:
+  schemas:
+    StaffingOrder:
+      type: object
+      properties: {}
+    HumanResource:
+      type: object
+      properties: {}
+    Assignment:
+      type: object
+      properties: {}
+    Timecard:
+      type: object
+      properties: {}
+    Invoice:
+      type: object
+      properties: {}
