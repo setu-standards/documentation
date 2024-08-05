@@ -12,8 +12,6 @@ externalDocs:
   url: https://www.setu.nl
 
 tags:
-  - name: Purchase to Pay
-    description: Set of APIs for purchase-to-pay processes.
   - name: Staffing Order
     description: Staffing Order is used by a staffing customer to request and order (an) employee(s) for an open position.
   - name: Human Resource
@@ -24,14 +22,22 @@ tags:
     description: The SETU Standard for Reporting Time and Expenses is targeted at the process of reporting time & expenses in the staffing industry. 
   - name: Invoice
     description: The SETU Standard for Invoicing is targeted at the process of invoicing in the staffing industry. It deals with electronically sending invoicing information, including corrections. The standard supports the exchange of invoicing information between two organizations; this implies that multi-party collaborations are out of scope.
+  - name: Staffing supplier's backoffice APIs
+    description: Set of APIs to be implemented by the staffing supplier
+  - name: Staffing customer's backoffice APIs
+    description: Set of APIs to be implemented by the staffing customer
+
 
 paths:
   /purchase-to-pay/staffing-order:
     post:
       tags: 
         - Staffing Order
-      summary: Create a new staffing order
+        - Staffing supplier's backoffice APIs
+      summary: Submit a new staffing order
       requestBody:
+        description: |
+         Complete staffing order message as specified by SETU. A message may have multiple versions that can differ. See the different versions of the message specifications here: https://setu.semantic-treehouse.nl/message-model/MessageModel_c557ecea-1e1b-4997-9b90-f6aed797de2d
         content:
           application/json:
             schema:
@@ -41,13 +47,14 @@ paths:
               $ref: '#/components/schemas/StaffingOrder'
       responses:
         '201':
-          description: Created
+          description: Created | The created staffing order (as submitted in the request body)
 
   /purchase-to-pay/staffing-order/{id}:
     get:
       tags: 
         - Staffing Order
-      summary: Retrieve an existing staffing order
+        - Staffing supplier's backoffice APIs
+      summary: Retrieve information about an existing staffing order
       parameters:
         - name: id
           in: path
@@ -56,7 +63,7 @@ paths:
             type: string
       responses:
         '200':
-          description: OK
+          description: OK | Information about an existing staffing order
           content:
             application/json:
               schema:
@@ -67,6 +74,7 @@ paths:
     put:
       tags: 
         - Staffing Order
+        - Staffing supplier's backoffice APIs
       summary: Update an existing staffing order
       parameters:
         - name: id
@@ -84,10 +92,11 @@ paths:
               $ref: '#/components/schemas/StaffingOrder'
       responses:
         '200':
-          description: Updated
+          description: The updated staffing order
     delete:
       tags: 
         - Staffing Order
+        - Staffing supplier's backoffice APIs
       summary: Delete an existing staffing order
       parameters:
         - name: id
@@ -97,14 +106,17 @@ paths:
             type: string
       responses:
         '200':
-          description: Deleted
+          description: The staffing order is successfully deleted
 
   /purchase-to-pay/human-resource:
     post:
       tags: 
         - Human Resource
-      summary: Create a new human resource
+        - Staffing customer's backoffice APIs
+      summary: Submit a new human resource
       requestBody:
+        description: |
+         Complete human resource message as specified by SETU. A message specification may have multiple versions that can differ. See the different versions of the message specifications here: https://setu.semantic-treehouse.nl/message-model/MessageModel_e9c078df-343f-4421-b09b-9e509e7b754e
         content:
           application/json:
             schema:
@@ -114,13 +126,14 @@ paths:
               $ref: '#/components/schemas/HumanResource'
       responses:
         '201':
-          description: Created
+          description: Created | The created human resource
 
   /purchase-to-pay/human-resource/{id}:
     get:
       tags: 
         - Human Resource
-      summary: Retrieve an existing human resource
+        - Staffing customer's backoffice APIs
+      summary: Retrieve information about an existing human resource
       parameters:
         - name: id
           in: path
@@ -129,7 +142,7 @@ paths:
             type: string
       responses:
         '200':
-          description: OK
+          description: OK  | Information about an existing human resource
           content:
             application/json:
               schema:
@@ -140,6 +153,7 @@ paths:
     put:
       tags: 
         - Human Resource
+        - Staffing customer's backoffice APIs
       summary: Update an existing human resource
       parameters:
         - name: id
@@ -157,10 +171,11 @@ paths:
               $ref: '#/components/schemas/HumanResource'
       responses:
         '200':
-          description: Updated
+          description: The updated human resource
     delete:
       tags:
         - Human Resource
+        - Staffing customer's backoffice APIs
       summary: Delete an existing human resource
       parameters:
         - name: id
@@ -170,14 +185,17 @@ paths:
             type: string
       responses:
         '200':
-          description: Deleted
+          description: The human resource message is successfully deleted 
 
   /purchase-to-pay/assignment:
     post:
       tags: 
         - Assignment
-      summary: Create a new assignment
+        - Staffing customer's backoffice APIs
+      summary: Submit a new assignment
       requestBody:
+        description: |
+         Complete assignment message as specified by SETU. A message specification may have multiple versions that can differ. See the different versions of the message specifications here: https://setu.semantic-treehouse.nl/message-model/MessageModel_2bb215d2-60a5-458e-9366-2bc7f543f520
         content:
           application/json:
             schema:
@@ -187,13 +205,14 @@ paths:
               $ref: '#/components/schemas/Assignment'
       responses:
         '201':
-          description: Created
+          description: Created | The created assignment
 
   /purchase-to-pay/assignment/{id}:
     get:
       tags: 
         - Assignment
-      summary: Retrieve an existing assignment
+        - Staffing customer's backoffice APIs
+      summary: Retrieve information about an existing assignment
       parameters:
         - name: id
           in: path
@@ -202,7 +221,7 @@ paths:
             type: string
       responses:
         '200':
-          description: OK
+          description: OK | Information about an existing assignment
           content:
             application/json:
               schema:
@@ -213,6 +232,7 @@ paths:
     put:
       tags: 
         - Assignment
+        - Staffing customer's backoffice APIs
       summary: Update an existing assignment
       parameters:
         - name: id
@@ -230,10 +250,11 @@ paths:
               $ref: '#/components/schemas/Assignment'
       responses:
         '200':
-          description: Updated
+          description: The updated assignment
     delete:
       tags: 
         - Assignment
+        - Staffing customer's backoffice APIs
       summary: Delete an existing assignment
       parameters:
         - name: id
@@ -243,14 +264,17 @@ paths:
             type: string
       responses:
         '200':
-          description: Deleted
+          description: The assignment is successfully deleted
 
   /purchase-to-pay/timecard:
     post:
       tags: 
         - Timecard
-      summary: Create a new timecard
+        - Staffing supplier's backoffice APIs
+      summary: Submit a new timecard
       requestBody:
+        description: |
+         Complete timecard message as specified by SETU. A message specification may have multiple versions that can differ. See the different versions of the message specifications here: https://setu.semantic-treehouse.nl/message-model/MessageModel_f1b8ba4d-9434-456f-94ac-031765cd36ea
         content:
           application/json:
             schema:
@@ -260,12 +284,13 @@ paths:
               $ref: '#/components/schemas/Timecard'
       responses:
         '201':
-          description: Created
+          description: Created | The timecard is created
 
   /purchase-to-pay/timecard/{id}:
     get:
       tags: 
         - Timecard
+        - Staffing supplier's backoffice APIs
       summary: Retrieve an existing timecard
       parameters:
         - name: id
@@ -275,7 +300,7 @@ paths:
             type: string
       responses:
         '200':
-          description: OK
+          description: OK | Information about an existing timecard
           content:
             application/json:
               schema:
@@ -286,6 +311,7 @@ paths:
     put:
       tags: 
         - Timecard
+        - Staffing supplier's backoffice APIs
       summary: Update an existing timecard
       parameters:
         - name: id
@@ -303,10 +329,11 @@ paths:
               $ref: '#/components/schemas/Timecard'
       responses:
         '200':
-          description: Updated
+          description: The updated timecard
     delete:
       tags: 
         - Timecard
+        - Staffing supplier's backoffice APIs
       summary: Delete an existing timecard
       parameters:
         - name: id
@@ -316,14 +343,17 @@ paths:
             type: string
       responses:
         '200':
-          description: Deleted
+          description: The timecard is successfully deleted
 
   /purchase-to-pay/invoice:
     post:
       tags: 
         - Invoice
+        - Staffing customer's backoffice APIs
       summary: Create a new invoice
       requestBody:
+        description: |
+         Complete invoice message as specified by SETU. A message specification may have multiple versions that can differ. See the different versions of the message specifications here: https://setu.semantic-treehouse.nl/message-model/MessageModel_527939af-3e6c-436e-8a85-e749724a8742
         content:
           application/json:
             schema:
@@ -333,12 +363,13 @@ paths:
               $ref: '#/components/schemas/Invoice'
       responses:
         '201':
-          description: Created
+          description: Created | The created invoice
 
   /purchase-to-pay/invoice/{id}:
     get:
       tags: 
         - Invoice
+        - Staffing customer's backoffice APIs
       summary: Retrieve an existing invoice
       parameters:
         - name: id
@@ -348,7 +379,7 @@ paths:
             type: string
       responses:
         '200':
-          description: OK
+          description: OK | Information about an existing invoice
           content:
             application/json:
               schema:
@@ -359,6 +390,7 @@ paths:
     put:
       tags: 
         - Invoice
+        - Staffing customer's backoffice APIs
       summary: Update an existing invoice
       parameters:
         - name: id
@@ -376,10 +408,11 @@ paths:
               $ref: '#/components/schemas/Invoice'
       responses:
         '200':
-          description: Updated
+          description: The updated invoice
     delete:
       tags: 
         - Invoice
+        - Staffing customer's backoffice APIs
       summary: Delete an existing invoice
       parameters:
         - name: id
@@ -389,22 +422,71 @@ paths:
             type: string
       responses:
         '200':
-          description: Deleted
+          description: The invoice is successfully deleted
 
 components:
   schemas:
     StaffingOrder:
       type: object
+      description: The XML and JSON Schemas for the Staffing Order message are specified by SETU. Please find the schemas here [LINK]
       properties: {}
     HumanResource:
       type: object
+      description: The XML and JSON Schemas for the Human Resource message are specified by SETU. Please find the schemas here [LINK]
       properties: {}
     Assignment:
       type: object
+      description: The XML and JSON Schemas for the Assignment message are specified by SETU. Please find the schemas here [LINK]
       properties: {}
     Timecard:
       type: object
+      description: The XML and JSON Schemas for the Timecard message are specified by SETU. Please find the schemas here [LINK]
       properties: {}
     Invoice:
       type: object
+      description: The XML and JSON Schemas for the Invoice message are specified by SETU. Please find the schemas here [LINK]
       properties: {}
+    error-object:
+      type: object
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+  responses:
+      '201':
+        description: Created. Successful request, resource is created. (synchronous)
+      '202':
+        description: Accepted. Successful request, resource is not (yet) created. (asynchronous). This is not supported by the SETU. 
+      '204':
+        description: No Content. Response for a successful DELETE operation.
+      '400':
+        description: 400 Bad request | The reuest is invalid. E.g. due to syntax error or invalid response body
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/error-object'
+      '401':
+        description: 401 Unauthorized | The request lacks valid authentication credentials for the resource
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/error-object'
+      '403':
+        description: 403 Forbidden | The request was valid, but the server is refusing action. The client may not be authorized for the resource
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/error-object'
+      '404':
+        description: 404 Not found
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/error-object'
+      '500':
+        description: 500 Internal server error
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/error-object'
