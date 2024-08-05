@@ -84,7 +84,7 @@ module.exports = {
               label: "Sequence diagrams",
               collapsed: true,         
               items: [
-                "API Specification/processes",
+                "API Specification/purchase-to-pay/processes",
               ],
             },
           ],

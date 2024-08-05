@@ -1,9 +1,9 @@
-# Supplier's planning system and customer's backoffice
+# Supplier's and customer's backoffice systems
 
-# Order & Selection
+The page contains several sequence diagrams illustrating the communication between the backoffice systems of a staffing supplier and a staffing customer for exchanging the SETU standards for purchase-to-pay processes. This includes [ordering and selection](#order--selection), [time reporting and expenses](#reporting-time-and-expenses), [variations](#variations-on-the-regular-process), and how to handle [deletions and changes](#changes--deletions).
 
-## Supported processes
 
+<!--
 ### Regular Staffing Process
 
 
@@ -33,24 +33,17 @@ sequenceDiagram
     Customer ->>- Supplier: 201 + requestBody + /purchase-to-pay/assignment/{ID}
 
 ```
+-->
 
 
 
-
-### Procurement system process 
+### Order & Selection
 
 The sequence diagram below involves communication between a staffing customer's backoffice system and a staffing supplier's backoffice system. The ordering and selection process starts with the creation of a request for workers from the staffing customer. The staffing customer sends the Staffing Order (Order type = 'RFQ') message by making a `POST /purchase-to-pay/staffing-order` API call to the staffing supplier. The API server of the staffing supplier's backoffice system then responds with a status code 201, including the request body and a unique resource identifier for the staffing order, representing the location of the resource for API calls (GET, PUT, DELETE) at a later stage.
 
-When a matching human resource is found, the staffing supplier notifies the staffing customer by sending a `POST /purchase-to-pay/human-resource`. The staffing customer's backoffice system responds with a status code 201, including the request body and a unique resource identifier.
+When a matching human resource is found, the staffing supplier notifies the staffing customer by sending a `POST /purchase-to-pay/human-resource`. The staffing customer's backoffice system responds with a status code 201, including the request body and a unique resource identifier. The staffing customer accepts the offer through a `POST /purchase-to-pay/staffing-order` (Staffing Order (Order type = 'Order')). Again, if the call is succeeded, the staffing supplier's responds with a status code 201, the request body and a unique resource identifier for the order. 
 
-The staffing customer accepts the offer through a `POST /purchase-to-pay/staffing-order` (Staffing Order (Order type = 'Order')). Again, if the call is succeeded, the staffing supplier's responds with a status code 201, the request body and a unique resource identifier for the order. 
-
-The staffing supplier can send additional information about the human resource using a `PUT /purchase-to-pay/human-resource{ID}`. The staffing customer is able to modify the earlier created human-resource by using the received resource identifier, for context refer to: [LINK TO RESOURCE IDENTIFIERS]. As a repsonds the staffing customer's provides a status code 200, including the updated request body.
-
-The staffing supplier confirms the placement of the human resource by a `POST /purchase-to-pay/assignment`. Again, if succeeded, a a status code 201, including the request body and a unique resource identifier for the assignment  is provided.
-
-Note: more information about the usage of the different identifiers in certain REST API paths can be found here. [LINK to resources]
-
+The staffing supplier can send additional information about the human resource using a `PUT /purchase-to-pay/human-resource{ID}`. The staffing supplier is able to modify the earlier created human-resource by using the received resource identifier, for context refer to: [handling identifiers](../identifiers.md). The staffing supplier confirms the placement of the human resource by a `POST /purchase-to-pay/assignment`. 
 
 
 ```mermaid
@@ -72,7 +65,7 @@ sequenceDiagram
 
     Note over Customer,Supplier: The staffing supplier sends additional <br/> information about the human resource
     Supplier ->>+ Customer: PUT /purchase-to-pay/human-resource/{ID}
-    Customer ->>- Supplier: Supplier: 200 + requestBody 
+    Customer ->>- Supplier: 200 + requestBody 
 
     Note over Customer,Supplier: Parallel the staffing supplier confirms the placement of the human resource
     Supplier ->>+ Customer: POST /purchase-to-pay/assignment
@@ -80,34 +73,11 @@ sequenceDiagram
 
 ```
 
-<figcaption align = "center">Diagram X - X Flow between the staffing customer and the staffing supplier.</figcaption>
+<figcaption align = "center">Diagram 1 - Procurement communication between the staffing customer and the staffing supplier.</figcaption>
 
-### Timecard en Invoice
 
-The sequence diagram illustrates the process of reporting time and expenses via a timecard. The staffing customer sends a timecard to the staffing supplier through a `POST /purchase-to-pay/timecard`. Optionally, the staffing supplier can forward the timecard, either as-is or with adjustments, to a secondary supplier through another `POST /purchase-to-pay/timecard` request. Finally, in response to the timecard(s), the staffing supplier sends an invoice to the staffing customer using `POST /purchase-to-pay/invoice`.
 
-```mermaid
-sequenceDiagram
-    participant Customer as Backoffice <br/> staffing customer
-    participant Supplier as Backoffice <br/> staffing supplier
-    participant Second as Backoffice <br/> secondary supplier
-
-    Note over Customer,Supplier: A timecard to report of time and expenses <br/> is sent to the staffing supplier
-    Customer ->>+ Supplier: POST /purchase-to-pay/timecard
-    Supplier ->>- Customer: 201 + requestBody + /purchase-to-pay/timecard/{ID}
-
-    Note over Supplier, Second: Optional: The timecard is forwarded, or posted with adjustments, <br/> to a secondary supplier.
-    Supplier ->>+ Second: POST /purchase-to-pay/timecard
-    Second ->>- Supplier: 201 + requestBody + /purchase-to-pay/timecard/{ID}
-
-    Note over Customer,Supplier: As a response an invoice is sent to the staffing customer
-    Supplier ->>+ Customer: POST /purchase-to-pay/invoice
-    Customer ->>- Supplier: 201 + requestBody + /purchase-to-pay/invoice/{ID}
-   
-```
-
-<figcaption align = "center">Diagram X - the process of reporting time and expenses via a timecard and invoice</figcaption>
-
+<!--
 ### OR
 
 Kunnen we de accept via een staffing order doen, en dan een opnieuw sturen of de vorige aanpassen? Kunnen we de eerdere human resource aanpassen met meer informatie. 
@@ -142,21 +112,48 @@ sequenceDiagram
 
 <figcaption align = "center">Diagram X - X Flow between the staffing customer and the staffing supplier.</figcaption>
 
+-->
 
 
 
 
-### Variations on regular process 
+### Reporting time and expenses
 
-The sequence diagram below involves communication between a staffing customer  and a staffing supplier. 
+The sequence diagram illustrates the process of reporting time and expenses via a timecard. The staffing customer sends a timecard to the staffing supplier through a `POST /purchase-to-pay/timecard`. Optionally, the staffing supplier can forward the timecard, either as-is or with adjustments, to a secondary supplier API endpoint through another `POST /purchase-to-pay/timecard` request. Finally, in response to the timecard(s), the staffing supplier sends an invoice to the staffing customer using `POST /purchase-to-pay/invoice`.
 
-The first part of this process is done manually, without the use of SETU messages. Details about the staffing customer's request and the initial details about the proposed human resource are already exchanged via other electronic ways.Specifically, a Staffing Order (Order type = 'Order') message has not yet been exchanged, and the staffing supplier has not yet received a purchase order number via another channel.
+```mermaid
+sequenceDiagram
+    participant Customer as Backoffice <br/> staffing customer
+    participant Supplier as Backoffice <br/> staffing supplier
+    participant Second as Backoffice <br/> secondary supplier
 
-The actual exchange starts with the complete information of the human resource and the creation of the assignment. The staffing supplier sends parallel a human-resource and assignment request through `POST /purchase-to-pay/human-resource` and `POST /purchase-to-pay/assignment`. To both requests, the staffing customer's backoffice system responds with a status code 201, including the request body and a unique resource identifier for the human resource and the assignment. Recall that this assignment does not refer to a specific staffing-order, as the staffing-order or a purchase order number has not yet been communicated. 
+    Note over Customer,Supplier: A timecard to report of time and expenses <br/> is sent to the staffing supplier
+    Customer ->>+ Supplier: POST /purchase-to-pay/timecard
+    Supplier ->>- Customer: 201 + requestBody + /purchase-to-pay/timecard/{ID}
 
-After receiving the assignment, the staffing customer sends a staffing-order including a purchase order number to the staffing supplier using a `POST /purchase-to-pay/staffing-order` API call. Again, if the request is succeeded, the API server responds with a status code 201, the request body and a unique resource identifier. 
+    Note over Supplier, Second: Optional: The timecard is forwarded, or posted with adjustments, <br/> to a secondary supplier.
+    Supplier ->>+ Second: POST /purchase-to-pay/timecard
+    Second ->>- Supplier: 201 + requestBody + /purchase-to-pay/timecard/{ID}
 
-The purchaseOrderNumber in the staffing order (as documentID, see IDENTIFIERS Overview...) can be used later for reference from a timecard or an invoice. More information about this can be found in section X [LINK naar sectie met wijzigingen] below.
+    Note over Customer,Supplier: As a response an invoice is sent to the staffing customer
+    Supplier ->>+ Customer: POST /purchase-to-pay/invoice
+    Customer ->>- Supplier: 201 + requestBody + /purchase-to-pay/invoice/{ID}
+   
+```
+
+<figcaption align = "center">Diagram 2 - the process of reporting time and expenses via a timecard and invoice</figcaption>
+
+
+
+
+
+### Variations on the regular process
+
+The sequence diagram below involves variations on the regular process. The first part of this process is done manually, without the use of SETU messages. Details about the staffing customer's request and the initial details about the proposed human resource are already exchanged via other electronic ways. 
+
+The actual exchange starts with the complete information of the human resource and the creation of the assignment. The staffing supplier sends parallel a human-resource and assignment request through `POST /purchase-to-pay/human-resource` and `POST /purchase-to-pay/assignment` to the staffing customer. To both requests, the staffing customer's backoffice system responds with a status code 201, including the request body and a unique resource identifier for the human resource and the assignment. Recall that this assignment does not refer to a specific staffing-order, as the staffing-order or a purchase order number has not yet been communicated. After receiving the assignment, the staffing customer sends a staffing-order including a purchase order number to the staffing supplier using a `POST /purchase-to-pay/staffing-order` API call. 
+
+The purchaseOrderNumber (as documentID, see [identifiers overview](../../purchase-to-pay-v2/UsageNotes/Identifiers-overview.md)) in the staffing order can be used later for reference from a timecard or an invoice. More information about this can be found below in the sequence diagram or in section [handling identifiers](../identifiers.md).
 
 
 ```mermaid
@@ -176,7 +173,7 @@ sequenceDiagram
     Customer ->>+ Supplier: POST /purchase-to-pay/staffing-order
     Supplier ->>- Customer: 201 + requestBody + /purchase-to-pay/staffing-order/{ID}
 ```
-<figcaption align = "center">Diagram X - X Flow between the staffing customer and the staffing supplier.</figcaption>
+<figcaption align = "center">Diagram 3 - Sequence diagram depicting variations on the regular communication between the staffing customer and the staffing supplier.</figcaption>
 
 ### Changes & deletions
 

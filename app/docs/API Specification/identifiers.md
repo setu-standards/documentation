@@ -1,9 +1,9 @@
 # Handling identifiers
 
-When it comes to the exchange of planning messages, multiple identifiers come into play. This documentation page will walk you through the IDs and specify their functions. The following ID are taken into account:
+When it comes to the exchange of purchase to pay and planning messages, multiple identifiers come into play. This documentation page will walk you through the IDs and specify their functions. The following ID are taken into account:
 
-1. A resource identifier for the (request) messages assigned by the API server for planning constraints, planning requests and planning assignments
-2. The document ID included in the message body itself
+1. A resource identifier for the (request) messages assigned by the API server for Purchase to Pay and Planning & Scheduling messages.
+2. The document ID included in the message request body itself
 3. An identifier used to reference a specific line in a particular message
 
 ## 1. Resource identifiers
@@ -17,7 +17,7 @@ HTTP/1.1 201 Created
 Location: /planning/request/c93efb20-1acd-447b-87e7-fadb108d8a0e
 ```
 
-This allows the API client to perform GET, PUT and DELETE calls on this resource at a later stage according to the [API specification](../planning/api/oas.mdx)
+This allows the API client to perform GET, PUT and DELETE calls on this resource at a later stage according to the [API specification](./README.md)
 
 #### Processing Example
 
@@ -44,7 +44,7 @@ sequenceDiagram
 
 ## 2. Document identifier in the request message
 
-The planning messages also include a document identifier. This identifier is how the API client identifies the request. Any identifier format can be used as long as it is unique within the scope of the issuing party (e.g. the staffing customer).
+All of the SETU messages also include a document identifier. This identifier is how the API client identifies the request. Any identifier format can be used as long as it is unique within the scope of the issuing party (e.g. the staffing customer).
 
 ```xml
 <PlanningRequest>
@@ -75,11 +75,19 @@ This document ID is important for the business process, as it is referenced by o
 </PlanningAssignment>
 ```
 
+:::note
+See here how the various document IDs of the Purchase to Pay message relate to each other: [identifiers overview](../purchase-to-pay-v2/UsageNotes/Identifiers-overview.md)
+:::
+
 #### Processing Example
 
 <details>
 <summary>Example explanation</summary>
-The document ID helps the receiver to identify whether interrelated resource (e.g., a planning assignment) require modification. Let us consider a scenario where the planning request is interlinked with a planning assignment. An update to an existing planning request requires the staffing supplier to also update the planning assignment.
+<p>The document ID helps the receiver to identify whether interrelated resource (e.g., a planning assignment) require modification. Let us consider a scenario where the planning request is interlinked with a planning assignment. An update to an existing planning request requires the staffing supplier to also update the planning assignment. </p>
+
+
+<p>A good example for the purchase to pay message is provided in the sequence diagram about <a href="./purchase-to-pay/processes#changes--deletions">deletions and changes</a>.</p>
+
 </details>
 
 ```mermaid
@@ -108,7 +116,7 @@ sequenceDiagram
 
 ## 3. Line identifiers in the request message
 
-In all planning messages, it is possible to specify multiple planning lines. In the case of a planning request, these lines can be either periodic or single planning request lines. For the planning constraint message, the lines include periodic and single availability of a human resource. Each line within these messages has its own identifier specified in the message itself, provided by the `line id` element. For example:
+This type of identifier is only included in the planning messages. For each planning message, it is possible to specify multiple planning lines. In the case of a planning request, these lines can be either periodic or single planning request lines. For the planning constraint message, the lines include periodic and single availability of a human resource. Each line within these messages has its own identifier specified in the message itself, provided by the `line id` element. For example:
 
 ```xml
 <periodicAvailabilityLine>
@@ -129,7 +137,9 @@ In all planning messages, it is possible to specify multiple planning lines. In 
 
 The line identifiers need to be unique within the scope of the message. Therefore it is allowed to number them sequentially starting with '1', but using a UUID or other identifier format is also allowed.
 
-**NOTE** that the line identifiers are also used as part of certain REST api paths. They are combined with the **resource identifiers** as specified in the [section above](#1-resource-identifiers). For example, `PUT /planning/requests/c93efb20-1acd-447b-87e7-fadb108d8a0e/lines/2` can be used to update the information about a planningline with line ID '2' within a created planning request known by its resource identifier (UUID) as 'c93efb20-1acd-447b-87e7-fadb108d8a0e'.
+:::note
+Line identifiers are also used as part of certain REST api paths. They are combined with the **resource identifiers** as specified in the [section above](#1-resource-identifiers). For example, `PUT /planning/requests/c93efb20-1acd-447b-87e7-fadb108d8a0e/lines/2` can be used to update the information about a planningline with line ID '2' within a created planning request known by its resource identifier (UUID) as 'c93efb20-1acd-447b-87e7-fadb108d8a0e'.
+:::
 
 #### Processing Example
 

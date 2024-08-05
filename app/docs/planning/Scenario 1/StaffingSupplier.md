@@ -1,12 +1,18 @@
 # Supplier's planning and backoffice system
 
-The sequence diagram below involves communication between a staffing supplier's backoffice system and its planning system. The planning system sends a _GET /planning/constraints/hrID_ to retrieve availability information about a human resource. The API server of the backoffice system then responds with a status code 200 and the planning constraints of a particular human resource.
+:::info
+The sequence diagram on this page is specific to [scenario 1](../../planning/Scenario%201/Readme.md) for Planning and Scheduling, where the planning takes place in the staffing supplier's planning system.
+:::
 
-The backoffice system of the staffing supplier may also want to exchange the planning constraints of other human resources. This can be done by sending a _POST /planning/constraints_, and the planning system responds with a status code 201 + the requestBody + an unique resource identifier to indicate success.
+The sequence diagram below involves communication between a staffing supplier's backoffice system and its planning system. The planning system sends a `GET /planning/constraints/hrID` to retrieve availability information about a human resource. The API server of the backoffice system then responds with a status code 200 and the planning constraints of a particular human resource.
 
-Subsequently, the backoffice system may need to modify an already existing planning constraint by sending a _PUT /planning/constraints/{ID}_ where the {ID} denotes the unique resource identifier of the planning constraint, assigned by the API server. The planning system may respond with a status code 200 if the update is successful. Additionally, the planning system may want to retrieve information about an existing planning constraint object. This is done by sending a _GET /planning/constraints/{ID}_, and the backoffice system will respond with a status code 200 and the details of the constraint.
+The backoffice system of the staffing supplier may also want to exchange the planning constraints of other human resources. This can be done by sending a `POST /planning/constraints`, and the planning system responds with a status code 201 + the requestBody + an unique resource identifier to indicate success.
 
-**Note:** more information about the usage of the different identifiers in certain REST API paths can be found in this [section](../../API%20Specification/identifiers.md).
+Subsequently, the backoffice system may need to modify an already existing planning constraint by sending a `PUT /planning/constraints/{ID}` where the {ID} denotes the unique resource identifier of the planning constraint, assigned by the API server. The planning system may respond with a status code 200 if the update is successful. Additionally, the planning system may want to retrieve information about an existing planning constraint object. This is done by sending a `GET /planning/constraints/{ID}`, and the backoffice system will respond with a status code 200 and the details of the constraint.
+
+:::note
+More information about the usage of the different identifiers in certain REST API paths can be found in this [section](../../API%20Specification/identifiers.md).
+:::
 
 ```mermaid
 sequenceDiagram
