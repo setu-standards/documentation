@@ -37,4 +37,4 @@ sequenceDiagram
     Backoffice ->>- Planning: 200 + requestBody
 ```
 
-<figcaption align = "center">Diagram 1 - Flow between the backoffice system and the planning system of a staffing supplier.</figcaption>
+<figcaption align = "center">Diagram 4 - Flow between the backoffice system and the planning system of a staffing supplier.</figcaption>

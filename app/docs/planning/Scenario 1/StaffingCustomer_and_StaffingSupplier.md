@@ -44,4 +44,4 @@ sequenceDiagram
     Customer ->>- Planning: 204 + requestBody
 ```
 
-<figcaption align = "center">Diagram 2 - Flow between the backoffice system of the staffing customer and the planning system of a staffing supplier.</figcaption>
+<figcaption align = "center">Diagram 5 - Flow between the backoffice system of the staffing customer and the planning system of a staffing supplier.</figcaption>

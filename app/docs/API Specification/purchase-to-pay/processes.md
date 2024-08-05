@@ -252,7 +252,6 @@ sequenceDiagram
     Customer ->>- Supplier: 200 + requestBody + /purchase-to-pay/invoice/{ID}
 
 ```
-<figcaption align = "center">Diagram X - X Flow between the staffing customer and the staffing supplier.</figcaption>
 
 
 </details>

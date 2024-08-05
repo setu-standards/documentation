@@ -43,4 +43,4 @@ sequenceDiagram
 
 ```
 
-<figcaption align = "center">Diagram 3 - Flow between the backoffice system of the staffing supplier and the planning system of the staffing customer.</figcaption>
+<figcaption align = "center">Diagram 6 - Flow between the backoffice system of the staffing supplier and the planning system of the staffing customer.</figcaption>

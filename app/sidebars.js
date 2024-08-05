@@ -42,14 +42,21 @@ module.exports = {
       link: {type: 'doc', id: 'planning/README'},
       items: [
         {
-          type: "doc",
-          label: "Scenario 1",
-          id: 'planning/Scenario 1/Readme',
-        }, 
-        {
-          type: "doc",
-          label: "Scenario 2",
-          id: 'planning/Scenario 2/Readme',
+          type: "category",
+          label: "Scenarios",
+          collapsed: true,
+          items: [, 
+                  {
+            type: "doc",
+            label: "Scenario 1",
+            id: 'planning/Scenario 1/Readme',
+          }, 
+          {
+            type: "doc",
+            label: "Scenario 2",
+            id: 'planning/Scenario 2/Readme',
+          },
+        ],
         },
         {
           type: "category",
@@ -75,7 +82,7 @@ module.exports = {
       items: [
         {
           type: "category",
-          label: "Purchase-to-pay: API Specification (OAS)",
+          label: "Purchase to Pay: API Specification (OAS)",
           collapsed: true,       
           link: {type: 'doc', id: 'API Specification/purchase-to-pay/oas-purchase-to-pay' },   
           items: [
