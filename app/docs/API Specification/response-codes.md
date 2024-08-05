@@ -1,5 +1,5 @@
 # Response codes
-Section [API specifications](oas.mdx) contains the OpenAPI specification of the SETU Planning and Scheduling messages, but it does not include all the standard responses recommended by the SETU. This section will cover the common response codes.
+Section [API specifications](../planning/api/oas.mdx) contains the OpenAPI specification of the SETU Planning and Scheduling messages, but it does not include all the standard responses recommended by the SETU. This section will cover the common response codes.
 
 All API endpoints **must** implement HTTP response codes according to the [IETF RFC 7231 specification](https://tools.ietf.org/html/rfc7231). A couple of common response codes are listed below. The codes used in the accompanied OAS files are also included in this list. SETU recommends to implement these codes for the described situations.
 

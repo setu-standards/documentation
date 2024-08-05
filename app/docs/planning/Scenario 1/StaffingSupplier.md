@@ -6,7 +6,7 @@ The backoffice system of the staffing supplier may also want to exchange the pla
 
 Subsequently, the backoffice system may need to modify an already existing planning constraint by sending a _PUT /planning/constraints/{ID}_ where the {ID} denotes the unique resource identifier of the planning constraint, assigned by the API server. The planning system may respond with a status code 200 if the update is successful. Additionally, the planning system may want to retrieve information about an existing planning constraint object. This is done by sending a _GET /planning/constraints/{ID}_, and the backoffice system will respond with a status code 200 and the details of the constraint.
 
-**Note:** more information about the usage of the different identifiers in certain REST API paths can be found in this [section](../api/identifiers.md).
+**Note:** more information about the usage of the different identifiers in certain REST API paths can be found in this [section](../../API%20Specification/identifiers.md).
 
 ```mermaid
 sequenceDiagram

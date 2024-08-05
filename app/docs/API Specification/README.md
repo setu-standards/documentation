@@ -1,0 +1,1 @@
+The API documentation of the SETU Standard for Purchase to Pay and for Planning & Scheduling. The API documentation consist of an Open API Specification, multiple sequence diagrams to better understand how the API endpoints in different systems work together, and additional documentation about handling API request. 

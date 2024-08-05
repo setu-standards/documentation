@@ -17,7 +17,7 @@ HTTP/1.1 201 Created
 Location: /planning/request/c93efb20-1acd-447b-87e7-fadb108d8a0e
 ```
 
-This allows the API client to perform GET, PUT and DELETE calls on this resource at a later stage according to the [API specification](oas.mdx)
+This allows the API client to perform GET, PUT and DELETE calls on this resource at a later stage according to the [API specification](../planning/api/oas.mdx)
 
 #### Processing Example
 
