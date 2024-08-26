@@ -37,7 +37,7 @@ paths:
       summary: Submit a new staffing order
       requestBody:
         description: |
-         Complete staffing order message as specified by SETU. A message may have multiple versions that can differ. See the different versions of the message specifications here: https://setu.semantic-treehouse.nl/message-model/MessageModel_c557ecea-1e1b-4997-9b90-f6aed797de2d
+         Complete staffing order message as specified by SETU. A message may have multiple versions that can differ.
         content:
           application/json:
             schema:
@@ -93,6 +93,13 @@ paths:
       responses:
         '200':
           description: The updated staffing order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaffingOrder'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/StaffingOrder'
     delete:
       tags: 
         - Staffing Order
@@ -107,6 +114,13 @@ paths:
       responses:
         '200':
           description: The staffing order is successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaffingOrder'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/StaffingOrder'
 
   /purchase-to-pay/human-resource:
     post:
@@ -116,7 +130,7 @@ paths:
       summary: Submit a new human resource
       requestBody:
         description: |
-         Complete human resource message as specified by SETU. A message specification may have multiple versions that can differ. See the different versions of the message specifications here: https://setu.semantic-treehouse.nl/message-model/MessageModel_e9c078df-343f-4421-b09b-9e509e7b754e
+         Complete human resource message as specified by SETU.
         content:
           application/json:
             schema:
@@ -127,6 +141,13 @@ paths:
       responses:
         '201':
           description: Created | The created human resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HumanResource'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HumanResource'
 
   /purchase-to-pay/human-resource/{id}:
     get:
@@ -186,6 +207,13 @@ paths:
       responses:
         '200':
           description: The human resource message is successfully deleted 
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HumanResource'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/HumanResource'
 
   /purchase-to-pay/assignment:
     post:
@@ -195,7 +223,7 @@ paths:
       summary: Submit a new assignment
       requestBody:
         description: |
-         Complete assignment message as specified by SETU. A message specification may have multiple versions that can differ. See the different versions of the message specifications here: https://setu.semantic-treehouse.nl/message-model/MessageModel_2bb215d2-60a5-458e-9366-2bc7f543f520
+         Complete assignment message as specified by SETU. 
         content:
           application/json:
             schema:
@@ -206,6 +234,13 @@ paths:
       responses:
         '201':
           description: Created | The created assignment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assignment'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Assignment'
 
   /purchase-to-pay/assignment/{id}:
     get:
@@ -265,6 +300,13 @@ paths:
       responses:
         '200':
           description: The assignment is successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assignment'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Assignment'
 
   /purchase-to-pay/timecard:
     post:
@@ -274,7 +316,7 @@ paths:
       summary: Submit a new timecard
       requestBody:
         description: |
-         Complete timecard message as specified by SETU. A message specification may have multiple versions that can differ. See the different versions of the message specifications here: https://setu.semantic-treehouse.nl/message-model/MessageModel_f1b8ba4d-9434-456f-94ac-031765cd36ea
+         Complete timecard message as specified by SETU. 
         content:
           application/json:
             schema:
@@ -285,6 +327,14 @@ paths:
       responses:
         '201':
           description: Created | The timecard is created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Timecard'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Timecard'
+
 
   /purchase-to-pay/timecard/{id}:
     get:
@@ -344,6 +394,13 @@ paths:
       responses:
         '200':
           description: The timecard is successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Timecard'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Timecard'
 
   /purchase-to-pay/invoice:
     post:
@@ -427,24 +484,16 @@ paths:
 components:
   schemas:
     StaffingOrder:
-      type: object
-      description: The XML and JSON Schemas for the Staffing Order message are specified by SETU. Please find the schemas here [LINK]
-      properties: {}
+      $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay/StaffingOrder.yml' 
     HumanResource:
-      type: object
-      description: The XML and JSON Schemas for the Human Resource message are specified by SETU. Please find the schemas here [LINK]
-      properties: {}
+      $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay/HumanResource.yml'
     Assignment:
-      type: object
-      description: The XML and JSON Schemas for the Assignment message are specified by SETU. Please find the schemas here [LINK]
-      properties: {}
+      $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay/Assignment.yml'
     Timecard:
-      type: object
-      description: The XML and JSON Schemas for the Timecard message are specified by SETU. Please find the schemas here [LINK]
-      properties: {}
+      $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay/Timecard.yml'
     Invoice:
       type: object
-      description: The XML and JSON Schemas for the Invoice message are specified by SETU. Please find the schemas here [LINK]
+      description: The XML and JSON Schemas for the Invoice message are specified by SETU. Please find the schemas here https://setu.semantic-treehouse.nl/specifications
       properties: {}
     error-object:
       type: object
