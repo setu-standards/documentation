@@ -73,7 +73,7 @@ sequenceDiagram
 
 ```
 
-<figcaption align = "center">Diagram 1 - Procurement communication between the staffing customer and the staffing supplier.</figcaption>
+<figcaption align = "center">Diagram 1 - Procurement process between the staffing customer and the staffing supplier.</figcaption>
 
 
 
@@ -141,7 +141,7 @@ sequenceDiagram
     Customer ->>+ Supplier: POST /purchase-to-pay/staffing-order
     Supplier ->>- Customer: 201 + requestBody + /purchase-to-pay/staffing-order/{ID}
 ```
-<figcaption align = "center">Diagram 2 - Sequence diagram depicting a variation on the regular communication between the staffing customer and the staffing supplier.</figcaption>
+<figcaption align = "center">Diagram 2 - a variation on the regular procurement process between the staffing customer and the staffing supplier.</figcaption>
 
 
 ## Timecard
@@ -168,7 +168,7 @@ sequenceDiagram
    
 ```
 
-<figcaption align = "center">Diagram 3 - The process of reporting time and expenses via a Timecard and Invoice.</figcaption>
+<figcaption align = "center">Diagram 3 - The process of reporting time and expenses between the staffing customer and staffing supplier.</figcaption>
 
 
 
@@ -183,7 +183,7 @@ The staffing customer sends a Staffing Order (Order type = 'Order') to the staff
 
 In response to the Staffing Order, the staffing supplier confirms the order of the human resource by sending a `POST /purchase-to-pay/assignment` to the staffing customer. This Assignment includes a reference to the Staffing Order via the purchase order number. Again, the response includes a status code 201, the request body and a unique resource identifier for the Assignment.
 
-Later, the staffing customer updates the existing Staffing Order with new information. This update is sent using a `PUT /purchase-to-pay/staffing-order/ID` with `ID-example-1` as identifier. Since the Staffing Order and the Assignment are interrelated via the same purchase order number, the staffing supplier knows exactly which item needs to be posted, updated, or even deleted based on the update to the Staffing Order. The staffing supplier sends the updated assignment information using a `PUT /purchase-to-pay/assignment/ID` with ID-example-2 as identifier. 
+Later, the staffing customer deletes the existing Staffing Order. This update is sent using a `DELETE /purchase-to-pay/staffing-order/ID` with `ID-example-1` as identifier. Since the Staffing Order and the Assignment are interrelated via the same purchase order number, the staffing supplier knows exactly which item needs to be posted, updated, or even deleted based on the update to the Staffing Order. The staffing supplier sends the deleted assignment using a `DELETE /purchase-to-pay/assignment/ID` with ID-example-2 as identifier. 
 
 ```mermaid
 sequenceDiagram
@@ -198,12 +198,12 @@ sequenceDiagram
     Supplier ->>+ Customer: POST /purchase-to-pay/assignment
     Customer ->>- Supplier: 201 + requestBody + /purchase-to-pay/assignment/ID-example-2
 
-    Note over Customer,Supplier: The staffing customer updates the existing Staffing Order 
-    Customer ->>+ Supplier: PUT /purchase-to-pay/assignment/ID-example-1
+    Note over Customer,Supplier: The staffing customer deletes the existing Staffing Order 
+    Customer ->>+ Supplier: DELETE /purchase-to-pay/staffing-order/ID-example-1
     Supplier ->>- Customer: 200 + requestBody 
 
     Note over Customer,Supplier: Since the Staffing Order and the Assignment are interrelated, the <br/> staffing supplier knows the exact item that needs to be <br/> posted, updated, or even deleted
-    Supplier ->>+ Customer: PUT /purchase-to-pay/assignment/ID-example-2
+    Supplier ->>+ Customer: DELETE /purchase-to-pay/assignment/ID-example-2
     Customer ->>- Supplier: 200 + requestBody 
 
 ```
@@ -217,7 +217,7 @@ sequenceDiagram
 
 A change or deletion of a timecard can impact a previously sent invoice. The staffing customer sends a Timecard with the number of hours the human resource has worked using a `POST /purchase-to-pay/timecard`. In response to the timecard, or multiple timecards, the staffing supplier sends a `POST /purchase-to-pay/invoice`. This invoice includes a reference to the timecard via the purchase order number.
 
-Later, the staffing customer deletes the existing timecard because a mistake was made or any other reason. This deletion is sent using a `DELETE /purchase-to-pay/timecard/ID` with `ID-example-3` as the identifier. Since the timecard and the invoice are interrelated via the purchase order number, the staffing supplier knows exactly which item needs to be posted, updated, or even deleted based on the deleted timecard. The staffing supplier sends a new invoice using a `POST /purchase-to-pay/invoice` to correct the previously sent invoice.
+Later, the staffing customer updates the existing timecard because a mistake was made or any other reason. This update is sent using a `PUT /purchase-to-pay/timecard/ID` with `ID-example-3` as the identifier. Since the timecard and the invoice are interrelated via the purchase order number, the staffing supplier knows exactly which item needs to be posted, updated, or even deleted based on the deleted timecard. The incorrect invoice is entirely credited with a negative invoice (or Credit Note) using a  `POST /purchase-to-pay/invoice/ID-example-4` and sends a new invoice using a `POST /purchase-to-pay/invoice` to correct the previously sent invoice.
 
 According to the [NLCIUS](https://www.forumstandaardisatie.nl/open-standaarden/nlcius) (Dutch specification of a European Invoice), which the SETU uses, there are two ways to correct an already sent invoice:
 
@@ -237,14 +237,19 @@ sequenceDiagram
 
     Note over Customer,Supplier: As a response an Invoice is sent to the staffing customer
     Supplier ->>+ Customer: POST /purchase-to-pay/invoice
-    Customer ->>- Supplier: 201 + requestBody + /purchase-to-pay/invoice/{ID}
+    Customer ->>- Supplier: 201 + requestBody + /purchase-to-pay/invoice/{ID-example-4}
 
     Note over Customer,Supplier: The staffing customer deletes the existing Timecard
-    Customer ->>+ Supplier: DELETE /purchase-to-pay/timecard/ID-example-3
+    Customer ->>+ Supplier: PUT /purchase-to-pay/timecard/ID-example-3
     Supplier ->>- Customer: 200 + requestBody 
 
-    Note over Customer,Supplier: Since the Timecard and the Invoice are interrelated, the <br/> staffing supplier knows the exact item that needs to be <br/> posted, updated, or even deleted
-    Note over Customer,Supplier: A new Invoice is sent to correct the other Invoice
+    Note over Customer,Supplier: Since the Timecard and the Invoice are interrelated, the <br/> staffing supplier knows the exact item that needs to be <br/> posted, updated, or even deleted. 
+
+    Note over Customer,Supplier: The incorrect invoice is entirely credited with <br/> a negative invoice (or Credit Note). In theory this a POST.
+    Supplier ->>+ Customer: POST /purchase-to-pay/invoice
+    Customer ->>- Supplier: 200 + requestBody + /purchase-to-pay/invoice/{ID}
+
+    Note over Customer,Supplier: A new invoice is sent to correct the other Invoice
     Supplier ->>+ Customer: POST /purchase-to-pay/invoice
     Customer ->>- Supplier: 200 + requestBody + /purchase-to-pay/invoice/{ID}
 

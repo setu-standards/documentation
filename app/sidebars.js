@@ -87,12 +87,9 @@ module.exports = {
           link: {type: 'doc', id: 'API Specification/purchase-to-pay/oas-purchase-to-pay' },   
           items: [
             {
-              type: "category",
+              type: "doc",
               label: "Sequence diagrams",
-              collapsed: true,         
-              items: [
-                "API Specification/purchase-to-pay/processes",
-              ],
+              id: "API Specification/purchase-to-pay/processes",    
             },
           ],
         },
