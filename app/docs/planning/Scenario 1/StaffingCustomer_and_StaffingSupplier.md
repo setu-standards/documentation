@@ -11,7 +11,7 @@ Later on, the staffing customer may want to update one of the lines in the plann
 Finally, the staffing customer may want to cancel the planning request by sending a `DELETE /planning/requests/{id}`, and the planning system responds with a status code 204 to indicate success. The planning system then cancels the assignment by sending a `DELETE /planning/assignments/{id}`, and the staffing customer responds with a status code 204.
 
 :::note
-More information about the usage of the different identifiers in certain REST API paths can be found in this [section](../../API%20Specification/identifiers.md).
+More information about the usage of the different identifiers in certain REST API paths can be found in this [section](../../api/usage-notes/identifiers.md).
 :::
 
 ```mermaid

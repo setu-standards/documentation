@@ -13,7 +13,7 @@ The planning system notifies the staffing supplier of the new assignment by send
 Later on, the staffing supplier may want to add a planning line to the planning constraint by sending a `POST /planning/constraints/{id}/periodic-lines`. The .../constraint/{ID} indicates the unique resource identifier of the planning constraints, which is assigned by the API server. The planning system may respond with a status code 201 to indicate success. Finally, the staffing supplier is notified of the updated assignment by the planning system sending a `PUT /planning/assignments/{id},` and the staffing supplier responds with a status code 201.
 
 :::note
- More information about the usage of the different identifiers in certain REST API paths can be found in this [section](../../API%20Specification/identifiers.md).
+ More information about the usage of the different identifiers in certain REST API paths can be found in this [section](../../api/usage-notes/identifiers.md).
 :::
 
 ```mermaid

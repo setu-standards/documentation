@@ -89,26 +89,26 @@ module.exports = {
       type: "category",
       label: "API documentation",
       collapsed: false,
-      link: {type: 'doc', id: 'API Specification/README'},
+      link: {type: 'doc', id: 'api/README'},
       items: [
         {
           type: 'doc', 
           label: "OAS Purchase to Pay",
-          id: 'API Specification/oas-purchase-to-pay',
+          id: 'api/oas-purchase-to-pay',
         },
         {
           type: 'doc',
           label: "OAS Planning and Schedulling",
-          id: 'API Specification/oas-planning',
+          id: 'api/oas-planning',
         },
         {
           type: "category",
           label: "Usage notes",
           collapsed: true,
           items: [
-            'API Specification/usage-notes/synchronous',
-            'API Specification/usage-notes/identifiers',
-            'API Specification/usage-notes/response-codes',
+            'api/usage-notes/synchronous',
+            'api/usage-notes/identifiers',
+            'api/usage-notes/response-codes',
           ], 
         }
       ],
