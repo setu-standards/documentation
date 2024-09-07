@@ -76,7 +76,7 @@ This document ID is important for the business process, as it is referenced by o
 ```
 
 :::note
-See here how the various document IDs of the Purchase to Pay message relate to each other: [identifiers overview](../../purchase-to-pay-v2/UsageNotes/Identifiers-overview.md)
+See here how the various document IDs of the Purchase to Pay message relate to each other: [identifiers overview](../../purchase-to-pay-v2/usage-notes/Identifiers-overview.md)
 :::
 
 #### Processing Example
@@ -86,7 +86,7 @@ See here how the various document IDs of the Purchase to Pay message relate to e
 <p>The document ID helps the receiver to identify whether interrelated resource (e.g., a planning assignment) require modification. Let us consider a scenario where the planning request is interlinked with a planning assignment. An update to an existing planning request requires the staffing supplier to also update the planning assignment. </p>
 
 
-<p>A good example for the purchase to pay message is provided in the sequence diagram about <a href="./purchase-to-pay/processes#changes--deletions">deletions and changes</a>.</p>
+<p>A good example for the purchase to pay message is provided in the sequence diagram about <a href="../../purchase-to-pay/SequenceDiagrams#changes--deletions">deletions and changes</a>.</p>
 
 </details>
 

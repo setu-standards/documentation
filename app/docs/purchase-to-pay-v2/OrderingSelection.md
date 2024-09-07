@@ -51,7 +51,7 @@ It is known that in practice variations and exceptions appear in the different p
 
 In practice a part of the process is not always done by exchanging SETU messages. Agreements about requests, human resources and orders are made by telephone or in another (electronic) way. This implies that the processes that are described above can also partly appear.
 
-It is also possible to use the SETU messages in a different order. It must however be kept in mind that when changing the order of the messages possibly problems can occur with referencing from one message to another. When messages are skipped or messages are received at a later stage in the process the identifiers of these messages will not be available. Consult the [overview of identifiers and references](./UsageNotes/Identifiers-overview) on how identifiers of all SETU messages relate to each other.
+It is also possible to use the SETU messages in a different order. It must however be kept in mind that when changing the order of the messages possibly problems can occur with referencing from one message to another. When messages are skipped or messages are received at a later stage in the process the identifiers of these messages will not be available. Consult the [overview of identifiers and references](./usage-notes/Identifiers-overview) on how identifiers of all SETU messages relate to each other.
 
 ## Assignment first variation
 ![Visual representation of the common variation on the regular process.](../../static/img/OrderingSelection-process-3.png)

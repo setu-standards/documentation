@@ -124,7 +124,7 @@ The sequence diagram below involves a variation on the regular process. The firs
 
 The actual exchange starts with the complete information of the human resource and the creation of the assignment. The staffing supplier sends in parallel a human resource and assignment through `POST /purchase-to-pay/human-resource` and `POST /purchase-to-pay/assignment` to the staffing customer. To both requests, the staffing customer's backoffice system responds with a status code 201, including the request body and a unique resource identifier for the human resource and the assignment. Recall that this assignment does not refer to a specific staffing order, as the staffing order or a purchase order number has not yet been communicated. After receiving the assignment, the staffing customer sends a staffing order including a purchase order number to the staffing supplier using a `POST /purchase-to-pay/staffing-order` call. 
 
-The purchase order number, the documentId (see [identifiers overview](./UsageNotes/Identifiers-overview.md)) of the Staffing Order, can be used later as reference in the timecard and invoice. More information about this can be found below in the sequence diagram or in section [handling identifiers](../api/usage-notes/identifiers.md).
+The purchase order number, the documentId (see [identifiers overview](./usage-notes/Identifiers-overview.md)) of the Staffing Order, can be used later as reference in the timecard and invoice. More information about this can be found below in the sequence diagram or in section [handling identifiers](../api/usage-notes/identifiers.md).
 
 
 ```mermaid

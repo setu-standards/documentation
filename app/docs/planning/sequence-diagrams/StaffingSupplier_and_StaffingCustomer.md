@@ -1,7 +1,7 @@
 # Customer's planning system and supplier's backoffice
 
 :::info
-The sequence diagram on this page is specific to [scenario 2](../../planning/Scenario%202/Readme.md) for Planning and Scheduling, where the planning takes place in the staffing customer's planning system.
+The sequence diagram on this page is specific to [scenario 2](../scenario-2) for Planning and Scheduling, where the planning takes place in the staffing customer's planning system.
 :::
 
 This scenario involves communication between a staffing supplier's backoffice system and a staffing customer's planning system. The staffing customer sends a `GET /planning/constraints/hrID` to retrieve the availability information for a human resource, and the staffing supplier responds with a status code 200 and the requested planning constraints.

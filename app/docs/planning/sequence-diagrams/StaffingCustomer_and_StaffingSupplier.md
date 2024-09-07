@@ -1,7 +1,7 @@
 # Supplier's planning system and customer's backoffice
 
 :::info
-The sequence diagram on this page is specific to [scenario 1](../../planning/Scenario%201/Readme.md) for Planning and Scheduling, where the planning takes place in the staffing supplier's planning system.
+The sequence diagram on this page is specific to [scenario 1](../scenario-1) for Planning and Scheduling, where the planning takes place in the staffing supplier's planning system.
 :::
 
 In this scenario, a staffing customer's backoffice system communicates with a staffing supplier's planning system. The staffing customer sends a planning request by sending a `POST /planning/requests`, and the planning system might respond with a status code 201 (planning request is created) + requestBody + the location (e.g., /planning/request/ID) to indicate success. The planning system may notify the staffing customer of the planning assignment by sending a `POST /planning/assignments`, and the customer may respond with a status code 201 to indicate successful creation.
