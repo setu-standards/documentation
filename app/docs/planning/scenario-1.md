@@ -6,7 +6,7 @@ If there is a planning system on the staffing customer's side, the received sche
 
 If changes to the schedule are necessary, an update to the PlanningRequest can be made. The staffing supplier processes this and shares a new schedule with the client.
 
-![](../../../static/img/Scenario1.png)
+![](../../static/img/Scenario1.png)
 
 A number of situations that are supported by scenario 1:
 

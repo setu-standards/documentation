@@ -27,7 +27,7 @@ module.exports = {
           label: "Usage notes",
           collapsed: true,
           items: [
-            "purchase-to-pay-v2/UsageNotes/Identifiers-overview", 
+            "purchase-to-pay-v2/usage-notes/Identifiers-overview", 
           ],
         }
       ]
@@ -39,49 +39,40 @@ module.exports = {
       link: {type: 'doc', id: 'planning/README'},
       items: [
         {
-          type: "category",
-          label: "Scenarios",
-          collapsed: true,
-          items: [, 
-                  {
-            type: "doc",
-            label: "Scenario 1",
-            id: 'planning/Scenario 1/Readme',
-          }, 
-          {
-            type: "doc",
-            label: "Scenario 2",
-            id: 'planning/Scenario 2/Readme',
-          },
-        ],
+          type: "doc",
+          label: "Scenario 1",
+          id: 'planning/scenario-1',
+        },
+        {
+          type: "doc",
+          label: "Scenario 2",
+          id: 'planning/scenario-2',
         },
         {
           type: "category",
           label: "Sequence diagrams",
           collapsed: true,
           items: [
-            "planning/Scenario 1/StaffingSupplier",
-            "planning/Scenario 1/StaffingCustomer_and_StaffingSupplier",
-            "planning/Scenario 2/StaffingSupplier_and_StaffingCustomer",
+            "planning/sequence-diagrams/StaffingSupplier",
+            "planning/sequence-diagrams/StaffingCustomer_and_StaffingSupplier",
+            "planning/sequence-diagrams/StaffingSupplier_and_StaffingCustomer",
           ],
         },
         {
           type: "category",
           label: "Usage notes",
           collapsed: true,
-          link: {type: 'doc', id: 'planning/usageNotes/Readme'},
+          link: {type: 'doc', id: 'planning/usage-notes/Readme'},
           items: [
-            'planning/usageNotes/memo-planningrequest',
-            'planning/usageNotes/soap-webservices-documentatie',
-            'planning/usageNotes/examples',
+            'planning/usage-notes/memo-planningrequest',
+            'planning/usage-notes/soap-webservices-documentatie',
+            'planning/usage-notes/examples',
           ],
         },
         {
-          type: "category",
+          type: 'doc',
           label: "Change log",
-          collapsed: true,
-          link: {type: 'doc', id: 'planning/Change log/Readme'},
-          items: ['planning/Change log/changelog v0.9 - v1.0'], 
+          id: 'planning/changelog',
         },
       ],
     },

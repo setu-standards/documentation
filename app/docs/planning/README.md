@@ -23,8 +23,6 @@ During the development of the Planning and Scheduling messages, the SETU working
 1. The planning is done entirely in the system of the staffing supplier.
 2. The planning is done entirely in the system of the staffing customer.
 
-The following sections will cover both scenarios and their corresponding [API specifications](api).
-
 ## Public consultation
 A public consultation was performed from 15 May 2023 to 15 June 2023.
 
