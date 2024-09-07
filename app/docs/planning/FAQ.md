@@ -1,6 +1,9 @@
+---
+sidebar_label: FAQ
+---
 # Frequently Asked Questions
 
-Welcome to our Frequently Asked Questions page! Here, you will find answers to some of the most common questions we receive from our users.
+Here, you will find answers to some of the most common questions we receive from our users
 
 ## Questions
 

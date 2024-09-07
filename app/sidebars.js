@@ -74,6 +74,7 @@ module.exports = {
           label: "Change log",
           id: 'planning/changelog',
         },
+        "planning/FAQ",
       ],
     },
     {
@@ -104,6 +105,5 @@ module.exports = {
         }
       ],
     },
-    "FAQ",
-     ],
+  ],
 };

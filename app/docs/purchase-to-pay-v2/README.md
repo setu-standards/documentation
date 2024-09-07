@@ -1,6 +1,6 @@
 # Purchase to Pay v2.0
 
-:::caution
+:::caution DRAFT VERSION
 The SETU Standard for Ordering & Selection, Assignment and Reporting Time & Expenses (Timecard) v2.0 are currently under review. The documentation in this section is a draft and subject to change.
 
 A **public consultation** that will be performed for all message specifications around November 2024. During the public consultation interested parties are invited to review the delivered standard and provide review comments. Those responses are considered by the SETU, will be discussed with the working group and, where necessary, the draft version will be adjusted before final publication.
