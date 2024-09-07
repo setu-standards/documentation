@@ -9,7 +9,7 @@ module.exports = {
       items: [
         {
           type: "category",
-          label: "Ordering & Selection",
+          label: "Ordering & Selection and Assignment",
           collapsed: true,
           link: {type: 'doc', id: 'purchase-to-pay-v2/OrderingSelection/README'},
           items: [
