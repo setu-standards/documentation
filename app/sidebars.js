@@ -9,21 +9,17 @@ module.exports = {
       items: [
         {
           type: "category",
-          label: "Ordering & Selection and Assignment",
+          label: "Ordering & Selection",
           collapsed: true,
           link: {type: 'doc', id: 'purchase-to-pay-v2/OrderingSelection/README'},
-          items: [
-            "purchase-to-pay-v2/OrderingSelection/Processes", 
-          ],
+          items: [],
         },
         {
           type: "category",
-          label: "Timecard",
+          label: "Reporting Time and Expenses",
           collapsed: true,
           link: {type: 'doc', id: 'purchase-to-pay-v2/Timecard/README'},
-          items: [
-            "purchase-to-pay-v2/Timecard/Processes", 
-          ],
+          items: [],
         },
         {
           type: "category",
