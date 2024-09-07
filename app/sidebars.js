@@ -8,18 +8,14 @@ module.exports = {
       link: {type: 'doc', id: 'purchase-to-pay-v2/README'},
       items: [
         {
-          type: "category",
+          type: 'doc',
           label: "Ordering & Selection",
-          collapsed: true,
-          link: {type: 'doc', id: 'purchase-to-pay-v2/OrderingSelection/README'},
-          items: [],
+          id: 'purchase-to-pay-v2/OrderingSelection',
         },
         {
-          type: "category",
+          type: 'doc',
           label: "Reporting Time and Expenses",
-          collapsed: true,
-          link: {type: 'doc', id: 'purchase-to-pay-v2/Timecard/README'},
-          items: [],
+          id: 'purchase-to-pay-v2/Timecard',
         },
         {
           type: "category",
@@ -79,7 +75,7 @@ module.exports = {
         {
           type: "category",
           label: "Purchase to Pay: API Specification (OAS)",
-          collapsed: true,       
+          collapsed: true,
           link: {type: 'doc', id: 'API Specification/purchase-to-pay/oas-purchase-to-pay' },   
           items: [
             {
