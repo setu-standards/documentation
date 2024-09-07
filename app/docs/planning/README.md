@@ -1,6 +1,10 @@
 # Planning and Scheduling
 
-The SETU Standard for Planning and Scheduling is released on the 20th of June 2023. The standard can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/#/Projects).
+:::info DOCUMENTATION
+The message models can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/specifications). There you can also find example messages and validation artifacts in both XML and JSON.
+
+The REST API specifications can be found here: [OAS Planning and Scheduling](../api/oas-planning)
+:::
 
 ## Introduction
 

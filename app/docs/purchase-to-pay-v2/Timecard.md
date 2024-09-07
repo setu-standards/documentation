@@ -7,7 +7,7 @@ We expect to release the final documentation at the end of 2024.
 :::
 
 :::info DOCUMENTATION
-The standard can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/specifications). There you can also find example messages and validation artifacts in both XML and JSON.
+The message models can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/specifications). There you can also find example messages and validation artifacts in both XML and JSON.
 
 The REST API specifications can be found here: [Purchase to Pay API specifications](../api/oas-purchase-to-pay)
 :::
