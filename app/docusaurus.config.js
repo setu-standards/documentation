@@ -88,7 +88,6 @@ const config = {
           alt: 'My Site Logo',
           href: 'https://www.setu.nl/',
           src: 'img/logo-setu.png',
-          
         },
         items: [
           {
@@ -96,7 +95,6 @@ const config = {
             label: 'Documentation',
             position: "left",
             className: "header-text",
-            
           },
           {
             to: 'https://setu.nl',
