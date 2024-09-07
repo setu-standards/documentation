@@ -1,7 +1,6 @@
-# Supplier's and customer's backoffice systems
+# Sequence diagrams
 
 The page contains several sequence diagrams illustrating the communication between the backoffice systems of a staffing supplier and a staffing customer for exchanging the SETU Purchase to Pay messages.
-
 
 <!--
 ### Regular Staffing Process
@@ -35,15 +34,13 @@ sequenceDiagram
 ```
 -->
 
-
-
 ## Ordering & Selection and Assignment
 
 The sequence diagram below involves communication between a staffing customer's backoffice system and a staffing supplier's backoffice system. The ordering and selection process starts with the creation of a request for workers from the staffing customer. The staffing customer sends the Staffing Order (Order type = 'RFQ') message by making a `POST /purchase-to-pay/staffing-order` API call to the staffing supplier. The API server of the staffing supplier's backoffice system then responds with a status code 201, including the request body and a unique resource identifier for the staffing order, representing the location of the resource for API calls (GET, PUT, DELETE) at a later stage.
 
 When a matching human resource is found, the staffing supplier notifies the staffing customer by sending a `POST /purchase-to-pay/human-resource`. The staffing customer's backoffice system responds with a status code 201, including the request body and a unique resource identifier. The staffing customer accepts the offer through a `POST /purchase-to-pay/staffing-order` (Staffing Order (Order type = 'Order')). Again, if the call succeeded, the staffing supplier's responds with a status code 201, the request body and a unique resource identifier for the order. 
 
-The staffing supplier can send additional information about the human resource using a `PUT /purchase-to-pay/human-resource{ID}`. The staffing supplier is able to modify the earlier created human resource by using the received resource identifier, for context refer to: [handling identifiers](../identifiers.md). Parallel, the staffing supplier confirms the placement of the human resource by a `POST /purchase-to-pay/assignment`. 
+The staffing supplier can send additional information about the human resource using a `PUT /purchase-to-pay/human-resource{ID}`. The staffing supplier is able to modify the earlier created human resource by using the received resource identifier, for context refer to: [handling identifiers](../API%20Specification/identifiers.md). Parallel, the staffing supplier confirms the placement of the human resource by a `POST /purchase-to-pay/assignment`. 
 
 
 ```mermaid
@@ -121,7 +118,7 @@ The sequence diagram below involves a variation on the regular process. The firs
 
 The actual exchange starts with the complete information of the human resource and the creation of the assignment. The staffing supplier sends in parallel a human resource and assignment through `POST /purchase-to-pay/human-resource` and `POST /purchase-to-pay/assignment` to the staffing customer. To both requests, the staffing customer's backoffice system responds with a status code 201, including the request body and a unique resource identifier for the human resource and the assignment. Recall that this assignment does not refer to a specific staffing order, as the staffing order or a purchase order number has not yet been communicated. After receiving the assignment, the staffing customer sends a staffing order including a purchase order number to the staffing supplier using a `POST /purchase-to-pay/staffing-order` call. 
 
-The purchase order number, the documentId (see [identifiers overview](../../purchase-to-pay-v2/UsageNotes/Identifiers-overview.md)) of the Staffing Order, can be used later as reference in the timecard and invoice. More information about this can be found below in the sequence diagram or in section [handling identifiers](../identifiers.md).
+The purchase order number, the documentId (see [identifiers overview](./UsageNotes/Identifiers-overview.md)) of the Staffing Order, can be used later as reference in the timecard and invoice. More information about this can be found below in the sequence diagram or in section [handling identifiers](../API%20Specification/identifiers.md).
 
 
 ```mermaid
@@ -254,14 +251,4 @@ sequenceDiagram
     Customer ->>- Supplier: 200 + requestBody + /purchase-to-pay/invoice/{ID}
 
 ```
-
-
 </details>
-
-
-
-
-
-
-
-

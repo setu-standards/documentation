@@ -18,6 +18,11 @@ module.exports = {
           id: 'purchase-to-pay-v2/Timecard',
         },
         {
+          type: "doc",
+          label: "Sequence diagrams",
+          id: "purchase-to-pay-v2/SequenceDiagrams",
+        },
+        {
           type: "category",
           label: "Usage notes",
           collapsed: true,
@@ -52,10 +57,24 @@ module.exports = {
         },
         {
           type: "category",
+          label: "Sequence diagrams",
+          collapsed: true,
+          items: [
+            "planning/Scenario 1/StaffingSupplier",
+            "planning/Scenario 1/StaffingCustomer_and_StaffingSupplier",
+            "planning/Scenario 2/StaffingSupplier_and_StaffingCustomer",
+          ],
+        },
+        {
+          type: "category",
           label: "Usage notes",
           collapsed: true,
           link: {type: 'doc', id: 'planning/usageNotes/Readme'},
-          items: ['planning/usageNotes/memo-planningrequest', 'planning/usageNotes/soap-webservices-documentatie'], 
+          items: [
+            'planning/usageNotes/memo-planningrequest',
+            'planning/usageNotes/soap-webservices-documentatie',
+            'planning/usageNotes/examples',
+          ],
         },
         {
           type: "category",
@@ -73,41 +92,24 @@ module.exports = {
       link: {type: 'doc', id: 'API Specification/README'},
       items: [
         {
-          type: "category",
-          label: "Purchase to Pay: API Specification (OAS)",
-          collapsed: true,
-          link: {type: 'doc', id: 'API Specification/purchase-to-pay/oas-purchase-to-pay' },   
-          items: [
-            {
-              type: "doc",
-              label: "Sequence diagrams",
-              id: "API Specification/purchase-to-pay/processes",    
-            },
-          ],
+          type: 'doc', 
+          label: "OAS Purchase to Pay",
+          id: 'API Specification/oas-purchase-to-pay',
+        },
+        {
+          type: 'doc',
+          label: "OAS Planning and Schedulling",
+          id: 'API Specification/oas-planning',
         },
         {
           type: "category",
-          label: "Planning and Schedulling: API Specification (OAS)",
-          collapsed: true,         
-          link: {type: 'doc', id: 'API Specification/planning-api/oas' },
-          items: [
-            {
-              type: "category",
-              label: "Sequence diagrams",
-              collapsed: true,         
-              items: [
-                "planning/Scenario 1/StaffingSupplier", "planning/Scenario 1/StaffingCustomer_and_StaffingSupplier", "planning/Scenario 2/StaffingSupplier_and_StaffingCustomer", 
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Handling API requests",
+          label: "Usage notes",
           collapsed: true,
-          items: ['API Specification/synchronous',
-          'API Specification/identifiers',
-          'API Specification/response-codes', ], 
+          items: [
+            'API Specification/usage-notes/synchronous',
+            'API Specification/usage-notes/identifiers',
+            'API Specification/usage-notes/response-codes',
+          ], 
         }
       ],
     },
