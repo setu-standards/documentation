@@ -116,7 +116,7 @@ sequenceDiagram
 
 ## 3. Line identifiers in the request message
 
-This type of identifier is only included in the planning messages. For each planning message, it is possible to specify multiple planning lines. In the case of a planning request, these lines can be either periodic or single planning request lines. For the planning constraint message, the lines include periodic and single availability of a human resource. Each line within these messages has its own identifier specified in the message itself, provided by the `line id` element. For example:
+For some SETU message this type of identifier is applicable. For each planning message, it is possible to specify multiple planning lines. In the case of a planning request, these lines can be either periodic or single planning request lines. For the planning constraint message, the lines include periodic and single availability of a human resource. Each line within these messages has its own identifier specified in the message itself, provided by the `line id` element. For the Timecard, the lines include time-interval and allowance, where each line his own `line id` called either `intervalID` or `allowanceID` id. The next examples are focused on the planning messages, but do also hold for the other ones: 
 
 ```xml
 <periodicAvailabilityLine>
