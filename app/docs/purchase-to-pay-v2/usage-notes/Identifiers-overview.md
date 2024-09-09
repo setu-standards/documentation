@@ -1,6 +1,6 @@
 # Overview of identifiers and references
 
-:::caution
+:::caution DRAFT VERSION
 The SETU Standard for Ordering & Selection, Assignment and Reporting Time & Expenses (Timecard) v2.0 are currently under review. The documentation in this section is a draft and subject to change.
 
 We expect to release the final documentation at the end of 2024.

@@ -1,17 +1,30 @@
-# Supported processes
+# Reporting Time and Expenses (Timecard)
 
-:::caution
+:::caution DRAFT VERSION
 The SETU Standard for Ordering & Selection, Assignment and Reporting Time & Expenses (Timecard) v2.0 are currently under review. The documentation in this section is a draft and subject to change.
 
 We expect to release the final documentation at the end of 2024.
 :::
 
-## Regular time & expenses reporting process
+:::info DOCUMENTATION
+The message models can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/specifications). There you can also find example messages and validation artifacts in both XML and JSON.
+
+The REST API specifications can be found here: [Purchase to Pay API specifications](../api/oas-purchase-to-pay)
+:::
+
+## Scope
+The SETU Standard for Reporting Time and Expenses is targeted at the process of reporting time & expenses in the staffing industry. It contains information models that describe the moments (when) and the content (what) of information exchange. It deals with capturing and electronically sending time recording information and expense related information, including corrections.
+
+The standard supports a single transfer of information, from one sender of registration information to a receiver. The receiver may then proceed to process the information registered, e.g. for invoicing, payroll activities or for retransmission to another party. This implies that multi-party collaborations are out of scope.
+
+This standard is intended for use only within the domain of staffing industry, and does not deal with, nor is intended to provide a general mechanism or design of reporting time & expenses, or a general purpose template for reporting time & expenses outside this domain.
+
+## Regular reporting process
 The main process is the regular reporting of time and expenses. This process is simple, the main reason
 being that the actual response (the invoice) is not included in this process: the invoice process is specified in
 the SETU Standard for Invoicing.
 
-![Visual representation of the regular time and expenses reporting process.](../../../static/img/Timecard-process-1.png)
+![Visual representation of the regular time and expenses reporting process.](../../static/img/Timecard-process-1.png)
 
 1. The life-cycle starts with the creation of the timecard at the staffing customer.
 2. The staffing customer sends the timecard to the staffing supplier (1).
@@ -22,7 +35,7 @@ This section details the timecard processes in the case of secondary supply. Sec
 There are three different options regarding the process of sending the timecard to the secondary supplier. The SETU standard for Reporting Time & Expenses supports these options, but they are not described in detail.
 
 ### Option 1: Direct forward
-![Visual representation of the direct forward secondary supply process.](../../../static/img/Timecard-secondary-supplier-1.png)
+![Visual representation of the direct forward secondary supply process.](../../static/img/Timecard-secondary-supplier-1.png)
 
 1. The life-cycle starts with the creation of the timecard at the staffing customer.
 2. The staffing customer sends the timecard to the staffing supplier (1).
@@ -33,7 +46,7 @@ This option requires additional agreements between the involved parties about id
 :::
 
 ### Option 2: Adapt timecard
-![Visual representation of the adapt timecard secondary supply process.](../../../static/img/Timecard-secondary-supplier-2.png)
+![Visual representation of the adapt timecard secondary supply process.](../../static/img/Timecard-secondary-supplier-2.png)
 
 1. The life-cycle starts with the creation of the timecard at the staffing customer.
 2. The staffing customer sends the timecard to the staffing supplier (1).
@@ -46,7 +59,7 @@ the staffing supplier acts as a staffing customer and the secondary supplier as 
 :::
 
 ### Option 3: Simultaneous communication
-![Visual representation of the simultaneous communication secondary supply process.](../../../static/img/Timecard-secondary-supplier-3.png)
+![Visual representation of the simultaneous communication secondary supply process.](../../static/img/Timecard-secondary-supplier-3.png)
 
 1. The life-cycle starts with the creation of the timecard at the staffing customer.
 2. The staffing customer sends the timecard to the staffing supplier (1).
@@ -55,3 +68,6 @@ the staffing supplier acts as a staffing customer and the secondary supplier as 
 :::info
 This option requires additional agreements between the involved parties about identifiers and references in order to recognize timecards of secondary supply assignments. SETU does not specify how this should or must be done.
 :::
+
+## Mapping to Timecard v1.4
+To compare Timecard v2.0 with the previous version Timecard v1.4, you can view the [mapping at the treeview of Timecard v2.0](https://setu.semantic-treehouse.nl/message-model-tree/Message_39a2ff1b-43b3-40fc-930e-d85488bb57bb?panes=element_tree:Message_39a2ff1b-43b3-40fc-930e-d85488bb57bb:qvsi8y:primary,element_tree:Property_1478175108759638:u5oe3d). When the mapping to Timecard v1.4 is selected (by clicking 'Add Specification' and the select the mapping provided), for each element in v2.0 a mapping is shown to one or multiple elements in v1.4, and vice versa. This gives users accelerated insight into how certain information has been included in the new message and thus facilitates the adoption of the new version of the standard.

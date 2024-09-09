@@ -62,6 +62,14 @@ const config = {
               title: 'API for Planning and Scheduling'
             }
           },
+          {
+            id: 'purchase-to-pay-api',
+            spec: 'api/purchase-to-pay.yml',
+            route: '/api/p2p',
+            layout: {
+              title: 'API for Purchase to Pay'
+            }
+          },
         ],
         // Theme Options for modifying how redoc renders them
         theme: {
@@ -80,7 +88,6 @@ const config = {
           alt: 'My Site Logo',
           href: 'https://www.setu.nl/',
           src: 'img/logo-setu.png',
-          
         },
         items: [
           {
@@ -88,7 +95,6 @@ const config = {
             label: 'Documentation',
             position: "left",
             className: "header-text",
-            
           },
           {
             to: 'https://setu.nl',

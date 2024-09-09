@@ -1,8 +1,12 @@
-# From v0.9 to v1.0
+# Change Log
+
+This documentation page records the changes made to the SETU Standard for Planning and Scheduling across multiple versions. This page provides a chronological overview of updates, improvements, and modifications, allowing you to easily track the evolution of the standard.
+
+## From v0.9 to v1.0
 
 During the last working session of the working group Planning and Schedulling, consensus has been reach to some final changes to the DRAFT 1.0 version of the Planning & Scheduling standard. This documentation page presents the change log documenting the journey from v0.9 to draft v1.0. The change log serves as a comprehensive record of the modifications, refinements, and new additions made in v1.0 for all the three message specification and the API specifications.
 
-## Planning Constraints
+### Planning Constraints
 
 | **Element(en)**                                  | **V0.9** | **Wijziging in v1.0 DRAFT** | **Opmerking**                                              |
 | ------------------------------------------------ | -------- | --------------------------- | ---------------------------------------------------------- |
@@ -10,7 +14,7 @@ During the last working session of the working group Planning and Schedulling, c
 
 <br/>
 
-## Planning Request
+### Planning Request
 
 | **Element(en)**                                  | **V0.9**     | **Wijziging in v1.0 DRAFT**                                                                                                                                                                                                                                                                                                                                                                             | **Opmerking**                                                                                         |
 | :----------------------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------- |
@@ -23,7 +27,7 @@ During the last working session of the working group Planning and Schedulling, c
 
 <br/>
 
-## Planning Assignment
+### Planning Assignment
 
 | **Element(en)**                                  | **V0.9**     | **Wijziging in v1.0 DRAFT**                                                                                                                                                                                                                                                                                                                                                                             | **Opmerking**                                                                                         |
 | :----------------------------------------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------- |
@@ -37,7 +41,7 @@ During the last working session of the working group Planning and Schedulling, c
 
 <br/>
 
-## API specifications
+### API specifications
 
 | Path                                       | V0.9 | V1.0                                                                                                                                                                                                                                                                                                                                                                                                        |
 | :----------------------------------------- | :--- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
