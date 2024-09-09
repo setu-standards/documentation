@@ -542,7 +542,7 @@ paths:
                 $ref: '#/components/schemas/time-interval'
 
 
-  /purchase-to-pay/timecard/{id}/time-interval{intervalID}:
+  /purchase-to-pay/timecard/{id}/time-interval/{intervalID}:
     get:
       tags: 
         - Timecard
@@ -658,6 +658,166 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/time-interval'
+  /purchase-to-pay/timecard/{id}/allowance:
+    post:
+      tags: 
+        - Timecard
+        - Staffing supplier's backoffice APIs
+      summary: Submit a new allowance to an existing timecard
+      parameters:
+        - in: path
+          name: id
+          description: The identifier of the planning constraints object
+          required: true
+          schema:
+            type: string
+          example: e59c8cb9-ab3f-4455-8d63-8bdb2730c545
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            example: application/json
+            enum:
+              - application/json
+              - application/xml
+      requestBody:
+        description: |
+         The allowance in the timecard message as specified by SETU. 
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/allowance'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/allowance'
+      responses:
+        '201':
+          description: Created | The allowance is created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/allowance'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/allowance'
+
+
+  /purchase-to-pay/timecard/{id}/allowance/{allowanceID}:
+    get:
+      tags: 
+        - Timecard
+        - Staffing supplier's backoffice APIs
+      summary: Retrieve an existing allowance
+      parameters:
+        - in: path
+          name: id
+          description: The identifier of the timecard object
+          required: true
+          schema:
+            type: string
+          example: e59c8cb9-ab3f-4455-8d63-8bdb2730c545
+        - in: path
+          name: allowanceID
+          description: The identifier of the allowance line
+          required: true
+          schema:
+            type: string
+          example: acb88ec7-8d93-4bb8-98e1-f7db0074fdc6
+        - in: header
+          name: Accept
+          schema:
+            type: string
+            example: application/json
+            enum:
+              - application/json
+              - application/xml
+      responses:
+        '200':
+          description: OK | Information about an existing allowance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/allowance'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/allowance'
+    put:
+      tags: 
+        - Timecard
+        - Staffing supplier's backoffice APIs
+      summary: Update an existing allowance 
+      parameters:
+        - in: path
+          name: id
+          description: The identifier of the timecard object
+          required: true
+          schema:
+            type: string
+          example: e59c8cb9-ab3f-4455-8d63-8bdb2730c545
+        - in: path
+          name: allowanceID
+          description: The identifier of the allowance line
+          required: true
+          schema:
+            type: string
+          example: acb88ec7-8d93-4bb8-98e1-f7db0074fdc6
+        - in: header
+          name: Accept
+          schema:
+            type: string
+            example: application/json
+            enum:
+              - application/json
+              - application/xml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/allowance'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/allowance'
+      responses:
+        '200':
+          description: The updated allowance
+    delete:
+      tags: 
+        - Timecard
+        - Staffing supplier's backoffice APIs
+      summary: Delete an existing allowance
+      parameters:
+        - in: path
+          name: id
+          description: The identifier of the timecard object
+          required: true
+          schema:
+            type: string
+          example: e59c8cb9-ab3f-4455-8d63-8bdb2730c545
+        - in: path
+          name: allowanceID
+          description: The identifier of the allowance line
+          required: true
+          schema:
+            type: string
+          example: acb88ec7-8d93-4bb8-98e1-f7db0074fdc6
+        - in: header
+          name: Accept
+          schema:
+            type: string
+            example: application/json
+            enum:
+              - application/json
+              - application/xml
+      responses:
+        '200':
+          description: The allowance is successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/allowance'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/allowance'
                 
   /purchase-to-pay/invoice:
     post:
