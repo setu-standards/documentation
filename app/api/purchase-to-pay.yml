@@ -12,10 +12,12 @@ externalDocs:
   url: https://www.setu.nl
 
 tags:
-  - name: Staffing Order
-    description: Staffing Order is used by a staffing customer to request and order (an) employee(s) for an open position.
+  - name: "Staffing Order (RFQ)"
+    description: Staffing Order is used by a staffing customer to request (an) employee(s) for an open position.
   - name: Human Resource
     description: Human Resource is used by the staffing supplier to match a human resource to an open position.
+  - name: "Staffing Order (Order)"
+    description: Staffing Order is used by a staffing customer to order (an) employee(s) for an open position.
   - name: Assignment
     description: The Assignment is used to confirm the placement.
   - name: Timecard
@@ -29,15 +31,15 @@ tags:
 
 
 paths:
-  /purchase-to-pay/staffing-order:
+  /purchase-to-pay/staffing-order/request-for-quotation:
     post:
       tags: 
-        - Staffing Order
+        - Staffing Order (RFQ)
         - Staffing supplier's backoffice APIs
-      summary: Submit a new staffing order
+      summary: Submit a new staffing order (RFQ)
       requestBody:
         description: |
-         Complete staffing order message as specified by SETU. A message may have multiple versions that can differ.
+         Complete staffing order message as specified by SETU. A message may have multiple versions that can differ. This message contains the order type 'RFQ'.
         content:
           application/json:
             schema:
@@ -49,12 +51,13 @@ paths:
         '201':
           description: Created | The created staffing order (as submitted in the request body)
 
-  /purchase-to-pay/staffing-order/{id}:
+
+  /purchase-to-pay/staffing-order/request-for-quotation/{id}:
     get:
       tags: 
-        - Staffing Order
+        - Staffing Order (RFQ)
         - Staffing supplier's backoffice APIs
-      summary: Retrieve information about an existing staffing order
+      summary: Retrieve information about an existing staffing order (RFQ)
       parameters:
         - name: id
           in: path
@@ -63,7 +66,7 @@ paths:
             type: string
       responses:
         '200':
-          description: OK | Information about an existing staffing order
+          description: OK | Information about an existing staffing order (RFQ)
           content:
             application/json:
               schema:
@@ -73,9 +76,9 @@ paths:
                 $ref: '#/components/schemas/StaffingOrder'
     put:
       tags: 
-        - Staffing Order
+        - Staffing Order (RFQ)
         - Staffing supplier's backoffice APIs
-      summary: Update an existing staffing order
+      summary: Update an existing staffing order (RFQ)
       parameters:
         - name: id
           in: path
@@ -92,7 +95,7 @@ paths:
               $ref: '#/components/schemas/StaffingOrder'
       responses:
         '200':
-          description: The updated staffing order
+          description: The updated staffing order (RFQ)
           content:
             application/json:
               schema:
@@ -102,9 +105,9 @@ paths:
                 $ref: '#/components/schemas/StaffingOrder'
     delete:
       tags: 
-        - Staffing Order
+        - Staffing Order (RFQ)
         - Staffing supplier's backoffice APIs
-      summary: Delete an existing staffing order
+      summary: Delete an existing staffing order (RFQ)
       parameters:
         - name: id
           in: path
@@ -215,6 +218,99 @@ paths:
               schema:
                 $ref: '#/components/schemas/HumanResource'
 
+  /purchase-to-pay/staffing-order/order:
+    post:
+      tags: 
+        - Staffing Order (Order)
+        - Staffing supplier's backoffice APIs
+      summary: Submit a new staffing order (Order)
+      requestBody:
+        description: |
+         Complete staffing order message as specified by SETU. A message may have multiple versions that can differ. This message contains the order type 'Order'.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StaffingOrder'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/StaffingOrder'
+      responses:
+        '201':
+          description: Created | The created staffing order (as submitted in the request body)
+
+  /purchase-to-pay/staffing-order/order/{id}:
+    get:
+      tags: 
+        - Staffing Order (Order)
+        - Staffing supplier's backoffice APIs
+      summary: Retrieve information about an existing staffing order (Order)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK | Information about an existing staffing order (Order)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaffingOrder'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/StaffingOrder'
+    # put:
+    #   tags: 
+    #     - Staffing Order (Order)
+    #     - Staffing supplier's backoffice APIs
+    #   summary: Update an existing staffing order (Order)
+    #   parameters:
+    #     - name: id
+    #       in: path
+    #       required: true
+    #       schema:
+    #         type: string
+    #   requestBody:
+    #     content:
+    #       application/json:
+    #         schema:
+    #           $ref: '#/components/schemas/StaffingOrder'
+    #       application/xml:
+    #         schema:
+    #           $ref: '#/components/schemas/StaffingOrder'
+    #   responses:
+    #     '200':
+    #       description: The updated staffing order
+    #       content:
+    #         application/json:
+    #           schema:
+    #             $ref: '#/components/schemas/StaffingOrder'
+    #         application/xml:
+    #           schema:
+    #             $ref: '#/components/schemas/StaffingOrder'
+    delete:
+      tags: 
+        - Staffing Order (Order)
+        - Staffing supplier's backoffice APIs
+      summary: Delete an existing staffing order (Order)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The staffing order (Order) is successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaffingOrder'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/StaffingOrder'
+  
   /purchase-to-pay/assignment:
     post:
       tags: 
@@ -401,12 +497,13 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Timecard'
+  
   /purchase-to-pay/timecard/{id}/time-interval:
     post:
       tags: 
         - Timecard
         - Staffing supplier's backoffice APIs
-      summary: Submit a new time internal to an existing timecard
+      summary: Submit a new time interval to an existing timecard
       parameters:
         - in: path
           name: id
@@ -425,7 +522,7 @@ paths:
               - application/xml
       requestBody:
         description: |
-         The time internal in the timecard message as specified by SETU. 
+         The time interval in the timecard message as specified by SETU. 
         content:
           application/json:
             schema:
@@ -435,7 +532,7 @@ paths:
               $ref: '#/components/schemas/time-interval'
       responses:
         '201':
-          description: Created | The time internal is created
+          description: Created | The time interval is created
           content:
             application/json:
               schema:
@@ -561,6 +658,7 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/time-interval'
+                
   /purchase-to-pay/invoice:
     post:
       tags: 
@@ -602,29 +700,7 @@ paths:
                 $ref: '#/components/schemas/Invoice'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Invoice'
-    put:
-      tags: 
-        - Invoice
-        - Staffing customer's backoffice APIs
-      summary: Update an existing invoice
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Invoice'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Invoice'
-      responses:
-        '200':
-          description: The updated invoice
+                $ref: '#/components/schemas/Invoice'    
     delete:
       tags: 
         - Invoice
@@ -650,6 +726,8 @@ components:
       $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay/Assignment.yml'
     Timecard:
       $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay/Timecard.yml'
+    allowance: 
+      type: object
     time-interval:
       type: object
       description: The XML and JSON Schemas for the Invoice message are specified by SETU. Please find the schemas here https://setu.semantic-treehouse.nl/specifications
