@@ -9,12 +9,12 @@ module.exports = {
       items: [
         {
           type: 'doc',
-          label: "Ordering & Selection",
+          label: "Ordering & Selection and Assignment",
           id: 'purchase-to-pay-v2/OrderingSelection',
         },
         {
           type: 'doc',
-          label: "Reporting Time and Expenses",
+          label: "Reporting Time and Expenses (Timecard)",
           id: 'purchase-to-pay-v2/Timecard',
         },
         {

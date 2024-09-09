@@ -1,4 +1,4 @@
-# Reporting Time and Expenses
+# Reporting Time and Expenses (Timecard)
 
 :::caution DRAFT VERSION
 The SETU Standard for Ordering & Selection, Assignment and Reporting Time & Expenses (Timecard) v2.0 are currently under review. The documentation in this section is a draft and subject to change.
