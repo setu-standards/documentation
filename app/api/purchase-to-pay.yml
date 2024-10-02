@@ -31,12 +31,18 @@ tags:
 
 
 paths:
-  /purchase-to-pay/staffing-order/request-for-quotation:
+  /purchase-to-pay/staffing-order/request-for-quotation/{id}:
     post:
       tags: 
         - Staffing Order (RFQ)
         - Staffing supplier's backoffice APIs
       summary: Submit a new staffing order (RFQ)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string  
       requestBody:
         description: |
          Complete staffing order message as specified by SETU. A message may have multiple versions that can differ. This message contains the order type 'RFQ'.
@@ -50,9 +56,6 @@ paths:
       responses:
         '201':
           description: Created | The created staffing order (as submitted in the request body)
-
-
-  /purchase-to-pay/staffing-order/request-for-quotation/{id}:
     get:
       tags: 
         - Staffing Order (RFQ)
@@ -125,12 +128,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/StaffingOrder'
 
-  /purchase-to-pay/human-resource:
+  
+
+  /purchase-to-pay/human-resource/{id}:
     post:
       tags: 
         - Human Resource
         - Staffing customer's backoffice APIs
       summary: Submit a new human resource
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string  
       requestBody:
         description: |
          Complete human resource message as specified by SETU.
@@ -152,7 +163,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/HumanResource'
 
-  /purchase-to-pay/human-resource/{id}:
     get:
       tags: 
         - Human Resource
@@ -218,12 +228,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/HumanResource'
 
-  /purchase-to-pay/staffing-order/order:
+ 
+
+  /purchase-to-pay/staffing-order/order/{id}:
     post:
       tags: 
         - Staffing Order (Order)
         - Staffing supplier's backoffice APIs
       summary: Submit a new staffing order (Order)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string  
       requestBody:
         description: |
          Complete staffing order message as specified by SETU. A message may have multiple versions that can differ. This message contains the order type 'Order'.
@@ -238,7 +256,6 @@ paths:
         '201':
           description: Created | The created staffing order (as submitted in the request body)
 
-  /purchase-to-pay/staffing-order/order/{id}:
     get:
       tags: 
         - Staffing Order (Order)
@@ -311,12 +328,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/StaffingOrder'
   
-  /purchase-to-pay/assignment:
+  
+
+  /purchase-to-pay/assignment/{id}:
     post:
       tags: 
         - Assignment
         - Staffing customer's backoffice APIs
       summary: Submit a new assignment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string  
       requestBody:
         description: |
          Complete assignment message as specified by SETU. 
@@ -337,8 +362,6 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Assignment'
-
-  /purchase-to-pay/assignment/{id}:
     get:
       tags: 
         - Assignment
@@ -404,12 +427,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/Assignment'
 
-  /purchase-to-pay/timecard:
+ 
+  /purchase-to-pay/timecard/{id}:
     post:
       tags: 
         - Timecard
         - Staffing supplier's backoffice APIs
       summary: Submit a new timecard
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string  
       requestBody:
         description: |
          Complete timecard message as specified by SETU. 
@@ -430,9 +460,6 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Timecard'
-
-
-  /purchase-to-pay/timecard/{id}:
     get:
       tags: 
         - Timecard
@@ -819,12 +846,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/allowance'
                 
-  /purchase-to-pay/invoice:
+ 
+  /purchase-to-pay/invoice/{id}:
     post:
       tags: 
         - Invoice
         - Staffing customer's backoffice APIs
       summary: Create a new invoice
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string  
       requestBody:
         description: |
          Complete invoice message as specified by SETU. A message specification may have multiple versions that can differ. See the different versions of the message specifications here: https://setu.semantic-treehouse.nl/message-model/MessageModel_527939af-3e6c-436e-8a85-e749724a8742
@@ -838,8 +872,6 @@ paths:
       responses:
         '201':
           description: Created | The created invoice
-
-  /purchase-to-pay/invoice/{id}:
     get:
       tags: 
         - Invoice
