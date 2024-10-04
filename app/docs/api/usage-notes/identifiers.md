@@ -2,15 +2,15 @@
 
 When it comes to the exchange of purchase to pay and planning messages, multiple identifiers come into play. This documentation page will walk you through the IDs and specify their functions. The following ID are taken into account:
 
-1. A unique resource identifier for the (request) messages. This identifies the location where the resource is stored, allowing it to be referenced later through other API calls.
+1. A unique resource identifier for the (request) messages. This (technical) identifier identifies the location where the resource is stored, allowing it to be referenced later through other API calls.
     - For the Planning & Scheduling messages the resource identifier is assigned by the **API server**. 
     - For the Purchase to Pay messages the resource identifier is assigned by the **API client**. 
-2. The document ID included in the message request body itself
-3. An identifier used to reference a specific line in a particular message
+2. The document ID included in the message request body itself. This servers more as a business identifier that allows for internal references to other messages
+3. An identifier used to reference a specific line in a particular message.
 
 ## 1. Resource identifiers
 
-The resource identifier is a universally unique identifier (UUID), which is either assigned by the API client or the API server. This identifier allows the API client to perform GET, PUT and DELETE calls on this resource at a later stage according to the [API specification](../README.md). This means that the API server or the API client must keep track of the resource identifiers.
+The resource identifier is a universally unique identifier (UUID), which is either assigned by the API client or the API server. This identifier allows the API client to perform GET, PUT and DELETE calls on this resource at a later stage according to the [API specification](../README.md). This means that for the *Purchase to Pay* the **API server** and for the *Planning & Scheduling* the **API client** must keep track of the resource identifiers.
 
 ### Purchase to pay
 
