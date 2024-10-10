@@ -16,9 +16,13 @@ On the business process level the requests are handled **asynchronous**. This me
 
 ## Functional level
 
-At the functional level of an indiviual request, all requests need to be handled **synchronous**. This means that, e.g. a planning request must be accepted or rejected immediately when the API request is made. It is the responsibility of the server (the called system) to handle the request. If applicable, it may include informing the client (the requestor) about the successful progession in the business proces (e.g. by sending a planning assignment), and also informing the client if the request cannot be fulfilled due to any reason.
+At the functional level of an indiviual request, it is intended that all requests are handled **synchronous**. This means that, e.g. a planning request must be accepted or rejected immediately when the API request is made. It is the responsibility of the server (the called system) to handle the request. If applicable, it may include informing the client (the requestor) about the successful progession in the business proces (e.g. by sending a planning assignment), and also informing the client if the request cannot be fulfilled due to any reason.
 
-To clarify, a request at a functional level is either immediately accepted or rejected. For example, to request a human resource (e.g., in a planning request or staffing order message), it means that the request is successfully received without functional errors, such as times and dates in the past. Whether the request can actually be fulfilled is a business and asynchronous process, where a response is provided at a later time.
+To clarify, the intended solution of a request at a functional level is either to immediately accept or reject. For example, to request a human resource (e.g., in a planning request or staffing order message), it means that the request is successfully received without functional errors, such as times and dates in the past. Whether the request can actually be fulfilled is a business and asynchronous process, where a response is provided at a later time.
+
+However, the functional validation of a request can vary significantly between organizations. In some cases, a complete functional check may not always be feasible synchronously, and thus,  in certain scenarios this process may become **asynchronous**. For example, checks on business rules or even more specifically the rejection of a proof of payment in a timecard may require further processing and checks, which need be handled **asynchronously**.
+
+
 
 ## Technical processing of planning messages:
 

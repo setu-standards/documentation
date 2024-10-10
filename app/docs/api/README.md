@@ -9,3 +9,5 @@ The following REST API calls are used in the SETU API specifications to create, 
 - **PUT**: The PUT method is used to update an existing message. It modifies the entire message or replaces it with new content.
     - *Note*: a PUT request is not expected to include all optional elements. Meaning, if you omit an optional element, it will not be overwritten in the database.
 - **DELETE**: The DELETE method is used to remove a message from the API server. Once successfully processed, the message will no longer be available.
+
+ The requirements for any changes or deletions (PUT and DELETE) to an existing resource (e.g., determining the deadline for when changes are allowed) is to be agreed upon bilaterally between the involved parties. This is not within the scope of SETU standards and must be handled separately by the parties involved.

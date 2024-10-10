@@ -151,6 +151,10 @@ sequenceDiagram
 
 The sequence diagram illustrates the process of reporting time and expenses via a timecard. The staffing customer sends a timecard to the staffing supplier through a `POST /purchase-to-pay/timecard`. Optionally, the staffing supplier can forward the timecard, either as-is or with adjustments, to a secondary supplier API endpoint through another `POST /purchase-to-pay/timecard` request. Finally, in response to the timecard(s), the staffing supplier sends an invoice to the staffing customer using `POST /purchase-to-pay/invoice`.
 
+**Usage note:** The requirements for updates in a PUT operation on a timecard (e.g., determining the deadline for when changes are allowed) are to be agreed upon bilaterally between the involved parties. This is not within the scope of SETU standards and must be handled separately by the parties involved.
+
+
+
 ```mermaid
 sequenceDiagram
     participant Customer as Backoffice <br/> staffing customer
@@ -203,11 +207,11 @@ sequenceDiagram
 
     Note over Customer,Supplier: The staffing customer deletes the existing Staffing Order 
     Customer ->>+ Supplier: DELETE /purchase-to-pay/staffing-order/ID-example-1
-    Supplier ->>- Customer: 200 + requestBody 
+    Supplier ->>- Customer: 204 + requestBody 
 
     Note over Customer,Supplier: Since the Staffing Order and the Assignment are interrelated, the <br/> staffing supplier knows the exact item that needs to be <br/> posted, updated, or even deleted
     Supplier ->>+ Customer: DELETE /purchase-to-pay/assignment/ID-example-2
-    Customer ->>- Supplier: 200 + requestBody 
+    Customer ->>- Supplier: 204 + requestBody 
 
 ```
 
@@ -220,7 +224,7 @@ sequenceDiagram
 
 A change or deletion of a timecard can impact a previously sent invoice. The staffing customer sends a Timecard with the number of hours the human resource has worked using a `POST /purchase-to-pay/timecard`. In response to the timecard, or multiple timecards, the staffing supplier sends a `POST /purchase-to-pay/invoice`. This invoice includes a reference to the timecard via the purchase order number.
 
-Later, the staffing customer updates the existing timecard because a mistake was made or any other reason. This update is sent using a `PUT /purchase-to-pay/timecard/ID` with `ID-example-3` as the identifier. Since the timecard and the invoice are interrelated via the purchase order number, the staffing supplier knows exactly which item needs to be posted, updated, or even deleted based on the deleted timecard. The incorrect invoice is entirely credited with a negative invoice (or Credit Note) using a  `POST /purchase-to-pay/invoice/ID-example-4` and sends a new invoice using a `POST /purchase-to-pay/invoice` to correct the previously sent invoice.
+Later, the staffing customer updates the existing timecard because a mistake was made or any other reason. This update is sent using a `PUT /purchase-to-pay/timecard/ID` with `ID-example-3` as the identifier. The incorrect invoice is entirely credited with a negative invoice (or Credit Note) using a  `POST /purchase-to-pay/invoice/ID-example-4` and sends a new invoice using a `POST /purchase-to-pay/invoice` to correct the previously sent invoice.
 
 According to the [NLCIUS](https://www.forumstandaardisatie.nl/open-standaarden/nlcius) (Dutch specification of a European Invoice), which the SETU uses, there are two ways to correct an already sent invoice:
 
