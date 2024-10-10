@@ -22,6 +22,8 @@ tags:
     description: The Assignment is used to confirm the placement.
   - name: Timecard
     description: The SETU Standard for Reporting Time and Expenses is targeted at the process of reporting time & expenses in the staffing industry. 
+     
+      - **Note** This API endpoint includes REST calls about time-internvals and allowances. These consist of line identifiers, which are also used as part of certain REST api paths. They are combined with the resource identifiers as specified on the SETU documentation page. For example, `PUT /purchase-to-pay/timecard/c93efb20-1acd-447b-87e7-fadb108d8a0e/time-interval/2` can be used to update or get the information about a time-interval planningline with line ID `2` within a created timecard known by its resource identifier (UUID) as `'c93efb20-1acd-447b-87e7-fadb108d8a0e'`.
   - name: Invoice
     description: The SETU Standard for Invoicing is targeted at the process of invoicing in the staffing industry. It deals with electronically sending invoicing information, including corrections. The standard supports the exchange of invoicing information between two organizations; this implies that multi-party collaborations are out of scope.
   - name: Staffing supplier's backoffice APIs
@@ -56,10 +58,19 @@ paths:
       responses:
         '201':
           description: Created | The created staffing order (as submitted in the request body)
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
     get:
       tags: 
         - Staffing Order (RFQ)
-        - Staffing supplier's backoffice APIs
       summary: Retrieve information about an existing staffing order (RFQ)
       parameters:
         - name: id
@@ -77,6 +88,16 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/StaffingOrder'
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
     put:
       tags: 
         - Staffing Order (RFQ)
@@ -106,6 +127,16 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/StaffingOrder'
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
     delete:
       tags: 
         - Staffing Order (RFQ)
@@ -127,6 +158,18 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/StaffingOrder'
+        '204':
+          description: No content | Response for a successful DELETE operation
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
 
   
 
@@ -162,11 +205,20 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/HumanResource'
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
 
     get:
       tags: 
         - Human Resource
-        - Staffing customer's backoffice APIs
       summary: Retrieve information about an existing human resource
       parameters:
         - name: id
@@ -184,6 +236,16 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/HumanResource'
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
     put:
       tags: 
         - Human Resource
@@ -206,6 +268,16 @@ paths:
       responses:
         '200':
           description: The updated human resource
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
     delete:
       tags:
         - Human Resource
@@ -227,6 +299,18 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/HumanResource'
+        '204':
+          description: No content | Response for a successful DELETE operation
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
 
  
 
@@ -255,11 +339,20 @@ paths:
       responses:
         '201':
           description: Created | The created staffing order (as submitted in the request body)
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
 
     get:
       tags: 
         - Staffing Order (Order)
-        - Staffing supplier's backoffice APIs
       summary: Retrieve information about an existing staffing order (Order)
       parameters:
         - name: id
@@ -277,35 +370,45 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/StaffingOrder'
-    # put:
-    #   tags: 
-    #     - Staffing Order (Order)
-    #     - Staffing supplier's backoffice APIs
-    #   summary: Update an existing staffing order (Order)
-    #   parameters:
-    #     - name: id
-    #       in: path
-    #       required: true
-    #       schema:
-    #         type: string
-    #   requestBody:
-    #     content:
-    #       application/json:
-    #         schema:
-    #           $ref: '#/components/schemas/StaffingOrder'
-    #       application/xml:
-    #         schema:
-    #           $ref: '#/components/schemas/StaffingOrder'
-    #   responses:
-    #     '200':
-    #       description: The updated staffing order
-    #       content:
-    #         application/json:
-    #           schema:
-    #             $ref: '#/components/schemas/StaffingOrder'
-    #         application/xml:
-    #           schema:
-    #             $ref: '#/components/schemas/StaffingOrder'
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    put:
+      tags: 
+        - Staffing Order (Order)
+        - Staffing supplier's backoffice APIs
+      summary: Update an existing staffing order (Order)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StaffingOrder'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/StaffingOrder'
+      responses:
+        '200':
+          description: The updated staffing order
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaffingOrder'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/StaffingOrder'
     delete:
       tags: 
         - Staffing Order (Order)
@@ -327,6 +430,18 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/StaffingOrder'
+        '204':
+          description: No content | Response for a successful DELETE operation
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
   
   
 
@@ -362,10 +477,19 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Assignment'
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
     get:
       tags: 
         - Assignment
-        - Staffing customer's backoffice APIs
       summary: Retrieve information about an existing assignment
       parameters:
         - name: id
@@ -383,6 +507,16 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Assignment'
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
     put:
       tags: 
         - Assignment
@@ -405,6 +539,16 @@ paths:
       responses:
         '200':
           description: The updated assignment
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
     delete:
       tags: 
         - Assignment
@@ -426,6 +570,18 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Assignment'
+        '204':
+          description: No content | Response for a successful DELETE operation
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
 
  
   /purchase-to-pay/timecard/{id}:
@@ -460,10 +616,19 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Timecard'
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
     get:
       tags: 
         - Timecard
-        - Staffing supplier's backoffice APIs
       summary: Retrieve an existing timecard
       parameters:
         - name: id
@@ -480,12 +645,22 @@ paths:
                 $ref: '#/components/schemas/Timecard'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Timecard'
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
     put:
       tags: 
         - Timecard
         - Staffing supplier's backoffice APIs
       summary: Update an existing timecard
+      description: '**Usage Note**: The requirements for a PUT operation on a timecard (e.g., determining the deadline for when changes are allowed) are to be agreed upon bilaterally between the involved parties. This is not within the scope of SETU standards and must be handled separately by the parties involved. '
       parameters:
         - name: id
           in: path
@@ -503,6 +678,16 @@ paths:
       responses:
         '200':
           description: The updated timecard
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
     delete:
       tags: 
         - Timecard
@@ -524,6 +709,18 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Timecard'
+        '204':
+          description: No content | Response for a successful DELETE operation
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
   
   /purchase-to-pay/timecard/{id}/time-interval:
     post:
@@ -567,14 +764,24 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/time-interval'
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
 
 
   /purchase-to-pay/timecard/{id}/time-interval/{intervalID}:
     get:
       tags: 
         - Timecard
-        - Staffing supplier's backoffice APIs
       summary: Retrieve an existing time interval
+      description: Line identifiers are also used as part of certain REST api paths. They are combined with the resource identifiers as specified on the SETU documentation page. For example, PUT /purchase-to-pay/timecard/c93efb20-1acd-447b-87e7-fadb108d8a0e/time-interval/2 can be used to update or get the information about a time-interval planningline with line ID '2' within a created timecard known by its resource identifier (UUID) as 'c93efb20-1acd-447b-87e7-fadb108d8a0e'.
       parameters:
         - in: path
           name: id
@@ -608,6 +815,16 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/time-interval'
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
     put:
       tags: 
         - Timecard
@@ -647,6 +864,16 @@ paths:
       responses:
         '200':
           description: The updated time interval
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
     delete:
       tags: 
         - Timecard
@@ -685,6 +912,18 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/time-interval'
+        '204':
+          description: No content | Response for a successful DELETE operation
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
   /purchase-to-pay/timecard/{id}/allowance:
     post:
       tags: 
@@ -727,13 +966,22 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/allowance'
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
 
 
   /purchase-to-pay/timecard/{id}/allowance/{allowanceID}:
     get:
       tags: 
         - Timecard
-        - Staffing supplier's backoffice APIs
       summary: Retrieve an existing allowance
       parameters:
         - in: path
@@ -768,6 +1016,16 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/allowance'
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
     put:
       tags: 
         - Timecard
@@ -807,6 +1065,16 @@ paths:
       responses:
         '200':
           description: The updated allowance
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
     delete:
       tags: 
         - Timecard
@@ -845,6 +1113,18 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/allowance'
+        '204':
+          description: No content | Response for a successful DELETE operation
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
                 
  
   /purchase-to-pay/invoice/{id}:
@@ -872,10 +1152,19 @@ paths:
       responses:
         '201':
           description: Created | The created invoice
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
     get:
       tags: 
         - Invoice
-        - Staffing customer's backoffice APIs
       summary: Retrieve an existing invoice
       parameters:
         - name: id
@@ -893,6 +1182,16 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Invoice'    
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
     delete:
       tags: 
         - Invoice
@@ -907,6 +1206,18 @@ paths:
       responses:
         '200':
           description: The invoice is successfully deleted
+        '204':
+          description: No content | Response for a successful DELETE operation
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
 
 components:
   schemas:
