@@ -44,7 +44,14 @@ paths:
           in: path
           required: true
           schema:
-            type: string  
+            type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       requestBody:
         description: |
          Complete staffing order message as specified by SETU. A message may have multiple versions that can differ. This message contains the order type 'RFQ'.
@@ -78,6 +85,13 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       responses:
         '200':
           description: OK | Information about an existing staffing order (RFQ)
@@ -109,6 +123,13 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       requestBody:
         content:
           application/json:
@@ -148,6 +169,13 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       responses:
         '200':
           description: The staffing order is successfully deleted
@@ -184,7 +212,14 @@ paths:
           in: path
           required: true
           schema:
-            type: string  
+            type: string 
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards.     
       requestBody:
         description: |
          Complete human resource message as specified by SETU.
@@ -226,6 +261,13 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       responses:
         '200':
           description: OK  | Information about an existing human resource
@@ -257,6 +299,13 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       requestBody:
         content:
           application/json:
@@ -289,6 +338,13 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       responses:
         '200':
           description: The human resource message is successfully deleted 
@@ -326,6 +382,13 @@ paths:
           required: true
           schema:
             type: string  
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       requestBody:
         description: |
          Complete staffing order message as specified by SETU. A message may have multiple versions that can differ. This message contains the order type 'Order'.
@@ -360,6 +423,13 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       responses:
         '200':
           description: OK | Information about an existing staffing order (Order)
@@ -391,6 +461,13 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       requestBody:
         content:
           application/json:
@@ -420,6 +497,13 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       responses:
         '200':
           description: The staffing order (Order) is successfully deleted
@@ -456,7 +540,14 @@ paths:
           in: path
           required: true
           schema:
-            type: string  
+            type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       requestBody:
         description: |
          Complete assignment message as specified by SETU. 
@@ -497,6 +588,13 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       responses:
         '200':
           description: OK | Information about an existing assignment
@@ -528,6 +626,13 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       requestBody:
         content:
           application/json:
@@ -560,6 +665,13 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       responses:
         '200':
           description: The assignment is successfully deleted
@@ -596,6 +708,13 @@ paths:
           required: true
           schema:
             type: string  
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       requestBody:
         description: |
          Complete timecard message as specified by SETU. 
@@ -636,6 +755,13 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       responses:
         '200':
           description: OK | Information about an existing timecard
@@ -645,6 +771,7 @@ paths:
                 $ref: '#/components/schemas/Timecard'
             application/xml:
               schema:
+                $ref: '#/components/schemas/Timecard'
         '400':  
           description: Bad request | The request is invalid.
         '401': 
@@ -667,6 +794,13 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       requestBody:
         content:
           application/json:
@@ -699,6 +833,13 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       responses:
         '200':
           description: The timecard is successfully deleted
@@ -737,13 +878,12 @@ paths:
             type: string
           example: e59c8cb9-ab3f-4455-8d63-8bdb2730c545
         - in: header
-          name: Content-Type
+          name: verionId
+          required: true
           schema:
             type: string
-            example: application/json
-            enum:
-              - application/json
-              - application/xml
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       requestBody:
         description: |
          The time interval in the timecard message as specified by SETU. 
@@ -797,14 +937,6 @@ paths:
           schema:
             type: string
           example: acb88ec7-8d93-4bb8-98e1-f7db0074fdc6
-        - in: header
-          name: Accept
-          schema:
-            type: string
-            example: application/json
-            enum:
-              - application/json
-              - application/xml
       responses:
         '200':
           description: OK | Information about an existing time interval
@@ -846,13 +978,12 @@ paths:
             type: string
           example: acb88ec7-8d93-4bb8-98e1-f7db0074fdc6
         - in: header
-          name: Accept
+          name: verionId
+          required: true
           schema:
             type: string
-            example: application/json
-            enum:
-              - application/json
-              - application/xml
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       requestBody:
         content:
           application/json:
@@ -895,13 +1026,12 @@ paths:
             type: string
           example: acb88ec7-8d93-4bb8-98e1-f7db0074fdc6
         - in: header
-          name: Accept
+          name: verionId
+          required: true
           schema:
             type: string
-            example: application/json
-            enum:
-              - application/json
-              - application/xml
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       responses:
         '200':
           description: The time interval is successfully deleted
@@ -939,13 +1069,12 @@ paths:
             type: string
           example: e59c8cb9-ab3f-4455-8d63-8bdb2730c545
         - in: header
-          name: Content-Type
+          name: verionId
+          required: true
           schema:
             type: string
-            example: application/json
-            enum:
-              - application/json
-              - application/xml
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       requestBody:
         description: |
          The allowance in the timecard message as specified by SETU. 
@@ -999,13 +1128,12 @@ paths:
             type: string
           example: acb88ec7-8d93-4bb8-98e1-f7db0074fdc6
         - in: header
-          name: Accept
+          name: verionId
+          required: true
           schema:
             type: string
-            example: application/json
-            enum:
-              - application/json
-              - application/xml
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       responses:
         '200':
           description: OK | Information about an existing allowance
@@ -1047,13 +1175,12 @@ paths:
             type: string
           example: acb88ec7-8d93-4bb8-98e1-f7db0074fdc6
         - in: header
-          name: Accept
+          name: verionId
+          required: true
           schema:
             type: string
-            example: application/json
-            enum:
-              - application/json
-              - application/xml
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       requestBody:
         content:
           application/json:
@@ -1096,13 +1223,12 @@ paths:
             type: string
           example: acb88ec7-8d93-4bb8-98e1-f7db0074fdc6
         - in: header
-          name: Accept
+          name: verionId
+          required: true
           schema:
             type: string
-            example: application/json
-            enum:
-              - application/json
-              - application/xml
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       responses:
         '200':
           description: The allowance is successfully deleted
@@ -1139,6 +1265,13 @@ paths:
           required: true
           schema:
             type: string  
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       requestBody:
         description: |
          Complete invoice message as specified by SETU. A message specification may have multiple versions that can differ. See the different versions of the message specifications here: https://setu.semantic-treehouse.nl/message-model/MessageModel_527939af-3e6c-436e-8a85-e749724a8742
@@ -1172,6 +1305,13 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       responses:
         '200':
           description: OK | Information about an existing invoice
@@ -1203,6 +1343,13 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: verionId
+          required: true
+          schema:
+            type: string
+            example: "2.0"
+          description: The used version of the SETU Standards. 
       responses:
         '200':
           description: The invoice is successfully deleted
