@@ -40,18 +40,12 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Submit a new staffing order (RFQ)
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
       requestBody:
         description: |
          Complete staffing order message as specified by SETU. A message may have multiple versions that can differ. This message contains the order type 'RFQ'.
@@ -80,18 +74,13 @@ paths:
         - Staffing Order (RFQ)
       summary: Retrieve information about an existing staffing order (RFQ)
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       responses:
         '200':
           description: OK | Information about an existing staffing order (RFQ)
@@ -118,18 +107,13 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Update an existing staffing order (RFQ)
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       requestBody:
         content:
           application/json:
@@ -164,18 +148,13 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Delete an existing staffing order (RFQ)
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       responses:
         '200':
           description: The staffing order is successfully deleted
@@ -208,18 +187,13 @@ paths:
         - Staffing customer's backoffice APIs
       summary: Submit a new human resource
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string 
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards.     
+           
       requestBody:
         description: |
          Complete human resource message as specified by SETU.
@@ -256,18 +230,13 @@ paths:
         - Human Resource
       summary: Retrieve information about an existing human resource
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       responses:
         '200':
           description: OK  | Information about an existing human resource
@@ -294,18 +263,13 @@ paths:
         - Staffing customer's backoffice APIs
       summary: Update an existing human resource
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       requestBody:
         content:
           application/json:
@@ -333,18 +297,13 @@ paths:
         - Staffing customer's backoffice APIs
       summary: Delete an existing human resource
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       responses:
         '200':
           description: The human resource message is successfully deleted 
@@ -377,18 +336,13 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Submit a new staffing order (Order)
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string  
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       requestBody:
         description: |
          Complete staffing order message as specified by SETU. A message may have multiple versions that can differ. This message contains the order type 'Order'.
@@ -418,18 +372,13 @@ paths:
         - Staffing Order (Order)
       summary: Retrieve information about an existing staffing order (Order)
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       responses:
         '200':
           description: OK | Information about an existing staffing order (Order)
@@ -456,18 +405,13 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Update an existing staffing order (Order)
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       requestBody:
         content:
           application/json:
@@ -492,18 +436,13 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Delete an existing staffing order (Order)
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       responses:
         '200':
           description: The staffing order (Order) is successfully deleted
@@ -536,18 +475,13 @@ paths:
         - Staffing customer's backoffice APIs
       summary: Submit a new assignment
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       requestBody:
         description: |
          Complete assignment message as specified by SETU. 
@@ -583,18 +517,13 @@ paths:
         - Assignment
       summary: Retrieve information about an existing assignment
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       responses:
         '200':
           description: OK | Information about an existing assignment
@@ -621,18 +550,13 @@ paths:
         - Staffing customer's backoffice APIs
       summary: Update an existing assignment
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       requestBody:
         content:
           application/json:
@@ -660,18 +584,13 @@ paths:
         - Staffing customer's backoffice APIs
       summary: Delete an existing assignment
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       responses:
         '200':
           description: The assignment is successfully deleted
@@ -703,18 +622,13 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Submit a new timecard
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string  
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       requestBody:
         description: |
          Complete timecard message as specified by SETU. 
@@ -750,18 +664,13 @@ paths:
         - Timecard
       summary: Retrieve an existing timecard
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       responses:
         '200':
           description: OK | Information about an existing timecard
@@ -789,18 +698,13 @@ paths:
       summary: Update an existing timecard
       description: '**Usage Note**: The requirements for a PUT operation on a timecard (e.g., determining the deadline for when changes are allowed) are to be agreed upon bilaterally between the involved parties. This is not within the scope of SETU standards and must be handled separately by the parties involved. '
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       requestBody:
         content:
           application/json:
@@ -828,18 +732,13 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Delete an existing timecard
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       responses:
         '200':
           description: The timecard is successfully deleted
@@ -870,6 +769,7 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Submit a new time interval to an existing timecard
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - in: path
           name: id
           description: The identifier of the planning constraints object
@@ -877,13 +777,7 @@ paths:
           schema:
             type: string
           example: e59c8cb9-ab3f-4455-8d63-8bdb2730c545
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       requestBody:
         description: |
          The time interval in the timecard message as specified by SETU. 
@@ -923,6 +817,7 @@ paths:
       summary: Retrieve an existing time interval
       description: Line identifiers are also used as part of certain REST api paths. They are combined with the resource identifiers as specified on the SETU documentation page. For example, PUT /purchase-to-pay/timecard/c93efb20-1acd-447b-87e7-fadb108d8a0e/time-interval/2 can be used to update or get the information about a time-interval planningline with line ID '2' within a created timecard known by its resource identifier (UUID) as 'c93efb20-1acd-447b-87e7-fadb108d8a0e'.
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - in: path
           name: id
           description: The identifier of the timecard object
@@ -963,6 +858,7 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Update an existing time interval 
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - in: path
           name: id
           description: The identifier of the timecard object
@@ -977,13 +873,7 @@ paths:
           schema:
             type: string
           example: acb88ec7-8d93-4bb8-98e1-f7db0074fdc6
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       requestBody:
         content:
           application/json:
@@ -1011,6 +901,7 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Delete an existing time interval
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - in: path
           name: id
           description: The identifier of the timecard object
@@ -1025,13 +916,7 @@ paths:
           schema:
             type: string
           example: acb88ec7-8d93-4bb8-98e1-f7db0074fdc6
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       responses:
         '200':
           description: The time interval is successfully deleted
@@ -1061,6 +946,7 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Submit a new allowance to an existing timecard
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - in: path
           name: id
           description: The identifier of the planning constraints object
@@ -1068,13 +954,7 @@ paths:
           schema:
             type: string
           example: e59c8cb9-ab3f-4455-8d63-8bdb2730c545
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       requestBody:
         description: |
          The allowance in the timecard message as specified by SETU. 
@@ -1113,6 +993,7 @@ paths:
         - Timecard
       summary: Retrieve an existing allowance
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - in: path
           name: id
           description: The identifier of the timecard object
@@ -1127,13 +1008,7 @@ paths:
           schema:
             type: string
           example: acb88ec7-8d93-4bb8-98e1-f7db0074fdc6
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       responses:
         '200':
           description: OK | Information about an existing allowance
@@ -1160,6 +1035,7 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Update an existing allowance 
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - in: path
           name: id
           description: The identifier of the timecard object
@@ -1174,13 +1050,7 @@ paths:
           schema:
             type: string
           example: acb88ec7-8d93-4bb8-98e1-f7db0074fdc6
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       requestBody:
         content:
           application/json:
@@ -1208,6 +1078,7 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Delete an existing allowance
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - in: path
           name: id
           description: The identifier of the timecard object
@@ -1222,13 +1093,7 @@ paths:
           schema:
             type: string
           example: acb88ec7-8d93-4bb8-98e1-f7db0074fdc6
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       responses:
         '200':
           description: The allowance is successfully deleted
@@ -1260,18 +1125,13 @@ paths:
         - Staffing customer's backoffice APIs
       summary: Create a new invoice
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string  
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       requestBody:
         description: |
          Complete invoice message as specified by SETU. A message specification may have multiple versions that can differ. See the different versions of the message specifications here: https://setu.semantic-treehouse.nl/message-model/MessageModel_527939af-3e6c-436e-8a85-e749724a8742
@@ -1300,18 +1160,13 @@ paths:
         - Invoice
       summary: Retrieve an existing invoice
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       responses:
         '200':
           description: OK | Information about an existing invoice
@@ -1338,18 +1193,13 @@ paths:
         - Staffing customer's backoffice APIs
       summary: Delete an existing invoice
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
-        - in: header
-          name: verionId
-          required: true
-          schema:
-            type: string
-            example: "2.0"
-          description: The used version of the SETU Standards. 
+       
       responses:
         '200':
           description: The invoice is successfully deleted
@@ -1367,6 +1217,16 @@ paths:
           description: Internal server error
 
 components:
+  
+  parameters:
+    VersionId:
+      in: header
+      name: setuVerionId
+      required: true
+      schema:
+        type: string
+        example: "2.0"
+      description: Specification of the SETU standard version that is used as body message. 
   schemas:
     StaffingOrder:
       $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay/StaffingOrder.yml' 
