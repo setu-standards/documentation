@@ -101,6 +101,7 @@ module.exports = {
             'api/usage-notes/synchronous',
             'api/usage-notes/identifiers',
             'api/usage-notes/response-codes',
+            'api/usage-notes/attachment',
           ], 
         }
       ],
