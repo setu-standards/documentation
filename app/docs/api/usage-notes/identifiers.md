@@ -2,13 +2,35 @@
 
 When it comes to the exchange of purchase to pay and planning messages, multiple identifiers come into play. This documentation page will walk you through the IDs and specify their functions. The following ID are taken into account:
 
-1. A resource identifier for the (request) messages assigned by the API server for Purchase to Pay and Planning & Scheduling messages.
-2. The document ID included in the message request body itself
-3. An identifier used to reference a specific line in a particular message
+1. A unique resource identifier for the (request) messages. This (technical) identifier identifies the location where the resource is stored, allowing it to be referenced later through other API calls.
+    - For the Planning & Scheduling messages the resource identifier is assigned by the **API server**. 
+    - For the Purchase to Pay messages the resource identifier is assigned by the **API client**. 
+2. The document ID included in the message request body itself. This servers more as a business identifier that allows for internal references to other messages
+3. An identifier used to reference a specific line in a particular message.
 
 ## 1. Resource identifiers
 
-When a new request is made (e.g. `POST /planning/request`) the API server assigns a new identifier to the created resource, typically this is a UUID. This resource identifier, assigned by the API server, is distinct from the document ID in the message body, which is assigned by the API client.
+The resource identifier is a universally unique identifier (UUID), which is either assigned by the API client or the API server. This identifier allows the API client to perform GET, PUT and DELETE calls on this resource at a later stage according to the [API specification](../README.md). This means that for the *Purchase to Pay* the **API server** and for the *Planning & Scheduling* the **API client** must keep track of the resource identifiers.
+
+### Purchase to pay
+
+When a new request is made (e.g. `POST /staffing-order/request-for-quotation/{id}`) the **API client** assigns a new identifier to the requested resource. The resource identifier can be passed as a `query parameter` in the path of the POST request. If you were to use this in a POST request, the endpoint might look like this:
+
+```
+POST /purchase-to-pay/staffing-order/request-for-quotation/{id}:
+```
+
+Where {id} is replaced by the actual UUID identifier, such as:
+
+```
+POST /purchase-to-pay/staffing-order/request-for-quotation/c93efb20-1acd-447b-87e7-fadb108d8a0e:
+```
+
+This resource identifier, assigned by the API client, might not always be distinct from the document ID in the message body. For some of the Purchase to Pay message these two identifiers might be the same, as long as they are unique for the API server.
+
+### Planning and Scheduling
+
+When a new request is made (e.g. `POST /planning/request`) the **API server** assigns a new identifier to the created resource. This resource identifier, assigned by the API server, is distinct from the document ID in the message body, which is assigned by the API client.
 
 The resource identifier is returned in the API response as part of the response header `Location`. E.g.
 
@@ -17,7 +39,7 @@ HTTP/1.1 201 Created
 Location: /planning/request/c93efb20-1acd-447b-87e7-fadb108d8a0e
 ```
 
-This allows the API client to perform GET, PUT and DELETE calls on this resource at a later stage according to the [API specification](../README.md)
+### Purchase to pay
 
 #### Processing Example
 
