@@ -30,6 +30,8 @@ tags:
     description: Set of APIs to be implemented by the staffing supplier
   - name: Staffing customer's backoffice APIs
     description: Set of APIs to be implemented by the staffing customer
+  - name: Attachment
+    description: API endpoint for attachments. As a responds an URL of the resource location should be provided, where this URL can be used in the SETU messages for future access.
 
 
 paths:
@@ -40,12 +42,13 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Submit a new staffing order (RFQ)
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+        - $ref: '#/components/parameters/VersionId'
+        - $ref: '#/components/parameters/ContentType'
       requestBody:
         description: |
          Complete staffing order message as specified by SETU. A message may have multiple versions that can differ. This message contains the order type 'RFQ'.
@@ -74,12 +77,12 @@ paths:
         - Staffing Order (RFQ)
       summary: Retrieve information about an existing staffing order (RFQ)
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+        
        
       responses:
         '200':
@@ -107,12 +110,13 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Update an existing staffing order (RFQ)
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+        - $ref: '#/components/parameters/VersionId'
+        - $ref: '#/components/parameters/ContentType'
        
       requestBody:
         content:
@@ -148,12 +152,12 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Delete an existing staffing order (RFQ)
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+        
        
       responses:
         '200':
@@ -187,12 +191,13 @@ paths:
         - Staffing customer's backoffice APIs
       summary: Submit a new human resource
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
-            type: string 
+            type: string
+        - $ref: '#/components/parameters/VersionId'
+        - $ref: '#/components/parameters/ContentType' 
            
       requestBody:
         description: |
@@ -230,13 +235,11 @@ paths:
         - Human Resource
       summary: Retrieve information about an existing human resource
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
-            type: string
-       
+            type: string       
       responses:
         '200':
           description: OK  | Information about an existing human resource
@@ -263,12 +266,13 @@ paths:
         - Staffing customer's backoffice APIs
       summary: Update an existing human resource
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+        - $ref: '#/components/parameters/VersionId'
+        - $ref: '#/components/parameters/ContentType'
        
       requestBody:
         content:
@@ -297,12 +301,12 @@ paths:
         - Staffing customer's backoffice APIs
       summary: Delete an existing human resource
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+       
        
       responses:
         '200':
@@ -336,12 +340,13 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Submit a new staffing order (Order)
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
-            type: string  
+            type: string
+        - $ref: '#/components/parameters/VersionId'
+        - $ref: '#/components/parameters/ContentType'  
        
       requestBody:
         description: |
@@ -372,12 +377,12 @@ paths:
         - Staffing Order (Order)
       summary: Retrieve information about an existing staffing order (Order)
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+    
        
       responses:
         '200':
@@ -405,12 +410,13 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Update an existing staffing order (Order)
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+        - $ref: '#/components/parameters/VersionId'
+        - $ref: '#/components/parameters/ContentType'
        
       requestBody:
         content:
@@ -436,12 +442,12 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Delete an existing staffing order (Order)
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+       
        
       responses:
         '200':
@@ -475,12 +481,13 @@ paths:
         - Staffing customer's backoffice APIs
       summary: Submit a new assignment
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+        - $ref: '#/components/parameters/VersionId'
+        - $ref: '#/components/parameters/ContentType'
        
       requestBody:
         description: |
@@ -517,12 +524,12 @@ paths:
         - Assignment
       summary: Retrieve information about an existing assignment
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+       
        
       responses:
         '200':
@@ -550,12 +557,13 @@ paths:
         - Staffing customer's backoffice APIs
       summary: Update an existing assignment
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+        - $ref: '#/components/parameters/VersionId'
+        - $ref: '#/components/parameters/ContentType'
        
       requestBody:
         content:
@@ -584,12 +592,12 @@ paths:
         - Staffing customer's backoffice APIs
       summary: Delete an existing assignment
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+   
        
       responses:
         '200':
@@ -622,12 +630,13 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Submit a new timecard
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
-            type: string  
+            type: string
+        - $ref: '#/components/parameters/VersionId'
+        - $ref: '#/components/parameters/ContentType'  
        
       requestBody:
         description: |
@@ -664,12 +673,12 @@ paths:
         - Timecard
       summary: Retrieve an existing timecard
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+       
        
       responses:
         '200':
@@ -698,12 +707,13 @@ paths:
       summary: Update an existing timecard
       description: '**Usage Note**: The requirements for a PUT operation on a timecard (e.g., determining the deadline for when changes are allowed) are to be agreed upon bilaterally between the involved parties. This is not within the scope of SETU standards and must be handled separately by the parties involved. '
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+        - $ref: '#/components/parameters/VersionId'
+        - $ref: '#/components/parameters/ContentType'
        
       requestBody:
         content:
@@ -732,12 +742,12 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Delete an existing timecard
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+        
        
       responses:
         '200':
@@ -761,8 +771,8 @@ paths:
           description: Resource not found
         '500':
           description: Internal server error
-  
-  /purchase-to-pay/timecard/{id}/time-interval:
+    
+  /purchase-to-pay/timecard/{id}/time-interval/{intervalID}:
     post:
       tags: 
         - Timecard
@@ -772,15 +782,22 @@ paths:
         - $ref: '#/components/parameters/VersionId'
         - in: path
           name: id
-          description: The identifier of the planning constraints object
+          description: The identifier of the timecard object
           required: true
           schema:
             type: string
           example: e59c8cb9-ab3f-4455-8d63-8bdb2730c545
+        - in: path
+          name: intervalID
+          description: The identifier of the time interval line
+          required: true
+          schema:
+            type: string
+          example: acb88ec7-8d93-4bb8-98e1-f7db0074fdc6
        
       requestBody:
         description: |
-         The time interval in the timecard message as specified by SETU. 
+         The time interval in the timecard message as specified by SETU. For the actual JSON and XML Schema of allowance and time interval, please refer to the TimeCard Schema.
         content:
           application/json:
             schema:
@@ -808,16 +825,12 @@ paths:
           description: Resource not found
         '500':
           description: Internal server error
-
-
-  /purchase-to-pay/timecard/{id}/time-interval/{intervalID}:
     get:
       tags: 
         - Timecard
       summary: Retrieve an existing time interval
       description: Line identifiers are also used as part of certain REST api paths. They are combined with the resource identifiers as specified on the SETU documentation page. For example, PUT /purchase-to-pay/timecard/c93efb20-1acd-447b-87e7-fadb108d8a0e/time-interval/2 can be used to update or get the information about a time-interval planningline with line ID '2' within a created timecard known by its resource identifier (UUID) as 'c93efb20-1acd-447b-87e7-fadb108d8a0e'.
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - in: path
           name: id
           description: The identifier of the timecard object
@@ -901,7 +914,6 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Delete an existing time interval
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - in: path
           name: id
           description: The identifier of the timecard object
@@ -957,7 +969,7 @@ paths:
        
       requestBody:
         description: |
-         The allowance in the timecard message as specified by SETU. 
+         The allowance in the timecard message as specified by SETU. For the actual JSON and XML Schema of allowance and time interval, please refer to the TimeCard Schema.
         content:
           application/json:
             schema:
@@ -993,7 +1005,6 @@ paths:
         - Timecard
       summary: Retrieve an existing allowance
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - in: path
           name: id
           description: The identifier of the timecard object
@@ -1078,7 +1089,6 @@ paths:
         - Staffing supplier's backoffice APIs
       summary: Delete an existing allowance
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - in: path
           name: id
           description: The identifier of the timecard object
@@ -1125,12 +1135,13 @@ paths:
         - Staffing customer's backoffice APIs
       summary: Create a new invoice
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
-            type: string  
+            type: string
+        - $ref: '#/components/parameters/VersionId'
+        - $ref: '#/components/parameters/ContentType'  
        
       requestBody:
         description: |
@@ -1160,12 +1171,12 @@ paths:
         - Invoice
       summary: Retrieve an existing invoice
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+       
        
       responses:
         '200':
@@ -1193,18 +1204,69 @@ paths:
         - Staffing customer's backoffice APIs
       summary: Delete an existing invoice
       parameters:
-        - $ref: '#/components/parameters/VersionId'
         - name: id
           in: path
           required: true
           schema:
             type: string
+        
        
       responses:
         '200':
           description: The invoice is successfully deleted
         '204':
           description: No content | Response for a successful DELETE operation
+        '400':  
+          description: Bad request | The request is invalid.
+        '401': 
+          description: Uauthorized | The request lacks valid authentication credentials for the resource.
+        '403': 
+          description: Forbidden | The request was valid, but the server is refusing action. The user might not be authorized for the resource.
+        '404':
+          description: Resource not found
+        '500':
+          description: Internal server error
+    
+  /attachment:
+    post:
+      tags: 
+        - Attachment
+        - Staffing supplier's backoffice APIs
+        - Staffing customer's backoffice APIs
+      summary: Create an attachment for future access via an URL. 
+      description: This endpoint can be used to upload files as attachments and retrieve a unique URL for each uploaded file. The returned URL can be used in future messages or API requests to reference the attached file.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string  
+        - $ref: '#/components/parameters/ContentType'
+      requestBody:
+        description: Request body to upload an embedded attachment.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Attachment'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Attachment'
+      responses:
+        '200':
+          description: OK. 
+          headers:
+            Content-Location:
+              description: The `Content-Location` header indicates the URL of the resource transmitted. This URL can be used by the client to bypass future content negotiation for this resource.
+              schema:
+                $ref: '#/components/schemas/Attachment-Response'
+        '201':
+          description: Created | The created Attachment
+          headers:
+            Content-Location:
+              description: The `Content-Location` header indicates the URL of the resource transmitted. This URL can be used by the client to bypass future content negotiation for this resource.
+              schema:
+                $ref: '#/components/schemas/Attachment-Response'
         '400':  
           description: Bad request | The request is invalid.
         '401': 
@@ -1226,7 +1288,32 @@ components:
       schema:
         type: string
         example: "2.0"
-      description: Specification of the SETU standard version that is used as body message. 
+      description: Specification of the SETU standard version that is used as body message.
+    ContentType:
+      in: header
+      name: Content-Type
+      required: true
+      schema:
+        type: string
+        example: application/json
+        enum:
+          - application/json
+          - application/xml
+    MimeType:
+      in: header
+      name: Mime-Type
+      required: true
+      description: "MIME type of the document being uploaded, e.g., 'application/pdf'. Please see the codelist of the MIME types codes over here: https://stpe.semantic-treehouse.nl/codelist/Codelist_1506927228_00216691"
+      schema:
+        type: string
+        example: application/pdf
+        enum:
+          - application/pdf
+          - application/vnd.oasis.opendocument.spreadsheet
+          - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+          - text/csv
+          - image/png
+          - image/jpeg
   schemas:
     StaffingOrder:
       $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay/StaffingOrder.yml' 
@@ -1236,11 +1323,188 @@ components:
       $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay/Assignment.yml'
     Timecard:
       $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay/Timecard.yml'
+    Attachment:
+      type: object
+      description: The XML and JSON Schema for the Attachment
+      properties:                    
+        document:
+          type: string
+          format: byte
+          description: Base64-encoded binary content of the document.
+        mime type:
+          type: string
+          example: application/pdf
+          enum:
+            - application/pdf
+            - application/vnd.oasis.opendocument.spreadsheet
+            - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+            - text/csv
+            - image/png
+            - image/jpeg
+          description: "MIME type of the document being uploaded, e.g., 'application/pdf'. Please see the codelist of the MIME types codes over here: https://stpe.semantic-treehouse.nl/codelist/Codelist_1506927228_00216691"
+        filename:
+          type: string 
+          description: Original name of the file, including the extension, e.g., 'document.docx'
+          example: 'document.docx'
+      required:
+        - document
+        - mime type 
+    Attachment-Response:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
     allowance: 
       type: object
+      description: XML and JSON Schema for Allowances
+      properties:
+        allowance:
+          items:
+            required:
+              - id
+              - typeCode
+            additionalProperties: false
+            properties:
+              comment:
+                required:
+                  - note
+                additionalProperties: false
+                properties:
+                  note:
+                    type: string
+                type: object
+              id:
+                required:
+                  - value
+                  - schemeAgencyId
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  schemeAgencyId:
+                    enum:
+                      - Customer
+                      - Supplier
+                    type: string
+                type: object
+              department:
+                required:
+                  - code
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                  code:
+                    type: string
+                type: object
+              costCenter:
+                required:
+                  - code
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                  code:
+                    type: string
+                type: object
+              project:
+                required:
+                  - code
+                additionalProperties: false
+                properties:
+                  name:
+                    type: string
+                  code:
+                    type: string
+                type: object
+              referenceNumber:
+                type: string
+              purchaseOrderLineItem:
+                type: string
+              typeCode:
+                required:
+                  - value
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                type: object
+              period:
+                additionalProperties: false
+                properties:
+                  DatePeriod:
+                    required:
+                      - start
+                    additionalProperties: false
+                    properties:
+                      start:
+                        type: string
+                        format: date
+                      end:
+                        type: string
+                        format: date
+                    type: object
+                type: object
+              payRates:
+                items:
+                  required:
+                    - amount
+                    - toBeBilled
+                    - toBePaid
+                  additionalProperties: false
+                  properties:
+                    amount:
+                      required:
+                        - value
+                        - currency
+                      additionalProperties: false
+                      properties:
+                        value:
+                          type: number
+                        currency:
+                          required:
+                            - value
+                          additionalProperties: false
+                          properties:
+                            value:
+                              type: string
+                          type: object
+                      type: object
+                    toBeBilled:
+                      type: boolean
+                    toBePaid:
+                      type: boolean
+                  type: object
+                maxItems: 2
+                type: array
+              quantity:
+                required:
+                  - value
+                additionalProperties: false
+                properties:
+                  value:
+                    type: number
+                type: object
+              attachment:
+                required:
+                  - value
+                  - mimeType
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  mimeType:
+                    type: string
+                type: object
+              customerSpecificRequirements:
+                type: string
+                format: uri-reference
+            type: object
+          type: array
     time-interval:
       type: object
-      description: The XML and JSON Schemas for the Invoice message are specified by SETU. Please find the schemas here https://setu.semantic-treehouse.nl/specifications
+      description: The XML and JSON Schemas for Tine Interval are specified by SETU. Please find the schemas here https://setu.semantic-treehouse.nl/specifications
       properties: 
         timeInterval:
           items:
