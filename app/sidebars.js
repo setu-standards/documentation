@@ -8,6 +8,15 @@ module.exports = {
       link: {type: 'doc', id: 'purchase-to-pay-v2/README'},
       items: [
         {
+          type: "category",
+          label: "Public consultation",
+          collapsed: true,
+          link: {type: 'doc', id: 'purchase-to-pay-v2/Public-publication'},
+          items: [
+            "purchase-to-pay-v2/review-public", 
+          ],
+        },
+        {
           type: 'doc',
           label: "Ordering & Selection and Assignment",
           id: 'purchase-to-pay-v2/OrderingSelection',
