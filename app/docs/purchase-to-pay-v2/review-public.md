@@ -18,4 +18,4 @@ Review comments for the public consultation can be submitted via the SETU standa
 
 ![](Q&A.png)
 
-A login is required to submit your comments, but logging in can be done with an existing Microsoft, LinkedIn, Google or GitHub. Only your e-mail address will be have with us, so we can get in contact with you if we have other questions about your review comment(s).
+A login is required to submit your comments, but logging in can be done with an existing Microsoft, LinkedIn, Google or GitHub. Only your e-mail address will be visible for us, so we can get in contact with you if we have other questions about your review comment(s).
