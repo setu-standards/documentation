@@ -11,7 +11,7 @@ module.exports = {
           type: "category",
           label: "Public consultation",
           collapsed: true,
-          link: {type: 'doc', id: 'purchase-to-pay-v2/Public-publication'},
+          link: {type: 'doc', id: 'purchase-to-pay-v2/Public consultation'},
           items: [
             "purchase-to-pay-v2/review-public", 
           ],
