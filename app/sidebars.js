@@ -36,7 +36,8 @@ module.exports = {
           label: "Usage notes",
           collapsed: true,
           items: [
-            "purchase-to-pay-v2/usage-notes/Identifiers-overview", 
+            "purchase-to-pay-v2/usage-notes/Identifiers-overview",
+            "purchase-to-pay-v2/usage-notes/Pay-rates", 
           ],
         }
       ]
