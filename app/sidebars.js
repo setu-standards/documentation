@@ -4,7 +4,7 @@ module.exports = {
     {
       type: "category",
       label: "Purchase to Pay v2.0",
-      collapsed: false,
+      collapsed: true,
       link: {type: 'doc', id: 'purchase-to-pay-v2/README'},
       items: [
         {
@@ -45,7 +45,7 @@ module.exports = {
     {
       type: "category",
       label: "Planning and Scheduling v1.0",
-      collapsed: false,
+      collapsed: true,
       link: {type: 'doc', id: 'planning/README'},
       items: [
         {
@@ -90,7 +90,7 @@ module.exports = {
     {
       type: "category",
       label: "API documentation",
-      collapsed: false,
+      collapsed: true,
       link: {type: 'doc', id: 'api/README'},
       items: [
         {
