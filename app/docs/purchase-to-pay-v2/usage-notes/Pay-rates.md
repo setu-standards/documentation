@@ -17,7 +17,10 @@ Each `payRates` container includes a `toBeBilled` and `toBePaid` element to indi
 
 If multiple, different pay rates need to be specified. For example, because different rates are used for invoicing than for payment, this must be specified by including the payRates container several times in the message.
 
-```json title="Example of multiple, different payRates containers in StaffingOrder message" {19-20,39-40}
+:::tip Example
+Example of multiple, different `payRates` containers in a StaffingOrder message.
+
+```json {19-20,39-40}
 "payRates": [
   {
     "rateType": "TimeInterval",
@@ -61,6 +64,7 @@ If multiple, different pay rates need to be specified. For example, because diff
   }
 ]
 ```
+:::
 
 ### Multiplier
 All amounts in the messages must be specified and interpreted **excluding** multiplier. For example, when the `amount/value` of a `payRates` element is 20 euros, and the `multiplier` is 120, then a calculation needs te be performed (outside of the message itself) to come up with the final rate of 24 euros.
@@ -70,7 +74,10 @@ As opposed to the v1.x versions of the messages, where an `InclusiveRate` elemen
 ## Timecard
 A Timecard mainly consists of `timeInterval` and `allowance` elements. This specifies all hours worked, allowances and expenses for a specific flex worker over a certain period of work. A separate `timeInterval` element is filled in for each hour type per shift. A separate `allowance` element is completed for each type of allowance or expense, whereby the quantity can be used to determine how often the allowance or expense applies to the specific work period.
 
-```json title="Example of specifying regular hours, overtime hours and travel expenses on a Timecard"
+:::tip Example
+Example of specifying regular hours, overtime hours and travel expenses on a Timecard.
+
+```json
 "timeInterval": [
   {
     "id": {
@@ -123,11 +130,15 @@ A Timecard mainly consists of `timeInterval` and `allowance` elements. This spec
   }
 ]
 ```
+:::
 
 ### Pay rates in Timecard
 While the `payRates` container is defined at the root level in the Staffing Order, Human Resource and Assignment messages, the container has a different location in the Timecard message. In the Timecard, pay rates are specified within a `timeInterval` or `allowance` and can be specified at most twice. The `payRates` container has a maximum cardinality of 2, because a `timeInterval` can have different billing and paying rates. When those rates are the same, only one `payRates` container is needed with both `toBeBilled="true"` and `toBePaid="true"`. When the billing and paying rates differ, then two `payRates` containers can be specified, one with `toBeBilled="true"` and `toBePaid="false"` to specify the billing rate, and vice versa to specify the paying rate.
 
-```json title="Example of specifying the payRates of the regular hours and overtime hours (with multiplier 120)"
+:::tip Example
+Example of specifying the `payRates` of regular hours and overtime hours (with multiplier 120).
+
+```json {28-29,42-43,73-74,87-88}
 "timeInterval": [
   {
     "id": {
@@ -191,7 +202,7 @@ While the `payRates` container is defined at the root level in the Staffing Orde
     "payRates": [
       {
         "amount": {
-          "value": 18.54,
+          "value": 15.45,
           "currency": { 
             "value": "EUR"
           }
@@ -205,7 +216,7 @@ While the `payRates` container is defined at the root level in the Staffing Orde
       },
       {
         "amount": {
-          "value": 20.56,
+          "value": 17.13,
           "currency": { 
             "value": "EUR"
           }
@@ -221,27 +232,195 @@ While the `payRates` container is defined at the root level in the Staffing Orde
   }
 ]
 ```
+:::
 
 ### HourlyConsolidated and HourlySplit
-Besides the `amount`, `multiplier`, `toBeBilled` and `toBePaid` elements, the `payRates` element also contains the `intervalCode/value` element. This element is used to express the interval period to which the amount applies. Typically, the pay rate amount is specified per hour. Two values are allowed here: `HourlyConsolidated` and `HourlySplit`.
+Besides the `amount`, `multiplier`, `toBeBilled` and `toBePaid` elements, the `payRates` element also contains the `intervalCode/value` element. This element is used to express the interval period to which the amount applies. Typically, the pay rate amount is specified per hour. Then two different values are allowed:
+- `HourlyConsolidated`, the default. In this case the `amount` specifies the hourly rate as the only rate for the time frame and may be a consolidation of multiple separate rates.
+- `HourlySplit`. In this case the `amount` specifies an hourly rate as one of multiple rates that apply. The total rate for the specific time frame is calculated as a sum of individual time intervals.
 
-`HourlyConsolidated` is the default. In this case the `amount` specifies the hourly rate as the only rate for the time frame and may be a consolidation of multiple separate rates.
+:::info
+With a correct implementation of the Timecard version 2.0, you support both scenarios.
+:::
 
-In case of `HourlySplit`, the `amount` specifies an hourly rate as one of multiple rates that apply. The total rate for the specific time frame is calculated as a sum of individual time intervals.
+:::tip Example
 
-Wel verbetering doorgevoerd m.b.t. split: allemaal in aparte timeIntervals i.p.v. meerdere rates binnen één timeInterval.
+A person works 10 hours on a certain working day, of which 8 regular hours and 2 shift hours. The 2 shift hours have a 25% mark-up on top of the regular hour rate. When applying `HourlySplit`, two `timeInterval` elements are needed to specify the 2 shift hours on the Timecard: one line with 2 regular hours and a separate line with the shift surcharges.
 
-Bij een juiste implementatie van de versie 2.0 ondersteun je beide scenario's.
-
-```json
-
+```json title="Example of using HourlySplit by specifying multiple time intervals"
+"timeInterval": [
+  {
+    "id": {
+      "value": "5555-1",
+      "schemeAgencyId": "Customer"
+    },
+    "typeCode": {
+      "value": "HT100" // Regular hours
+    },
+    "period": {
+      "dateTimePeriod": {
+        "start": "2024-10-23T09:00:00",
+        "end": "2024-10-23T17:00:00"
+      }
+    },
+    "payRates": [
+      {
+        "amount": {
+          "value": 20.00,
+          "currency": {
+            "value": "EUR"
+          }
+        },
+        "intervalCode": {
+          "value": "HourlyConsolidated"
+        },
+        "multiplier": 100,
+        "toBeBilled": true,
+        "toBePaid": true
+      }
+    ]
+  },
+  {
+    "id": {
+      "value": "5555-2",
+      "schemeAgencyId": "Customer"
+    },
+    "typeCode": {
+      "value": "HT100" // Regular hours
+    },
+    "period": {
+      "dateTimePeriod": {
+        "start": "2024-10-23T17:00:00",
+        "end": "2024-10-23T19:00:00"
+      }
+    },
+    "payRates": [
+      {
+        "amount": {
+          "value": 20.00,
+          "currency": { 
+            "value": "EUR"
+          }
+        },
+        "intervalCode": {
+          "value": "HourlySplit"
+        },
+        "multiplier": 100,
+        "toBeBilled": true,
+        "toBePaid": true
+      }
+    ]
+  },
+  {
+    "id": {
+      "value": "5555-3",
+      "schemeAgencyId": "Customer"
+    },
+    "typeCode": {
+      "value": "HT300" // Shift hours
+    },
+    "period": {
+      "dateTimePeriod": {
+        "start": "2024-10-23T17:00:00",
+        "end": "2024-10-23T19:00:00"
+      }
+    },
+    "payRates": [
+      {
+        "amount": {
+          "value": 18.50,
+          "currency": { 
+            "value": "EUR"
+          }
+        },
+        "intervalCode": {
+          "value": "HourlySplit"
+        },
+        "multiplier": 25,
+        "toBeBilled": true,
+        "toBePaid": true
+      }
+    ]
+  }
+]
 ```
-VOORBEELD TOEVOEGEN!
+
+In case of applying `HourlyConsolidated`, the shift hours are consolidated into one line that contains both the regular hours and surcharges, by setting the `multiplier` to `125`.
+
+```json title="Example of using HourlyConsolidated"
+"timeInterval": [
+  {
+    "id": {
+      "value": "5555-1",
+      "schemeAgencyId": "Customer"
+    },
+    "typeCode": {
+      "value": "HT100" // Regular hours
+    },
+    "period": {
+      "dateTimePeriod": {
+        "start": "2024-10-23T09:00:00",
+        "end": "2024-10-23T17:00:00"
+      }
+    },
+    "payRates": [
+      {
+        "amount": {
+          "value": 20.00,
+          "currency": {
+            "value": "EUR"
+          }
+        },
+        "intervalCode": {
+          "value": "HourlyConsolidated"
+        },
+        "multiplier": 100,
+        "toBeBilled": true,
+        "toBePaid": true
+      }
+    ]
+  },
+  {
+    "id": {
+      "value": "5555-2",
+      "schemeAgencyId": "Customer"
+    },
+    "typeCode": {
+      "value": "HT300" // Shift hours
+    },
+    "period": {
+      "dateTimePeriod": {
+        "start": "2024-10-23T17:00:00",
+        "end": "2024-10-23T19:00:00"
+      }
+    },
+    "payRates": [
+      {
+        "amount": {
+          "value": 19.70,
+          "currency": { 
+            "value": "EUR"
+          }
+        },
+        "intervalCode": {
+          "value": "HourlyConsolidated"
+        },
+        "multiplier": 125,
+        "toBeBilled": true,
+        "toBePaid": true
+      }
+    ]
+  }
+]
+```
+:::
 
 ### Verbetering Hour types en Allowance/expense codelijst
-Hour types codelijst vernieuwd met digits. En Breaks urencode toegevoegd.
+Hour types codelijst vernieuwd met digits. En Breaks urencode toegevoegd. 
 
 ### 2 manieren
+Hoe pauzes te specificeren.
+
 2 scenario's voor definiëren van diensten/timeinterval (1: als losse blokken, 2: timeTotal gebruiken voor berekening pauze) en bijbehorende BR's checken/toelichten. Specificeren van pauzes.
 
 Vanwege de verplichting in de nieuwe WTTA wetgeving om pauzetijden te registeren, is het mogelijk om pauzes te specificeren in de 2.0 versies van de berichten. Pauze is als extra uurtype toegevoegd aan de codelijst.
