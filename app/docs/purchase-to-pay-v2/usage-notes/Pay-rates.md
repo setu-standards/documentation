@@ -32,7 +32,7 @@ If multiple, different pay rates need to be specified. For example, because diff
       "value": "HourlyConsolidated"
     },
     "period": {
-      "DatePeriod": {
+      "datePeriod": {
         "start": "2024-10-23"
       }
     },
@@ -52,7 +52,7 @@ If multiple, different pay rates need to be specified. For example, because diff
       "value": "HourlyConsolidated"
     },
     "period": {
-      "DatePeriod": {
+      "datePeriod": {
         "start": "2024-10-23"
       }
     },
@@ -81,7 +81,7 @@ A Timecard mainly consists of `timeInterval` and `allowance` elements. This spec
       "value": "HT100" // Regular hours
     },
     "period": {
-      "DateTimePeriod": {
+      "dateTimePeriod": {
         "start": "2024-10-23T12:00:00",
         "end": "2024-10-23T17:00:00"
       }
@@ -96,7 +96,7 @@ A Timecard mainly consists of `timeInterval` and `allowance` elements. This spec
       "value": "HT200" // Overtime hours
     },
     "period": {
-      "DateTimePeriod": {
+      "dateTimePeriod": {
         "start": "2024-10-23T17:00:00",
         "end": "2024-10-23T19:00:00"
       }
@@ -113,7 +113,7 @@ A Timecard mainly consists of `timeInterval` and `allowance` elements. This spec
       "value": "EA102B" // Travel expenses
     },
     "period": {
-      "DatePeriod": {
+      "datePeriod": {
         "start": "2024-10-23"
       }
     },
@@ -138,7 +138,7 @@ While the `payRates` container is defined at the root level in the Staffing Orde
       "value": "HT100" // Regular hours
     },
     "period": {
-      "DateTimePeriod": {
+      "dateTimePeriod": {
         "start": "2024-10-23T12:00:00",
         "end": "2024-10-23T17:00:00"
       }
@@ -183,7 +183,7 @@ While the `payRates` container is defined at the root level in the Staffing Orde
       "value": "HT200" // Overtime hours
     },
     "period": {
-      "DateTimePeriod": {
+      "dateTimePeriod": {
         "start": "2024-10-23T17:00:00",
         "end": "2024-10-23T19:00:00"
       }
