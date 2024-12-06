@@ -247,7 +247,7 @@ With a correct implementation of the Timecard version 2.0, you support both scen
 
 A person works 10 hours on a certain working day, of which 8 regular hours and 2 shift hours. The 2 shift hours have a 25% mark-up on top of the regular hour rate. When applying `HourlySplit`, two `timeInterval` elements are needed to specify the 2 shift hours on the Timecard: one line with 2 regular hours and a separate line with the shift surcharges.
 
-```json title="Example of using HourlySplit by specifying multiple time intervals"
+```json {56,87}
 "timeInterval": [
   {
     "id": {
@@ -347,7 +347,7 @@ A person works 10 hours on a certain working day, of which 8 regular hours and 2
 
 In case of applying `HourlyConsolidated`, the shift hours are consolidated into one line that contains both the regular hours and surcharges, by setting the `multiplier` to `125`.
 
-```json title="Example of using HourlyConsolidated"
+```json {56}
 "timeInterval": [
   {
     "id": {
@@ -415,12 +415,99 @@ In case of applying `HourlyConsolidated`, the shift hours are consolidated into 
 ```
 :::
 
-### Verbetering Hour types en Allowance/expense codelijst
-Hour types codelijst vernieuwd met digits. En Breaks urencode toegevoegd. 
+### Breaks
+Due to the obligation in the WTTA (Wet toelating terbeschikkingstelling van arbeidskrachten) to register break times, it is possible to register breaks explicitly in the Timecard v2.0 (and if necessary also in the other 2.0 versions of the 'Purchase to Pay' messages). 'Break' has been added as an additional hour type (HT400) to the [Hour Types 2.x codelist](https://setu.semantic-treehouse.nl/codelist/Codelist_0658da4b-c46c-4c5d-afb5-1c3d8bbed57b).
 
-### 2 manieren
-Hoe pauzes te specificeren.
+This means there are two ways to define breaks in combination with time intervals:
+1. Using a separate `timeInterval` container to specify a break.
+2. Using `timeTotal` (the actual hours worked in the time interval) to derive a break. This option was also supported in v1.x of the Timecard (only the element to specify the time total was called `Duration` there). The break (length) can be derived by combining the values of the `start` and `end` of the time interval `period` together with the `timeTotal`.
 
-2 scenario's voor definiëren van diensten/timeinterval (1: als losse blokken, 2: timeTotal gebruiken voor berekening pauze) en bijbehorende BR's checken/toelichten. Specificeren van pauzes.
+:::tip Example
+Example of break option 1, using a separate `timeInterval` container to specify a break, for a regular working day with a break at 12.
+```json
+"timeInterval": [
+  {
+    "id": {
+      "value": "5555-1",
+      "schemeAgencyId": "Customer"
+    },
+    "typeCode": {
+      "value": "HT100" // Regular hours
+    },
+    "period": {
+      "dateTimePeriod": {
+        "start": "2024-10-23T09:00:00",
+        "end": "2024-10-23T12:00:00"
+      }
+    }
+    // Specified pay rates
+  },
+  {
+    "id": {
+      "value": "5555-2",
+      "schemeAgencyId": "Customer"
+    },
+    "typeCode": {
+      "value": "HT400" // Break
+    },
+    "period": {
+      "dateTimePeriod": {
+        "start": "2024-10-23T12:00:00",
+        "end": "2024-10-23T12:30:00"
+      }
+    }
+    // Specified pay rates
+  },  
+  {
+    "id": {
+      "value": "5555-3",
+      "schemeAgencyId": "Customer"
+    },
+    "typeCode": {
+      "value": "HT100" // Break
+    },
+    "period": {
+      "dateTimePeriod": {
+        "start": "2024-10-23T12:30:00",
+        "end": "2024-10-23T17:30:00"
+      }
+    }
+    // Specified pay rates
+  }
+]
+```
 
-Vanwege de verplichting in de nieuwe WTTA wetgeving om pauzetijden te registeren, is het mogelijk om pauzes te specificeren in de 2.0 versies van de berichten. Pauze is als extra uurtype toegevoegd aan de codelijst.
+Example of break option 2, using `timeTotal` to derive a break, for a regular working day with a break of half an hour.
+```json
+"timeInterval": [
+  {
+    "id": {
+      "value": "5555-1",
+      "schemeAgencyId": "Customer"
+    },
+    "typeCode": {
+      "value": "HT100" // Regular hours
+    },
+    "period": {
+      "dateTimePeriod": {
+        "start": "2024-10-23T09:00:00",
+        "end": "2024-10-23T17:30:00"
+      }
+    },
+    "timeTotal": 8.00
+    // Specified pay rates
+  }
+]
+```
+
+:::
+
+## Improved Hour types and Allowance/expense codelists
+To specify the type of hours within a `timeInterval` or the type of allowances/expenses with the `allowance` element, both codelists used to fill in the `typeCode` values have been renewed. This means that for both the [Hour types codelist](https://setu.semantic-treehouse.nl/codelist/Codelist_0658da4b-c46c-4c5d-afb5-1c3d8bbed57b) and the [Expense/Allowance types codelist](https://setu.semantic-treehouse.nl/codelist/Codelist_ffcefb0c-142c-46c3-8f63-63fcb2b1f862) a second version of the codelists is introduced to be used with the 'Purchase to Pay' version 2 messages.
+
+Updating the code lists was necessary to:
+- Remove unnecessary, unused codes;
+- Make the codes themselves more usable by using a strict format of prefix and digits; and
+- Add the hour code to specify breaks.
+
+If a code is missing on one of the two codelists, please let us know via [helpdesk@setu.nl](mailto:helpdesk@setu.nl).
