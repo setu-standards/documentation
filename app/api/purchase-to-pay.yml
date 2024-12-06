@@ -1316,13 +1316,13 @@ components:
           - image/jpeg
   schemas:
     StaffingOrder:
-      $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay/StaffingOrder.yml' 
+      $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay-v2/StaffingOrder.yml' 
     HumanResource:
-      $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay/HumanResource.yml'
+      $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay-v2/HumanResource.yml'
     Assignment:
-      $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay/Assignment.yml'
+      $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay-v2/Assignment.yml'
     Timecard:
-      $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay/Timecard.yml'
+      $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu/schemas/purchase-to-pay-v2/Timecard.yml'
     Attachment:
       type: object
       description: The XML and JSON Schema for the Attachment
