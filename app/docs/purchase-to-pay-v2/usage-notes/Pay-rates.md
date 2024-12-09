@@ -15,7 +15,7 @@ During the development of the 2.0 versions, the working group decided to simplif
 ### `toBeBilled` and `toBePaid`
 Each `payRates` container includes a `toBeBilled` and `toBePaid` element to indicate using a boolean whether the pay rate is specified for billing purposes or not (billed by staffing supplier to staffing customer using invoice), and for payment purposes or not (staffing supplier paying the flex worker using pay slip). In practice this means a pay rate specifies the billing rate, the payment rate, or a same rate which is applied for both.
 
-If multiple, different pay rates need to be specified. For example, because different rates are used for invoicing than for payment, this must be specified by including the payRates container several times in the message.
+If multiple, different pay rates need to be specified. For example, when different rates are used for invoicing and payment, this must be specified by including the `payRates` container several times in the message.
 
 :::tip Example
 Example of multiple, different `payRates` containers in a StaffingOrder message.
@@ -67,7 +67,7 @@ Example of multiple, different `payRates` containers in a StaffingOrder message.
 :::
 
 ### Multiplier
-All amounts in the messages must be specified and interpreted **excluding** multiplier. For example, when the `amount/value` of a `payRates` element is 20 euros, and the `multiplier` is 120, then a calculation needs te be performed (outside of the message itself) to come up with the final rate of 24 euros.
+All amounts in the messages must be specified and interpreted **excluding** multiplier. For example, when the `amount/value` of a `payRates` element is 20 euros, and the `multiplier` is 120 percent (fill in 120), then a calculation needs te be performed (outside of the message itself) to come up with the final rate of 24 euros.
 
 As opposed to the v1.x versions of the messages, where an `InclusiveRate` element existed to explicitly specify whether the `Amount` provided in the `Rates` container already included the multiplier or not.
 
@@ -238,6 +238,8 @@ Example of specifying the `payRates` of regular hours and overtime hours (with m
 Besides the `amount`, `multiplier`, `toBeBilled` and `toBePaid` elements, the `payRates` element also contains the `intervalCode/value` element. This element is used to express the interval period to which the amount applies. Typically, the pay rate amount is specified per hour. Then two different values are allowed:
 - `HourlyConsolidated`, the default. In this case the `amount` specifies the hourly rate as the only rate for the time frame and may be a consolidation of multiple separate rates.
 - `HourlySplit`. In this case the `amount` specifies an hourly rate as one of multiple rates that apply. The total rate for the specific time frame is calculated as a sum of individual time intervals.
+
+![Example of how hours are specified using HourlyConsolidated and HourlySplit.](../../../static/img/HourlyConsolidated-HourlySplit.png)
 
 :::info
 With a correct implementation of the Timecard version 2.0, you support both scenarios.
