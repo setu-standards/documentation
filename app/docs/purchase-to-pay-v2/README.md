@@ -1,13 +1,5 @@
 # Purchase to Pay v2.0
 
-:::caution DRAFT VERSION
-The SETU Standard for Ordering & Selection, Assignment and Reporting Time & Expenses (Timecard) v2.0 are currently under review. The documentation in this section is a draft and subject to change.
-
-A **public consultation** that will be performed for all message specifications around November 2024. During the public consultation interested parties are invited to review the delivered standard and provide review comments. Those responses are considered by the SETU, will be discussed with the working group and, where necessary, the draft version will be adjusted before final publication.
-
-We expect to release the final documentation at the end of 2024.
-:::
-
 :::info DOCUMENTATION
 The message models can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/specifications). There you can also find example messages and validation artifacts in both XML and JSON.
 
@@ -26,3 +18,8 @@ The SETU specified multiple message specifications to exchange purchase to pay i
 The new 2.0 versions of the 'Purchase to Pay' SETU standards are based on a standardized SETU language in which concepts and relationships with associated terminology and definitions are specified. This SETU language provides building blocks from which to compose messages. The SETU reuses the terminology and data definitions of the latest version 4.3 of the international [HR Open standard](https://www.hropenstandards.org/) as much as possible for its SETU language. Where necessary additional relationships have been established in the SETU language between existing HR Open concepts, or new concepts have been introduced. Definitions have also been improved and made more suitable for the Dutch context.
 
 In addition to the reuse of HR Open v4.3, the insights gained from the development of the SETU Standard for Planning & Scheduling v1.0 have also been used. Where possible, concepts and definitions from that SETU standard have also been applied to the new versions of the 'Purchase to pay' messages to make the new set of SETU standards as uniform as possible. Open change requests from the 1.x versions of the SETU standards have also been processed during the development of this version 2.0 set of standards.
+
+## Public consultation
+A public consultation was performed from 5 November 2024 to 5 December 2024.
+
+Interested parties were invited to review the delivered standards and provide review comments. No responses were received. The final version is released on 17 December 2024.

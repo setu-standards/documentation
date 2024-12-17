@@ -1,11 +1,5 @@
 # Sequence diagrams
 
-:::caution DRAFT VERSION
-The SETU Standard for Ordering & Selection, Assignment and Reporting Time & Expenses (Timecard) v2.0 are currently under review. The documentation in this section is a draft and subject to change.
-
-We expect to release the final documentation at the end of 2024.
-:::
-
 The page contains several sequence diagrams illustrating the communication between the backoffice systems of a staffing supplier and a staffing customer for exchanging the SETU Purchase to Pay messages.
 
 <!--

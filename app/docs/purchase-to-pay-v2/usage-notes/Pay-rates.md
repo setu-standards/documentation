@@ -1,11 +1,5 @@
 # Pay rates and time intervals
 
-:::caution DRAFT VERSION
-The SETU Standard for Ordering & Selection, Assignment and Reporting Time & Expenses (Timecard) v2.0 are currently under review. The documentation in this section is a draft and subject to change.
-
-We expect to release the final documentation at the end of 2024.
-:::
-
 ## All 'Purchase to Pay' version 2.0 messages
 
 All the 2.0 versions of the SETU 'Purchase to Pay' standards have a `payRates` container to specify a pay and/or bill rate. The content of this `payRates` container depends on the context of the message and the process step in which this message is exchanged. For example, in a Human Resource message the container specifies the pay and/or bill rate(s) the human resource is offered for, whereas in the Assignment and Timecard the container specifies the agreed pay and/or bill rate(s).

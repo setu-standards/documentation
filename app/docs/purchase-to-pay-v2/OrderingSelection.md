@@ -1,11 +1,5 @@
 # Ordering & Selection and Assignment
 
-:::caution DRAFT VERSION
-The SETU Standard for Ordering & Selection, Assignment and Reporting Time & Expenses (Timecard) v2.0 are currently under review. The documentation in this section is a draft and subject to change.
-
-We expect to release the final documentation at the end of 2024.
-:::
-
 :::info DOCUMENTATION
 The message models can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/specifications). There you can also find example messages and validation artifacts in both XML and JSON.
 

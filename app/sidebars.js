@@ -8,15 +8,6 @@ module.exports = {
       link: {type: 'doc', id: 'purchase-to-pay-v2/README'},
       items: [
         {
-          type: "category",
-          label: "Public consultation",
-          collapsed: true,
-          link: {type: 'doc', id: 'purchase-to-pay-v2/Public consultation'},
-          items: [
-            "purchase-to-pay-v2/review-public", 
-          ],
-        },
-        {
           type: 'doc',
           label: "Ordering & Selection and Assignment",
           id: 'purchase-to-pay-v2/OrderingSelection',
@@ -100,7 +91,7 @@ module.exports = {
         },
         {
           type: 'doc',
-          label: "OAS Planning and Schedulling",
+          label: "OAS Planning and Scheduling",
           id: 'api/oas-planning',
         },
         {
