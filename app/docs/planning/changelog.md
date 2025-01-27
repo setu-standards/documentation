@@ -1,7 +1,7 @@
 # Change Log
 
 :::caution PUBLIC CONSULTATION
-The SETU Standard for Planning & Scheduling v2.0 are currently under review. The public consultation period runs from 27 January till 27 February 2025. 
+The SETU Standard for Planning & Scheduling v2.0 are currently under review. The public consultation period runs from 27 January till 27 February 2025. See [this page](./review-public) for more information.
 
 Some documentation in this section is a draft and subject to change. Feedback and suggestions are welcome to help refine and finalize these documents.
 :::
