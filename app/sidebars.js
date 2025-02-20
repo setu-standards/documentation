@@ -80,6 +80,27 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Inlenersbeloning v1.0",
+      collapsed: true,
+      link: {type: 'doc', id: 'inlenersbeloning/README'},
+      items: [
+        {
+          type: "doc",
+          label: "Scenarios",
+          id: "inlenersbeloning/scenarios",
+        },
+        {
+          type: "category",
+          label: "Usage notes",
+          collapsed: true,
+          items: [
+            "inlenersbeloning/usage-notes/rates",
+          ],
+        }
+      ]
+    },
+    {
+      type: "category",
       label: "API documentation",
       collapsed: true,
       link: {type: 'doc', id: 'api/README'},
