@@ -90,6 +90,11 @@ module.exports = {
           id: "inlenersbeloning/scenarios",
         },
         {
+          type: "doc",
+          label: "sequence diagrams",
+          id:"inlenersbeloning/sequence diagrams/sequence diagrams",
+        },
+        {
           type: "category",
           label: "Usage notes",
           collapsed: true,
