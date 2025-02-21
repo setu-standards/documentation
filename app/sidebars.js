@@ -121,6 +121,11 @@ module.exports = {
           id: 'api/oas-planning',
         },
         {
+          type: 'doc',
+          label: "OAS Inlenersbeloning",
+          id: 'api/oas-inlenersbeloning',
+        },
+        {
           type: "category",
           label: "Usage notes",
           collapsed: true,
