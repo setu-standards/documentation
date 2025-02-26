@@ -95,6 +95,11 @@ module.exports = {
           id:"inlenersbeloning/sequence diagrams/sequence diagrams",
         },
         {
+          type: "doc",
+          label: "Examples",
+          id:"inlenersbeloning/examples",
+        },
+        {
           type: "category",
           label: "Usage notes",
           collapsed: true,
