@@ -1,5 +1,11 @@
 # Planning and Scheduling
 
+:::caution PUBLIC CONSULTATION
+The SETU Standard for Planning & Scheduling v2.0 are currently under review. The public consultation period runs from 27 January till 27 February 2025. See [this page](./review-public) for more information.
+
+Some documentation in this section is a draft and subject to change. Feedback and suggestions are welcome to help refine and finalize these documents.
+:::
+
 :::info DOCUMENTATION
 The message models can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/specifications). There you can also find example messages and validation artifacts in both XML and JSON.
 
@@ -24,6 +30,6 @@ During the development of the Planning and Scheduling messages, the SETU working
 2. The planning is done entirely in the system of the staffing customer.
 
 ## Public consultation
-A public consultation was performed from 15 May 2023 to 15 June 2023.
+For version 1.0 of the Planning & Scheduling standard, a public consultation was performed from 15 May 2023 to 15 June 2023.
 
 Interested parties were invited to review the delivered standard and provide review comments. Those responses were considered by the SETU, discussed with the working group and, where necessary, the draft version adjusted before final publication.

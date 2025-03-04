@@ -38,8 +38,10 @@ paths:
       tags: ["Planning request", "Scenario 1 | Planning software APIs"]
       summary: Submit a new planning request
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - in: header
           name: Content-Type
+          required: true
           schema:
             type: string
             example: application/json
@@ -59,6 +61,9 @@ paths:
       responses:
         '201':
           description: 201 Created | The created planning request (as submitted in the request body)
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
           content:
             application/json:
               schema:
@@ -110,8 +115,10 @@ paths:
           schema:
             type: string
           example: 049b4540-620f-434a-bfd1-d09f9e8cdc8c
+        - $ref: '#/components/parameters/VersionId'
         - in: header
           name: Content-Type
+          required: true
           schema:
             type: string
             example: application/json
@@ -168,8 +175,10 @@ paths:
           schema:
             type: string
           example: 049b4540-620f-434a-bfd1-d09f9e8cdc8c
+        - $ref: '#/components/parameters/VersionId'
         - in: header
           name: Content-Type
+          required: true
           schema:
             type: string
             example: application/json
@@ -189,6 +198,9 @@ paths:
       responses:
         '200':
           description: The created planning request line
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
           content:
             application/json:
               schema:
@@ -205,8 +217,10 @@ paths:
           schema:
             type: string
           example: 049b4540-620f-434a-bfd1-d09f9e8cdc8c
+        - $ref: '#/components/parameters/VersionId'
         - in: header
           name: Content-Type
+          required: true
           schema:
             type: string
             example: application/json
@@ -226,6 +240,9 @@ paths:
       responses:
         '200':
           description: The created planning request line
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
           content:
             application/json:
               schema:
@@ -284,8 +301,10 @@ paths:
           schema:
             type: string
           example: 0d281aa5-5000-4b29-81f9-16fb4e69557b
+        - $ref: '#/components/parameters/VersionId'
         - in: header
           name: Content-Type
+          required: true
           schema:
             type: string
             example: application/json
@@ -379,8 +398,10 @@ paths:
       tags: ["Planning assignment", "Scenario 1 | Customer backoffice APIs", "Scenario 2 | Staffing supplier backoffice APIs"]
       summary: Submit a new planning assignment
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - in: header
           name: Content-Type
+          required: true
           schema:
             type: string
             example: application/json
@@ -401,6 +422,9 @@ paths:
       responses:
         '201':
           description: 201 Created | The created planning assignment (as submitted in the request body)
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
           content:
             application/json:
               schema:
@@ -452,8 +476,10 @@ paths:
           schema:
             type: string
           example: 5dbca640-358a-4558-a095-ecbb85ebe7d9
+        - $ref: '#/components/parameters/VersionId'
         - in: header
           name: Content-Type
+          required: true
           schema:
             type: string
             example: application/json
@@ -511,8 +537,10 @@ paths:
           schema:
             type: string
           example: 049b4540-620f-434a-bfd1-d09f9e8cdc8c
+        - $ref: '#/components/parameters/VersionId'
         - in: header
           name: Content-Type
+          required: true
           schema:
             type: string
             example: application/json
@@ -533,6 +561,9 @@ paths:
       responses:
         '200':
           description: The created planning assignment line
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
           content:
             application/json:
               schema:
@@ -550,8 +581,10 @@ paths:
           schema:
             type: string
           example: 049b4540-620f-434a-bfd1-d09f9e8cdc8c
+        - $ref: '#/components/parameters/VersionId'
         - in: header
           name: Content-Type
+          required: true
           schema:
             type: string
             example: application/json
@@ -572,6 +605,9 @@ paths:
       responses:
         '200':
           description: The created planning assignment line
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
           content:
             application/json:
               schema:
@@ -629,8 +665,10 @@ paths:
           schema:
             type: string
           example: 0d281aa5-5000-4b29-81f9-16fb4e69557b
+        - $ref: '#/components/parameters/VersionId'
         - in: header
           name: Content-Type
+          required: true
           schema:
             type: string
             example: application/json
@@ -723,8 +761,10 @@ paths:
       tags: ["Planning constraints", "Scenario 1 | Planning software APIs", "Scenario 2 | Planning software APIs"]
       summary: Submit additional availability information of a human resource by means of a planning constraints object
       parameters:
+        - $ref: '#/components/parameters/VersionId'
         - in: header
           name: Content-Type
+          required: true
           schema:
             type: string
             example: application/json
@@ -745,6 +785,9 @@ paths:
       responses:
         '201':
           description: The added planning constraints (same as request body)
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
           content:
             application/json:
               schema:
@@ -796,8 +839,10 @@ paths:
           schema:
             type: string
           example: e59c8cb9-ab3f-4455-8d63-8bdb2730c545
+        - $ref: '#/components/parameters/VersionId'
         - in: header
           name: Content-Type
+          required: true
           schema:
             type: string
             example: application/json
@@ -852,8 +897,10 @@ paths:
           schema:
             type: string
           example: e59c8cb9-ab3f-4455-8d63-8bdb2730c545
+        - $ref: '#/components/parameters/VersionId'
         - in: header
           name: Content-Type
+          required: true
           schema:
             type: string
             example: application/json
@@ -874,6 +921,9 @@ paths:
       responses:
         '201':
           description: The added availability line
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
           content:
             application/json:
               schema:
@@ -894,8 +944,10 @@ paths:
           schema:
             type: string
           example: e59c8cb9-ab3f-4455-8d63-8bdb2730c545
+        - $ref: '#/components/parameters/VersionId'
         - in: header
           name: Content-Type
+          required: true
           schema:
             type: string
             example: application/json
@@ -915,6 +967,9 @@ paths:
       responses:
         '201':
           description: The added availability line
+          headers:
+            Location:
+              $ref: '#/components/headers/Location'
           content:
             application/json:
               schema:
@@ -978,8 +1033,10 @@ paths:
           schema:
             type: string
           example: acb88ec7-8d93-4bb8-98e1-f7db0074fdc6
+        - $ref: '#/components/parameters/VersionId'
         - in: header
           name: Content-Type
+          required: true
           schema:
             type: string
             example: application/json
@@ -1035,6 +1092,31 @@ paths:
                 $ref: '#/components/schemas/planning-constraints-line'
 
 components:
+  headers:
+    Location:
+      description: This is the resource identifier assigned by the API server to the created resource. 
+      schema:
+        type: string
+        example: /planning/request/c93efb20-1acd-447b-87e7-fadb108d8a0e
+  parameters:
+    VersionId:
+      in: header
+      name: setuVersionId
+      required: true
+      schema:
+        type: string
+        example: "2.0"
+      description: Specification of the SETU standard version that is used as body message.
+    ContentType:
+      in: header
+      name: Content-Type
+      required: true
+      schema:
+        type: string
+        example: application/json
+        enum:
+          - application/json
+          - application/xml
   schemas:
     planning-request:
       $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/main/setu-planning/v1.0/PlanningRequest/PlanningRequest_v1.0.yml'

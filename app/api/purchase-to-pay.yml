@@ -1279,11 +1279,10 @@ paths:
           description: Internal server error
 
 components:
-  
   parameters:
     VersionId:
       in: header
-      name: setuVerionId
+      name: setuVersionId
       required: true
       schema:
         type: string

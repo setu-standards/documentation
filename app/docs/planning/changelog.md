@@ -1,10 +1,19 @@
 # Change Log
 
+:::caution PUBLIC CONSULTATION
+The SETU Standard for Planning & Scheduling v2.0 are currently under review. The public consultation period runs from 27 January till 27 February 2025. See [this page](./review-public) for more information.
+
+Some documentation in this section is a draft and subject to change. Feedback and suggestions are welcome to help refine and finalize these documents.
+:::
+
 This documentation page records the changes made to the SETU Standard for Planning and Scheduling across multiple versions. This page provides a chronological overview of updates, improvements, and modifications, allowing you to easily track the evolution of the standard.
+
+## From v1.0 to v2.0
+The overview with changes between versions 2.0 and 1.0 of the Planning & Scheduling messages can be found as [documentation with the message models](https://setu.semantic-treehouse.nl/api/v1/uploads/FileObject_6506f012-f8e8-41a6-bbe0-88ff036fcba6/Verschillenoverzicht%20SETU%20Planning%20v2.0.pdf) in Semantic Treehouse.
 
 ## From v0.9 to v1.0
 
-During the last working session of the working group Planning and Schedulling, consensus has been reach to some final changes to the DRAFT 1.0 version of the Planning & Scheduling standard. This documentation page presents the change log documenting the journey from v0.9 to draft v1.0. The change log serves as a comprehensive record of the modifications, refinements, and new additions made in v1.0 for all the three message specification and the API specifications.
+During the last working session of the working group Planning and Scheduling, consensus has been reach to some final changes to the DRAFT 1.0 version of the Planning & Scheduling standard. This documentation page presents the change log documenting the journey from v0.9 to draft v1.0. The change log serves as a comprehensive record of the modifications, refinements, and new additions made in v1.0 for all the three message specification and the API specifications.
 
 ### Planning Constraints
 
