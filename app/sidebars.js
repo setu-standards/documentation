@@ -96,13 +96,8 @@ module.exports = {
         },
         {
           type: "doc",
-          label: "sequence diagrams",
+          label: "Sequence diagrams",
           id:"inlenersbeloning/sequence diagrams/sequence diagrams",
-        },
-        {
-          type: "doc",
-          label: "Examples",
-          id:"inlenersbeloning/examples",
         },
         {
           type: "category",

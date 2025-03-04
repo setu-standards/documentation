@@ -8,6 +8,7 @@ The REST API specifications can be found here: [X](../api/oas-purchase-to-pay)
 
 ## Introduction
 
+## Scope
 
 ## Relation to HR Open standard
 
