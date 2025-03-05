@@ -16,16 +16,12 @@ externalDocs:
 tags:
   - name: "Inlenersbeloning"
     description: Set of APIs for exchanging equal pay information.
-  - name: "Inlenersbeloning request"
-    description: "TO BE DEVELOPED: Set of APIs for triggering the exchange of equal pay information."
   - name: "Scenario 1 | Supplier backoffice APIs"
     description: Set of APIs to be implemented by the backoffice of the supplier.
-  - name: "Scenario 1 | Customer backoffice APIs"
-    description: Set of APIs to be implemented by the backoffice of the customer.
   - name: "Scenario 2 | Supplier backoffice APIs"
     description: Set of APIs to be implemented by the backoffice of the supplier.
-  - name: "Scenario 2 | CAO Service Providers backoffice APIs"
-    description: Set of APIs to be implemented by the backoffice of the CAO service providers.
+  - name: "Inlenersbeloning request"
+    description: "TO BE DEVELOPED"
 
 
 ############################################################
@@ -52,18 +48,22 @@ paths:
             schema:
               $ref: '#/components/schemas/inlenersbeloning'
       responses:
+        '202': 
+          $ref: '#/components/responses/202'
         '201':
-          description: 201 Created | The created inlenersbeloning (as submitted in the request body)
-          headers:
-            Location:
-              $ref: '#/components/headers/Date'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/inlenersbeloning'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/inlenersbeloning'
+          $ref: '#/components/responses/201'
+        '204':
+          $ref: '#/components/responses/204'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
         
     get:
       tags: ["Inlenersbeloning", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
@@ -73,8 +73,7 @@ paths:
         - $ref: '#/components/parameters/ContentType'
       responses:
         '200':
-          description: |
-            The inlenersbeloning as specified by SETU.
+          description: OK | The inlenersbeloning (as submitted in the request body)
           content:
             application/json:
               schema:
@@ -82,6 +81,17 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/inlenersbeloning'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+        
     put:
       tags: ["Inlenersbeloning", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
       summary: Update an existing inlenersbeloning as a whole. The request body replaces all previous shared information of the resource
@@ -106,17 +116,21 @@ paths:
             schema:
               $ref: '#/components/schemas/inlenersbeloning'
       responses:
-        '200':
-          description: 200 OK | The updated inlenersbeloning (as submitted in the request body)
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/inlenersbeloning'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/inlenersbeloning'
+        '200': 
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+        
     delete:
-      tags: ["inlenersbeloning", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
+      tags: ["Inlenersbeloning", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
       summary: Remove an existing inlenersbeloning
       parameters:
         - in: path
@@ -127,12 +141,25 @@ paths:
             type: string
           example: 049b4540-620f-434a-bfd1-d09f9e8cdc8c
       responses:
-        '204':
-          description: The inlenersbeloning is succesfully removed
+        '204': 
+          $ref: '#/components/responses/204'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+
+#####################################################################################
+################## Inlenersbeloning request - to be developed #######################
+#####################################################################################
 
 
-
-  /inlenersbeloning/request:
+/inlenersbeloning/request:
     post:
       summary: Submit a new inlenersbeloning
       parameters:
@@ -224,6 +251,8 @@ paths:
           description: The inlenersbeloning is succesfully removed
   
 
+  
+
 components:
   headers:
     Date: 
@@ -232,10 +261,10 @@ components:
         type: string
         example: Tue, 29 Oct 2024 16:56:32 GMT. Format:<day-name>, <day> <month> <year> <hour>:<minute>:<second> GMT
     Location:
-      description: This is the resource identifier assigned by the API server to the created resource. 
+      description: This is the resource identifier assigned by the API client. This is the identifier specified in the path of this operation request.
       schema:
         type: string
-        example: /inlenersbeloning/c93efb20-1acd-447b-87e7-fadb108d8a0e
+        example: /inlenersbeloning/{ID} | /inlenersbeloning/c93efb20-1acd-447b-87e7-fadb108d8a0e
   parameters:
     VersionId:
       in: header
@@ -265,12 +294,7 @@ components:
           description: This is the resource identifier assigned by the API client to the created resource.  This is the id parameter used in path operations, for GET, PUT and DELETE operations.
   schemas:
     inlenersbeloning:
-      type: object
-      properties:
-        code:
-          type: string
-        description:
-          type: string
+      $ref: 'https://github.com/setu-standards/xml-specifications/raw/refs/heads/main/setu-inlenersbeloning/v1.0/inlenersbeloning.yml'
     error-object:
       type: object
       properties:
@@ -279,40 +303,66 @@ components:
         description:
           type: string
   responses:
+    '200':
+      description: OK | The updated inlenersbeloning (as submitted in the request body)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/inlenersbeloning'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/inlenersbeloning'
     '201':
-      description: Created. Successful request, resource is created. (synchronous)
+      description: 201 Created | The created inlenersbeloning (as submitted in the request body)
+      headers:
+        Date:
+          $ref: '#/components/headers/Date'
+        Location:
+          $ref: '#/components/headers/Location'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/inlenersbeloning'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/inlenersbeloning'
     '202':
       description: Accepted. Successful request, resource is not (yet) created. This response code is not supported by the SETU (asynchronous)
+      content:
+        application/json:
+          schema:
+            type: object
+            description: No content
     '204':
-      description: No Content. Response for a successful DELETE operation.
+      description: The inlenersbeloning is succesfully removed
     '400':
       description: 400 Bad request | The request is invalid. E.g. due to syntax error or invalid response body
       content:
-        application/xml:
+        application/json:
           schema:
             $ref: '#/components/schemas/error-object'
     '401':
       description: 401 Unauthorized | The request lacks valid authentication credentials for the resource
       content:
-        application/xml:
+        application/json:
           schema:
             $ref: '#/components/schemas/error-object'
     '403':
       description: 403 Forbidden | The request was valid, but the server is refusing action. The client may not be authorized for the resource
       content:
-        application/xml:
+        application/json:
           schema:
             $ref: '#/components/schemas/error-object'
     '404':
       description: 404 Not found
       content:
-        application/xml:
+        application/json:
           schema:
             $ref: '#/components/schemas/error-object'
     '500':
       description: 500 Internal server error
       content:
-        application/xml:
+        application/json:
           schema:
             $ref: '#/components/schemas/error-object'
 
