@@ -85,6 +85,32 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Inlenersbeloning v1.0",
+      collapsed: true,
+      link: {type: 'doc', id: 'inlenersbeloning/README'},
+      items: [
+        {
+          type: "doc",
+          label: "Scenarios",
+          id: "inlenersbeloning/scenarios",
+        },
+        {
+          type: "doc",
+          label: "Sequence diagrams",
+          id:"inlenersbeloning/sequence diagrams/sequence diagrams",
+        },
+        {
+          type: "category",
+          label: "Usage notes",
+          collapsed: true,
+          items: [
+            "inlenersbeloning/usage-notes/rates",
+          ],
+        }
+      ]
+    },
+    {
+      type: "category",
       label: "API documentation",
       collapsed: true,
       link: {type: 'doc', id: 'api/README'},
@@ -98,6 +124,11 @@ module.exports = {
           type: 'doc',
           label: "OAS Planning and Scheduling",
           id: 'api/oas-planning',
+        },
+        {
+          type: 'doc',
+          label: "OAS Inlenersbeloning",
+          id: 'api/oas-inlenersbeloning',
         },
         {
           type: "category",

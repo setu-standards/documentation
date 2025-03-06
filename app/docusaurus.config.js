@@ -68,7 +68,17 @@ const config = {
             route: '/api/p2p',
             layout: {
               title: 'API for Purchase to Pay'
-            }
+            },
+            
+          },
+          {
+            id: 'inlenersbeloning-api',
+            spec: 'api/inlenersbeloning.yml',
+            route: '/api/inlenersbeloning',
+            layout: {
+              title: 'API for Inlenersbeloning'
+            },
+            
           },
         ],
         // Theme Options for modifying how redoc renders them
