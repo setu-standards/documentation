@@ -27,7 +27,7 @@ Het bouwblok voor Gelijkwaardige Beloning is een gestandaardiseerde set van elem
   - **Basis (grondslag):** De maatstaf waarop de toeslag is gebaseerd (bijv. percentage van het uurloon).
   - **Per hoeveel:** De eenheid waarvoor de toeslag geldt (bijv. per uur, per dag dat je werkt).
 
-
+<!--
 ## Structuur van het bouwblok
 
 Het bouwblok is opgebouwd uit verschillende elementen die samen de details van de regeling vastleggen:
@@ -67,7 +67,7 @@ Het bouwblok is opgebouwd uit verschillende elementen die samen de details van d
     - Position Title
 
 
-
+-->
 
 
 
