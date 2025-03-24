@@ -2,7 +2,9 @@
 
 
 :::caution DISCLAIMER
-The documentation of the inlenersbeloning is still under development.
+The SETU Standard for Inlenersbeloning v1.0 is currently under review. The public consultation period runs from 7 April till 2 May 2025. See this page for more information.
+
+Some documentation in this section is a draft and subject to change. Feedback and suggestions are welcome to help refine and finalize these documents.
 :::
 
 

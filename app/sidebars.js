@@ -41,11 +41,6 @@ module.exports = {
       items: [
         {
           type: "doc",
-          label: "Public consultation",
-          id: 'planning/review-public',
-        },
-        {
-          type: "doc",
           label: "Scenario 1",
           id: 'planning/scenario-1',
         },
@@ -89,6 +84,11 @@ module.exports = {
       collapsed: true,
       link: {type: 'doc', id: 'inlenersbeloning/README'},
       items: [
+        {
+          type: "doc",
+          label: "Public consultation",
+          id: "inlenersbeloning/public-consultation",
+        },
         {
           type: "doc",
           label: "Scenarios",

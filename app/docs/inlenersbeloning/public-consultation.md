@@ -1,0 +1,19 @@
+# How to review?
+
+The SETU Standard for Inlenersbeloning v1.0 is currently under review. The public consultation period runs from 7 April till 2 May 2025.
+
+## Where to find the specification?
+
+The management and maintenance of this message specification is carried out in our [SETU standards portal](https://setu.semantic-treehouse.nl/). The message specification can be found here:
+
+- [Inlenersbeloning](https://setu.semantic-treehouse.nl/message-model-tree/Message_39959e0f-7327-4eb8-900c-ed33b0089b0f?panes=element_tree:Message_39959e0f-7327-4eb8-900c-ed33b0089b0f:dqdk37:primary): for the exchange of Inlenersbeloning data.
+
+The corresponding documentation and API specifications can be found on the next pages of this documentation portal.
+
+## How to provide feedback?
+
+Review comments for the public consultation can be submitted via the SETU standards portal itself, where also the message specifications are located. We would like to ask you to submit your review comment at the specific element you have a comment about, by creating a new Issue using the following button:
+
+![](../../static/img/issues.png)
+
+A login is required to submit your comments. Logging in can easily be done with an existing Microsoft, LinkedIn, Google or GitHub. Only your e-mail address will be visible for us, so we can get in contact with you if we have other questions about your review comment(s).
