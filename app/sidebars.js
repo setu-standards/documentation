@@ -41,11 +41,6 @@ module.exports = {
       items: [
         {
           type: "doc",
-          label: "Public consultation",
-          id: 'planning/review-public',
-        },
-        {
-          type: "doc",
           label: "Scenario 1",
           id: 'planning/scenario-1',
         },
