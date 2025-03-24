@@ -91,6 +91,11 @@ module.exports = {
       items: [
         {
           type: "doc",
+          label: "Public consultation",
+          id: "inlenersbeloning/public-consultation",
+        },
+        {
+          type: "doc",
           label: "Scenarios",
           id: "inlenersbeloning/scenarios",
         },
