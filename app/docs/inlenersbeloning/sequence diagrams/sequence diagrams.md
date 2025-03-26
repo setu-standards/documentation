@@ -41,8 +41,9 @@ The staffing customer may need to update the inlenersbeloning when there is a ch
 
 ```mermaid
 sequenceDiagram
-    participant Customer as Backoffice <br/> Staffing Customer
     participant Supplier as Backoffice <br/> Staffing Supplier
+    participant Customer as Backoffice <br/> Staffing Customer
+    
 
     Note over Supplier,Customer: This change can be initiated by either <br/> the staffing customer or the staffing supplier.
     
@@ -52,6 +53,30 @@ sequenceDiagram
 ```
 
 <figcaption align = "left">Diagram 2 - Inlenersbeloning process between the staffing customer and the staffing supplier.</figcaption>
+
+</details>
+
+### Getting Inlenersbeloning: Staffing Supplier to Staffing Customer
+
+The staffing supplier can request the inlenersbeloning from the staffing customer when necessary. This might be done by sending a `GET /inlenersbeloning/{ID}` to the staffing customer. Upon receiving the request, the staffing customer processes it and returns the relevant inlenersbeloning data, typically with a 200 OK response. 
+
+<details>
+<summary><strong>Getting an inlenersbeloning</strong></summary>
+
+
+```mermaid
+sequenceDiagram
+    participant Supplier as Backoffice <br/> Staffing Supplier
+    participant Customer as Backoffice <br/> Staffing Customer
+    
+    Note over Supplier,Customer: To request an inlenersbeloning, the staffing supplier sends <br/> a GET request to the staffing customer.
+    Supplier ->>+ Customer: GET /inlenersbeloning/{ID}
+    
+    Note over Supplier,Customer: In response, the staffing customer sends <br/> the inlenersbeloning to the staffing supplier.
+    Customer ->>+ Supplier: 200 + responseBody
+    Supplier ->>- Customer: 200 OK
+```
+<figcaption align = "left">Diagram 3 - Inlenersbeloning process between the staffing customer and the staffing supplier.</figcaption>
 
 </details>
 
@@ -65,8 +90,9 @@ The exchanges with the CAO service provider follow the same process. Below, in t
 
 ```mermaid
 sequenceDiagram
-    participant Customer as Backoffice <br/> CAO Service Provider
     participant Supplier as Backoffice <br/> Staffing Supplier
+    participant Customer as Backoffice <br/> CAO Service Provider
+    
 
     Note over Supplier,Customer: To request an inlenersbeloning, the staffing supplier sends <br/> an inlenersbeloning request to the CAO service provider.
     Supplier ->>+ Customer: POST /inlenersbeloning/request
@@ -76,7 +102,7 @@ sequenceDiagram
     Supplier ->>- Customer: 201 + requestBody + /inlenersbeloning/{ID}  
 ```
 
-<figcaption align = "left">Diagram 3 - Inlenersbeloning process between the CAO service provider and the staffing supplier.</figcaption>
+<figcaption align = "left">Diagram 4 - Inlenersbeloning process between the CAO service provider and the staffing supplier.</figcaption>
 
 </details>
 
@@ -88,8 +114,9 @@ The CAO service provider may need to update the inlenersbeloning when there is a
 
 ```mermaid
 sequenceDiagram
-    participant Customer as Backoffice <br/> CAO Service Provider
     participant Supplier as Backoffice <br/> Staffing Supplier
+    participant Customer as Backoffice <br/> CAO Service Provider
+    
 
     Note over Supplier,Customer: This change can be initiated by either <br/> the CAO service provider or the staffing supplier.
     
@@ -98,6 +125,6 @@ sequenceDiagram
     Supplier ->>- Customer: 200 + requestBody 
 ```
 
-<figcaption align = "left">Diagram 4 - Inlenersbeloning process between the CAO service provider and the staffing supplier.</figcaption>
+<figcaption align = "left">Diagram 5 - Inlenersbeloning process between the CAO service provider and the staffing supplier.</figcaption>
 
 </details>
