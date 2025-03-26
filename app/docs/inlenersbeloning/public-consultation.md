@@ -8,7 +8,15 @@ The management and maintenance of this message specification is carried out in o
 
 - [Inlenersbeloning](https://setu.semantic-treehouse.nl/message-model-tree/Message_39959e0f-7327-4eb8-900c-ed33b0089b0f?panes=element_tree:Message_39959e0f-7327-4eb8-900c-ed33b0089b0f:dqdk37:primary): for the exchange of Inlenersbeloning data.
 
-The corresponding documentation and API specifications can be found on the next pages of this documentation portal.
+### Additional documents
+
+The corresponding documentation and API specifications can be found on the next pages of this documentation portal, or check the following links:
+
+Scenario's: [link](https://standard.setu.nl/docs/inlenersbeloning/scenarios)
+Example messages and XML & JSON Schemas: [link](https://github.com/setu-standards/xml-specifications/tree/main/setu-inlenersbeloning/v1.0)
+API Specifications: [link](https://standard.setu.nl/docs/api/oas-inlenersbeloning)
+Validator: [link](https://setu.semantic-treehouse.nl/validator/SyntaxBinding_7468e93a-fd12-433b-8c05-0c52f4048cec)
+Other documentation: [link](https://standard.setu.nl/docs/inlenersbeloning/)
 
 ## How to provide feedback?
 
