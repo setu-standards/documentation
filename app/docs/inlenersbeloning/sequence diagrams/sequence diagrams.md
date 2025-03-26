@@ -8,8 +8,9 @@ The staffing supplier can request the inlenersbeloning from the staffing custome
 
 ```mermaid
 sequenceDiagram
-    participant Customer as Backoffice <br/> Staffing Customer
     participant Supplier as Backoffice <br/> Staffing Supplier
+    participant Customer as Backoffice <br/> Staffing Customer
+    
 
     Note over Supplier,Customer: To request an inlenersbeloning, the staffing supplier sends <br/> an inlenersbeloning request to the staffing customer.
     Supplier ->>+ Customer: POST /inlenersbeloning/request
