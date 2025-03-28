@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The 'inlenersbeloning' data standard is created from a set of building blocks and a set of generic elements. The template of the building blocks all follow a similar structure, which we call "equal pay". Multiple of these building blocks taken together can be used to describe almost all regulations and employment conditions applicable to a certain employee. As the building block 'equal pay' is reused throughout the 'inlenersebeloning', below its general structure will be further explained. 
+The 'inlenersbeloning' data standard is created from a set of building blocks and a set of generic elements. The template of the building blocks all follow a similar structure, which we call "equal pay". Multiple of these building blocks taken together can be used to describe almost all regulations and employment conditions applicable to a certain employee. As the building block 'equal pay' is reused throughout the 'inlenersbeloning', below its general structure will be further explained. 
 
 ## What is the building block 'equal pay'?
 As stated, the 'equal pay' building block is a standardized set of elements that is used to describe almost all employment conditions and regulations in the 'inlenersbeloning' data standard. This building block makes it possible to describe a great variety of regulations in a uniform way. These regulations range from allowances & compensations to paid leave & sick pay. 
@@ -18,7 +18,7 @@ As stated, the 'equal pay' building block is a standardized set of elements that
   - **Amount:** (container element) which contains the compensation/allowance/benefit that the employee receives.
     -  **Value:** The actual value of the compensation/allowance/benefit.
     -  **Base Amount:** The base amount over which the value of the compensation/allowance/benefit is calculated.
-  -  **Interval Code:** An optional element that can indicate the recurring nature of the compensation/allowance/benefit. An example: a certain regulation X is earned **PER** week/month/item. This indicates that every week or every month or for every item the regulation that is described is applicable. 
+  -  **Interval Code:** An element that can indicate the recurring nature of the compensation/allowance/benefit. An example: a certain regulation X is earned **PER** week/month/item. This indicates that every week or every month or for every item the regulation that is described is applicable. 
 
 <!--
 ## Structure of the building block.
@@ -115,6 +115,7 @@ Within the building block, multiple different rates can be defined. This JSON ex
       }
     },
     "Conditions": {
+      "conditionType": "functions" 
       "Description": "This rate is only applicable to administrative employees.",
       "Position Title": "Administrative employee"
     }
@@ -126,7 +127,7 @@ Within the building block, multiple different rates can be defined. This JSON ex
         "Unit Code": "percentage"
       },
       "Base": {
-        "Code": "hourlyRate"
+        "Code": "percentagehourlyRate"
       },
       "Interval Code": {
         "Unit Code": "hour", // per irregular hour worked.
@@ -134,6 +135,7 @@ Within the building block, multiple different rates can be defined. This JSON ex
       }
     },
     "Conditions": {
+      "conditionType": "general"
       "Description": "This rate is applicable to every employee that is in or above pay scale 10.."
     }
   }
