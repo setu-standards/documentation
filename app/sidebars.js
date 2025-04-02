@@ -105,6 +105,7 @@ module.exports = {
           collapsed: true,
           items: [
             "inlenersbeloning/usage-notes/rates",
+            "inlenersbeloning/usage-notes/conditions",
           ],
         }
       ]
