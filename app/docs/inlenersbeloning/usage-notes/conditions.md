@@ -8,14 +8,14 @@ The public consultation period runs from 7 April till 2 May 2025. See [this page
 Some documentation in this section is a draft and subject to change. Feedback and suggestions are welcome to help refine and finalize these documents.
 :::
 
-For nearly all benefit components certain conditions may apply. This means that the component is or is not applicable to workers that meet these conditions. E.g.:
+For nearly all benefit components certain conditions may apply. This means that the component is or is not applicable to workers that meet these conditions. For example:
 * an overtime allowance might only be applicable up to salary scale 10
 * an allowance for home working costs is applicable for certain functions
 
 To specify those conditions, all benefit components elements can have a `conditions` list element. The element can contain zero, one or many (`0..n`) condition elements. A benefit component applies to workers that satisfy **all** conditions.
 
 ## Condition types
-In order to be able to automate the evaluation of conditions as much as possible, the SETU-standard introduces `condition types`. The first version of the standard contains 6 standardized condition types:
+The SETU has identified that there are many conditions. In order to be able to automate the evaluation of conditions as much as possible, the SETU-standard introduces `condition types`. The first version of the standard contains 6 standardized condition types:
 1. Salary scale conditions
 2. Function conditions
 3. Age conditions
@@ -30,7 +30,7 @@ Each condition type has its own set of object properties that are needed for the
 The list of defined condition types is maintained as a codelist here: [SETU Condition types](https://setu.semantic-treehouse.nl/codelist/Codelist_89d3b9a9-8927-45de-b578-1cf96a90e6a3).
 
 ## Example json
-The example below gives an impression of how the `conditions` element is used. It specifies 3 conditions that apply the overtime allowance. A worker needs to meet ALL 3 conditions for the allowance to apply.
+The example below gives an impression of how the `conditions` element is used. It specifies 3 conditions that apply to the overtime allowance. A worker needs to meet ALL 3 conditions for the allowance to apply.
 
 ```json
 "conditions": [{
