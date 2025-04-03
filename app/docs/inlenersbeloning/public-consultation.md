@@ -1,6 +1,10 @@
-# How to review?
+# Public consultation
 
-The SETU Standard for Inlenersbeloning v1.0 is currently under review. The public consultation period runs from 7 April till 2 May 2025.
+:::caution DISCLAIMER
+The SETU Standard for Inlenersbeloning v1.0 is currently under review.
+
+The public consultation period runs from 7 April till 2 May 2025.
+:::
 
 ## Where to find the specification?
 

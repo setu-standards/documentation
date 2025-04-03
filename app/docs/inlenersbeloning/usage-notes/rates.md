@@ -1,5 +1,13 @@
 # Building block equal pay
 
+:::caution DISCLAIMER
+The SETU Standard for Inlenersbeloning v1.0 is currently under review.
+
+The public consultation period runs from 7 April till 2 May 2025. See [this page](./../public-consultation.md) for more information.
+
+Some documentation in this section is a draft and subject to change. Feedback and suggestions are welcome to help refine and finalize these documents.
+:::
+
 ## Introduction
 
 The 'inlenersbeloning' data standard is created from a set of building blocks and a set of generic elements. The template of the building blocks all follow a similar structure, which we call "equal pay". Multiple of these building blocks taken together can be used to describe almost all regulations and employment conditions applicable to a certain employee. As the building block 'equal pay' is reused throughout the 'inlenersbeloning', below its general structure will be further explained. 

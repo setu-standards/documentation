@@ -1,5 +1,13 @@
 # Scenarios
 
+:::caution DISCLAIMER
+The SETU Standard for Inlenersbeloning v1.0 is currently under review.
+
+The public consultation period runs from 7 April till 2 May 2025. See [this page](./public-consultation.md) for more information.
+
+Some documentation in this section is a draft and subject to change. Feedback and suggestions are welcome to help refine and finalize these documents.
+:::
+
 The exchange of equal pay (Inlenersbeloning) data involves communication between the staffing supplier, staffing customer, and intermediary parties, including their respective systems. The SETU inlenersbeloning standard defines two different scenarios for data exchange between those parties, as depicted in the picture below:
 
 * **Scenario 1:** The staffing customer provides the equal pay data directly to the staffing customer without the involvement of CAO service providers.
