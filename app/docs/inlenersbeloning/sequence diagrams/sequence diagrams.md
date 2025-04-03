@@ -1,4 +1,12 @@
-# Sequence diagrams 
+# Sequence diagrams
+
+:::caution DISCLAIMER
+The SETU Standard for Inlenersbeloning v1.0 is currently under review.
+
+The public consultation period runs from 7 April till 2 May 2025. See [this page](./../public-consultation.md) for more information.
+
+Some documentation in this section is a draft and subject to change. Feedback and suggestions are welcome to help refine and finalize these documents.
+:::
 
 The page contains several sequence diagrams illustrating the communication between the backoffice systems of a staffing supplier and a staffing customer and a CAO service provider for exchanging the SETU Inlenersbeloning message
 
