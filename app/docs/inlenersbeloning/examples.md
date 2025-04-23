@@ -1,7 +1,7 @@
 # Examples
 
 :::caution DISCLAIMER
-The SETU Standard for Inlenersbeloning v1.0 is currently under review.
+The SETU Standard for Inquiry Pay Equity v1.0 is currently under review.
 
 The public consultation period runs from 7 April till 2 May 2025. See [this page](./public-consultation.md) for more information.
 

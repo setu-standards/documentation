@@ -1,7 +1,7 @@
 # Public consultation
 
 :::caution DISCLAIMER
-The SETU Standard for Inlenersbeloning v1.0 is currently under review.
+The SETU Standard for Inquiry Pay Equity v1.0 is currently under review.
 
 The public consultation period runs from 7 April till 2 May 2025.
 :::
@@ -10,7 +10,7 @@ The public consultation period runs from 7 April till 2 May 2025.
 
 The management and maintenance of this message specification is carried out in our [SETU standards portal](https://setu.semantic-treehouse.nl/). The message specification can be found here:
 
-- [Inlenersbeloning](https://setu.semantic-treehouse.nl/message-model-tree/Message_39959e0f-7327-4eb8-900c-ed33b0089b0f?panes=element_tree:Message_39959e0f-7327-4eb8-900c-ed33b0089b0f:dqdk37:primary): for the exchange of Inlenersbeloning data.
+- [Inquiry Pay Equity](https://setu.semantic-treehouse.nl/message-model-tree/Message_39959e0f-7327-4eb8-900c-ed33b0089b0f?panes=element_tree:Message_39959e0f-7327-4eb8-900c-ed33b0089b0f:dqdk37:primary): for the exchange of Inquiry Pay Equity data.
 
 ### Additional documents
 

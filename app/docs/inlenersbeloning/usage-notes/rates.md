@@ -1,7 +1,7 @@
-# Building block equal pay
+# Building block pay equity
 
 :::caution DISCLAIMER
-The SETU Standard for Inlenersbeloning v1.0 is currently under review.
+The SETU Standard for Inquiry Pay Equity v1.0 is currently under review.
 
 The public consultation period runs from 7 April till 2 May 2025. See [this page](./../public-consultation.md) for more information.
 
@@ -10,12 +10,12 @@ Some documentation in this section is a draft and subject to change. Feedback an
 
 ## Introduction
 
-The 'inlenersbeloning' data standard is created from a set of building blocks and a set of generic elements. The template of the building blocks all follow a similar structure, which we call "equal pay". Multiple of these building blocks taken together can be used to describe almost all regulations and employment conditions applicable to a certain employee. As the building block 'equal pay' is reused throughout the 'inlenersbeloning', below its general structure will be further explained. 
+The 'inquiry-pay-equity' data standard is created from a set of building blocks and a set of generic elements. The template of the building blocks all follow a similar structure, which we call "pay equity". Multiple of these building blocks taken together can be used to describe almost all regulations and employment conditions applicable to a certain employee. As the building block 'pay equity' is reused throughout the 'inquiry-pay-equity', below its general structure will be further explained. 
 
-## What is the building block 'equal pay'?
-As stated, the 'equal pay' building block is a standardized set of elements that is used to describe almost all employment conditions and regulations in the 'inlenersbeloning' data standard. This building block makes it possible to describe a great variety of regulations in a uniform way. These regulations range from allowances & compensations to paid leave & sick pay. 
+## What is the building block 'pay equity'?
+As stated, the 'pay equity' building block is a standardized set of elements that is used to describe almost all employment conditions and regulations in the 'inquiry-pay-equity' data standard. This building block makes it possible to describe a great variety of regulations in a uniform way. These regulations range from allowances & compensations to paid leave & sick pay. 
 
-## What are some of the key features of the building block 'equal pay'?
+## What are some of the key features of the building block 'pay equity'?
 - **Type of regulation:** This element indicates the type of regulation. Examples include: the type of compensation (e.g. overtime compensation) or type of leave (e.g. paid leave).
 - **Effective period:** This period indicates what period the regulation is applicable. It uses the elements 'validFrom' and 'validTo'. This element is not connected to when the regulation is earned or the compensation is granted, but rather focusses on the effective time period of the regulation itself.
 - **Periods:** This element defines the time period in which the regulation is applicable to an employee and thus 'earned'. The combination of the three following elements allows us to specify individual points in time, ranges of times and recurring times. 
