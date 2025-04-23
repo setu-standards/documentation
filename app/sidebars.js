@@ -80,7 +80,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Inlenersbeloning v1.0",
+      label: "Inquiry Pay Equity v1.0",
       collapsed: true,
       link: {type: 'doc', id: 'inlenersbeloning/README'},
       items: [
@@ -128,7 +128,7 @@ module.exports = {
         },
         {
           type: 'doc',
-          label: "OAS Inlenersbeloning",
+          label: "OAS Inquiry Pay Equity",
           id: 'api/oas-inlenersbeloning',
         },
         {

@@ -28,21 +28,21 @@ POST /purchase-to-pay/staffing-order/request-for-quotation/c93efb20-1acd-447b-87
 
 This resource identifier, assigned by the API client, might not always be distinct from the document ID in the message body. For some of the Purchase to Pay message these two identifiers might be the same, as long as they are unique for the API server.
 
-### Inlenersbeloning
+### Inquiry Pay Equity
 
-The rules for the resource identifier that apply to purchase-to-pay also apply to inlenersbeloning. Looking like this:
+The rules for the resource identifier that apply to purchase-to-pay also apply to inquiry pay equity. Looking like this:
 
 ```
-POST /inlenersbeloning{id}:
+POST /inquiry-pay-equity{id}:
 ```
 
 Where {id} is replaced by the actual UUID identifier, such as:
 
 ```
-POST /inlenersbeloning/c93efb20-1acd-447b-87e7-fadb108d8a0e:
+POST /inquiry-pay-equity/c93efb20-1acd-447b-87e7-fadb108d8a0e:
 ```
 
-This resource identifier, assigned by the API client, might not always be distinct from the document ID in the message body. For some of the Inlenersbeloning message these two identifiers might also be the same, as long as they are unique for the API server.
+This resource identifier, assigned by the API client, might not always be distinct from the document ID in the message body. For some of the Inquiry Pay Equity message these two identifiers might also be the same, as long as they are unique for the API server.
 
 ### Planning and Scheduling
 

@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  title: SETU API for Equal Pay
+  title: SETU API for Inquiry Pay Equity
   description: |
     Set of API specifications that allows for exchange of information related to the equal pay of flexworkers.
     Moreover, the API allows to exchange information regarding salarishuizen, toeslagen regelen, en andere regelingen die van toepassing zijn op 1 of meerdere functies.
@@ -14,39 +14,39 @@ externalDocs:
   url: https://www.setu.nl
 
 tags:
-  - name: "Inlenersbeloning"
-    description: Set of APIs for exchanging equal pay information.
+  - name: "Inquiry Pay Equity"
+    description: Set of APIs for exchanging pay equity information.
   - name: "Scenario 1 | Supplier backoffice APIs"
     description: Set of APIs to be implemented by the backoffice of the supplier.
   - name: "Scenario 2 | Supplier backoffice APIs"
     description: Set of APIs to be implemented by the backoffice of the supplier.
-  - name: "Inlenersbeloning request"
+  - name: "Inquiry Pay Equity request"
     description: "TO BE DEVELOPED"
 
 
 ############################################################
-################## Inlenersbeloning #######################
+################## Inquiry Pay Equity #######################
 ############################################################
 
 paths:
-  /inlenersbeloning/{id}:
+  /inquiry-pay-equity/{id}:
     post:
-      tags: ["Inlenersbeloning", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
-      summary: Submit a new inlenersbeloning
+      tags: ["Inquiry Pay Equity", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
+      summary: Submit a new inquiry-pay-equity message
       parameters:
         - $ref: '#/components/parameters/ResourceIdentifier'
         - $ref: '#/components/parameters/VersionId'
         - $ref: '#/components/parameters/ContentType'
       requestBody:
         description: |
-          Complete inlenersbeloning message as specified by SETU.
+          Complete inquiry-pay-equity message as specified by SETU.
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/inlenersbeloning'
+              $ref: '#/components/schemas/inquiry-pay-equity'
           application/xml:
             schema:
-              $ref: '#/components/schemas/inlenersbeloning'
+              $ref: '#/components/schemas/inquiry-pay-equity'
       responses:
         '202': 
           $ref: '#/components/responses/202'
@@ -66,21 +66,21 @@ paths:
           $ref: '#/components/responses/500'
         
     get:
-      tags: ["Inlenersbeloning", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
-      summary: Get the information about an existing inlenersbeloning message
+      tags: ["Inquiry Pay Equity", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
+      summary: Get the information about an existing inquiry-pay-equity message
       parameters:
         - $ref: '#/components/parameters/ResourceIdentifier'
         - $ref: '#/components/parameters/ContentType'
       responses:
         '200':
-          description: OK | The inlenersbeloning (as submitted in the request body)
+          description: OK | The inquiry-pay-equity (as submitted in the request body)
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inlenersbeloning'
+                $ref: '#/components/schemas/inquiry-pay-equity'
             application/xml:
               schema:
-                $ref: '#/components/schemas/inlenersbeloning'
+                $ref: '#/components/schemas/inquiry-pay-equity'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -93,12 +93,12 @@ paths:
           $ref: '#/components/responses/500'
         
     put:
-      tags: ["Inlenersbeloning", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
-      summary: Update an existing inlenersbeloning as a whole. The request body replaces all previous shared information of the resource
+      tags: ["Inquiry Pay Equity", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
+      summary: Update an existing inquiry-pay-equity as a whole. The request body replaces all previous shared information of the resource
       parameters:
         - in: path
           name: id
-          description: The resource identifier of the inlenersbeloning as a whole
+          description: The resource identifier of the inquiry-pay-equity as a whole
           required: true
           schema:
             type: string
@@ -107,14 +107,14 @@ paths:
         - $ref: '#/components/parameters/ContentType'
       requestBody:
         description: |
-          Complete inlenersbeloning message as specified by SETU.
+          Complete inquiry-pay-equity message as specified by SETU.
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/inlenersbeloning'
+              $ref: '#/components/schemas/inquiry-pay-equity'
           application/xml:
             schema:
-              $ref: '#/components/schemas/inlenersbeloning'
+              $ref: '#/components/schemas/inquiry-pay-equity'
       responses:
         '200': 
           $ref: '#/components/responses/200'
@@ -130,12 +130,12 @@ paths:
           $ref: '#/components/responses/500'
         
     delete:
-      tags: ["Inlenersbeloning", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
-      summary: Remove an existing inlenersbeloning
+      tags: ["Inquiry Pay Equity", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
+      summary: Remove an existing inquiry-pay-equity
       parameters:
         - in: path
           name: id
-          description: The resource identifier of the inlenersbeloning as a whole
+          description: The resource identifier of the inquiry-pay-equity as a whole
           required: true
           schema:
             type: string
@@ -155,61 +155,61 @@ paths:
           $ref: '#/components/responses/500'
 
 #####################################################################################
-################## Inlenersbeloning request - to be developed #######################
+################## Inquiry Pay Equity request - to be developed #######################
 #####################################################################################
 
 
-/inlenersbeloning/request:
+/inquiry-pay-equity/request:
     post:
-      summary: Submit a new inlenersbeloning
+      summary: Submit a new inquiry-pay-equity
       parameters:
         - $ref: '#/components/parameters/ContentType'
       requestBody:
         description: |
-          Complete inlenersbeloning request message as specified by SETU.
+          Complete inquiry-pay-equity request message as specified by SETU.
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/inlenersbeloning'
+              $ref: '#/components/schemas/inquiry-pay-equity'
           application/xml:
             schema:
-              $ref: '#/components/schemas/inlenersbeloning'
+              $ref: '#/components/schemas/inquiry-pay-equity'
       responses:
         '201':
-          description: 201 Created | The created inlenersbeloning (as submitted in the request body)
+          description: 201 Created | The created inquiry-pay-equity (as submitted in the request body)
           headers:
             Location:
               $ref: '#/components/headers/Date'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inlenersbeloning'
+                $ref: '#/components/schemas/inquiry-pay-equity'
             application/xml:
               schema:
-                $ref: '#/components/schemas/inlenersbeloning'
+                $ref: '#/components/schemas/inquiry-pay-equity'
         
     get:
-      summary: Get the information about an existing inlenersbeloning message
+      summary: Get the information about an existing inquiry-pay-equity message
       parameters:
         - $ref: '#/components/parameters/ResourceIdentifier'
         - $ref: '#/components/parameters/ContentType'
       responses:
         '200':
           description: |
-            The inlenersbeloning as specified by SETU.
+            The inquiry-pay-equity as specified by SETU.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inlenersbeloning'
+                $ref: '#/components/schemas/inquiry-pay-equity'
             application/xml:
               schema:
-                $ref: '#/components/schemas/inlenersbeloning'
+                $ref: '#/components/schemas/inquiry-pay-equity'
     put:
-      summary: Update an existing inlenersbeloning as a whole. The request body replaces all previous shared information of the resource
+      summary: Update an existing inquiry-pay-equity as a whole. The request body replaces all previous shared information of the resource
       parameters:
         - in: path
           name: id
-          description: The resource identifier of the inlenersbeloning as a whole
+          description: The resource identifier of the inquiry-pay-equity as a whole
           required: true
           schema:
             type: string
@@ -218,37 +218,37 @@ paths:
         - $ref: '#/components/parameters/ContentType'
       requestBody:
         description: |
-          Complete inlenersbeloning message as specified by SETU.
+          Complete inquiry-pay-equity message as specified by SETU.
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/inlenersbeloning'
+              $ref: '#/components/schemas/inquiry-pay-equity'
           application/xml:
             schema:
-              $ref: '#/components/schemas/inlenersbeloning'
+              $ref: '#/components/schemas/inquiry-pay-equity'
       responses:
         '200':
-          description: 200 OK | The updated inlenersbeloning (as submitted in the request body)
+          description: 200 OK | The updated inquiry-pay-equity (as submitted in the request body)
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inlenersbeloning'
+                $ref: '#/components/schemas/inquiry-pay-equity'
             application/xml:
               schema:
-                $ref: '#/components/schemas/inlenersbeloning'
+                $ref: '#/components/schemas/inquiry-pay-equity'
     delete:
-      summary: Remove an existing inlenersbeloning
+      summary: Remove an existing inquiry-pay-equity
       parameters:
         - in: path
           name: id
-          description: The resource identifier of the inlenersbeloning as a whole
+          description: The resource identifier of the inquiry-pay-equity as a whole
           required: true
           schema:
             type: string
           example: 049b4540-620f-434a-bfd1-d09f9e8cdc8c
       responses:
         '204':
-          description: The inlenersbeloning is succesfully removed
+          description: The inquiry-pay-equity is succesfully removed
   
 
   
@@ -264,7 +264,7 @@ components:
       description: This is the resource identifier assigned by the API client. This is the identifier specified in the path of this operation request.
       schema:
         type: string
-        example: /inlenersbeloning/{ID} | /inlenersbeloning/c93efb20-1acd-447b-87e7-fadb108d8a0e
+        example: /inquiry-pay-equity/{ID} | /inquiry-pay-equity/c93efb20-1acd-447b-87e7-fadb108d8a0e
   parameters:
     VersionId:
       in: header
@@ -293,7 +293,7 @@ components:
             example: c93efb20-1acd-447b-87e7-fadb108d8a0e
           description: This is the resource identifier assigned by the API client to the created resource.  This is the id parameter used in path operations, for GET, PUT and DELETE operations.
   schemas:
-    inlenersbeloning:
+    inquiry-pay-equity:
       $ref: 'https://github.com/setu-standards/xml-specifications/raw/refs/heads/main/setu-inlenersbeloning/v1.0/inlenersbeloning.yml'
     error-object:
       type: object
@@ -304,16 +304,16 @@ components:
           type: string
   responses:
     '200':
-      description: OK | The updated inlenersbeloning (as submitted in the request body)
+      description: OK | The updated inquiry-pay-equity (as submitted in the request body)
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/inlenersbeloning'
+            $ref: '#/components/schemas/inquiry-pay-equity'
         application/xml:
           schema:
-            $ref: '#/components/schemas/inlenersbeloning'
+            $ref: '#/components/schemas/inquiry-pay-equity'
     '201':
-      description: 201 Created | The created inlenersbeloning (as submitted in the request body)
+      description: 201 Created | The created inquiry-pay-equity (as submitted in the request body)
       headers:
         Date:
           $ref: '#/components/headers/Date'
@@ -322,10 +322,10 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/inlenersbeloning'
+            $ref: '#/components/schemas/inquiry-pay-equity'
         application/xml:
           schema:
-            $ref: '#/components/schemas/inlenersbeloning'
+            $ref: '#/components/schemas/inquiry-pay-equity'
     '202':
       description: Accepted. Successful request, resource is not (yet) created. This response code is not supported by the SETU (asynchronous)
       content:
@@ -334,7 +334,7 @@ components:
             type: object
             description: No content
     '204':
-      description: The inlenersbeloning is succesfully removed
+      description: The inquiry-pay-equity is succesfully removed
     '400':
       description: 400 Bad request | The request is invalid. E.g. due to syntax error or invalid response body
       content:
