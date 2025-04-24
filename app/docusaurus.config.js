@@ -72,11 +72,11 @@ const config = {
             
           },
           {
-            id: 'inlenersbeloning-api',
-            spec: 'api/inlenersbeloning.yml',
-            route: '/api/inlenersbeloning',
+            id: 'gelijkwaardige-beloning-api',
+            spec: 'api/gelijkwaardige-beloning.yml',
+            route: '/api/gelijkwaardige-beloning',
             layout: {
-              title: 'API for Inlenersbeloning'
+              title: 'API for Gelijkwaardige Beloning'
             },
             
           },
