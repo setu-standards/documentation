@@ -17,7 +17,7 @@ The management and maintenance of this message specification is carried out in o
 The corresponding documentation and API specifications can be found on the next pages of this documentation portal, or check the following links:
 
 - Scenario's: [link](https://standard.setu.nl/docs/inlenersbeloning/scenarios)
-- Example messages and XML & JSON Schemas: [link]([https://github.com/setu-standards/xml-specifications/tree/main/setu-gelijkwaardige-beloning/v1.0](https://github.com/setu-standards/xml-specifications/tree/main/setu-inlenersbeloning/v1.0)
+- Example messages and XML & JSON Schemas: [link](https://github.com/setu-standards/xml-specifications/tree/main/setu-inlenersbeloning/v1.0)
 - API Specifications: [link](https://standard.setu.nl/docs/api/oas-gelijkwaardige-beloning)
 - Validator: [link](https://setu.semantic-treehouse.nl/validator/SyntaxBinding_7468e93a-fd12-433b-8c05-0c52f4048cec)
 - Other documentation: [link](https://standard.setu.nl/docs/inlenersbeloning/)
