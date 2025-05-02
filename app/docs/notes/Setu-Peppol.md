@@ -8,6 +8,9 @@ SETU standards define the _content_ and structure of messages for the temporar
 Through agreements between SETU and the Dutch Peppol Authority (NPa), standard SETU XML messages can now be sent using the PEPPOL network infrastructure.
 
 To enable this, specific **Document Type Identifiers** have been officially registered within the PEPPOL network for the various SETU message types. These identifiers are crucial for the **identification and processing** of the messages within the network. They ensure that the receiving system recognizes the type of SETU message and can process its content accordingly. **The image below provides an example overview of the Document Type Identifiers assigned to SETU messages. For the complete, authoritative list, please refer to the official PEPPOL Codelists page mentioned below.**  
+
+<br/>
+
 ![](../../static/img/peppol%20document%20types.png)
 
 These identifiers are registered in the receiver's Service Metadata Publisher (SMP), which acts as an address book within PEPPOL. The SMP lists which document types an organization can receive and via which Access Point. When a message is sent, the sending AP queries the central Service Metadata Locator (SML) and then the receiver's SMP to verify that the recipient can handle the specific SETU message type and to determine the correct delivery endpoint (the receiver's AP).
