@@ -120,6 +120,8 @@ module.exports = {
           label: "Setu & Peppol",
           id: 'notes/Setu-Peppol',
         },
+      ],
+    },
     {
       type: "category",
       label: "API documentation",
