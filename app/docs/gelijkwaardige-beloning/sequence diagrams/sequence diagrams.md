@@ -1,11 +1,9 @@
 # Sequence diagrams
 
-:::caution DISCLAIMER
-The SETU Standard for Inquiry Pay Equity v1.0 is currently under review.
+:::info DOCUMENTATION
+The message models can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/specifications). There you can also find example messages and validation artifacts in both XML and JSON.
 
-The public consultation period runs from 7 April till 2 May 2025. See [this page](./../public-consultation.md) for more information.
-
-Some documentation in this section is a draft and subject to change. Feedback and suggestions are welcome to help refine and finalize these documents.
+The REST API specifications can be found here: [Purchase to Pay API specifications](../api/oas-gelijkwaardige-beloning.mdx)
 :::
 
 The page contains several sequence diagrams illustrating the communication between the backoffice systems of a staffing supplier and a staffing customer and a CAO service provider for exchanging the SETU Inquiry Pay Equity message

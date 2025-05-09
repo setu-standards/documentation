@@ -1,11 +1,9 @@
 # Inquiry Pay Equity v1.0
 
-:::caution DISCLAIMER
-The SETU Standard for Inquiry Pay Equity v1.0 is currently under review.
+:::info DOCUMENTATION
+The message models can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/specifications). There you can also find example messages and validation artifacts in both XML and JSON.
 
-The public consultation period runs from 7 April till 2 May 2025. See [this page](./public-consultation.md) for more information.
-
-Some documentation in this section is a draft and subject to change. Feedback and suggestions are welcome to help refine and finalize these documents.
+The REST API specifications can be found here: [Purchase to Pay API specifications](../api/oas-gelijkwaardige-beloning.mdx)
 :::
 
 ## Introduction
@@ -36,6 +34,6 @@ The exchange of pay equity (Inquiry Pay Equity) data involves communication betw
 The new Inquiry Pay Equity SETU standard is based on a standardized SETU language in which concepts and relationships with associated terminology and definitions are specified. The SETU reuses the terminology and definitions of the latest version 4.3 of the international HR Open standard as much as possible for its SETU language. Where necessary, additional relationships have been established in the SETU language between existing HR Open concepts, or new concepts have been introduced. Definitions have also been improved and made more suitable for the inquiry pay equity context.
 
 ## Public consultation
-For version 1.0 of the Inquiry Pay Equity standard, a public consultation will be conducted in April.
+For version 1.0 of the Inquiry Pay Equity standard, a public consultation was performed from 7 april till 2nd of May.
 
-Interested parties will be invited to review the delivered standard and provide feedback. These responses will be considered by the SETU, discussed with the working group, and, where necessary, adjustments will be made to the draft version before the final publication.
+Interested parties were invited to review the delivered standard and provide review comments. Those responses were considered by the SETU, discussed with the working group and, where necessary, the draft version adjusted before final publication.

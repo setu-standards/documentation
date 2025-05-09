@@ -82,30 +82,25 @@ module.exports = {
       type: "category",
       label: "Inquiry Pay Equity v1.0",
       collapsed: true,
-      link: {type: 'doc', id: 'inlenersbeloning/README'},
+      link: {type: 'doc', id: 'gelijkwaardige-beloning/README'},
       items: [
         {
           type: "doc",
-          label: "Public consultation",
-          id: "inlenersbeloning/public-consultation",
-        },
-        {
-          type: "doc",
           label: "Scenarios",
-          id: "inlenersbeloning/scenarios",
+          id: "gelijkwaardige-beloning/scenarios",
         },
         {
           type: "doc",
           label: "Sequence diagrams",
-          id:"inlenersbeloning/sequence diagrams/sequence diagrams",
+          id:"gelijkwaardige-beloning/sequence diagrams/sequence diagrams",
         },
         {
           type: "category",
           label: "Usage notes",
           collapsed: true,
           items: [
-            "inlenersbeloning/usage-notes/rates",
-            "inlenersbeloning/usage-notes/conditions",
+            "gelijkwaardige-beloning/usage-notes/rates",
+            "gelijkwaardige-beloning/usage-notes/conditions",
           ],
         }
       ]
