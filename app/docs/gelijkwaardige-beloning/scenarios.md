@@ -3,7 +3,7 @@
 :::info DOCUMENTATION
 The message models can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/specifications). There you can also find example messages and validation artifacts in both XML and JSON.
 
-The REST API specifications can be found here: [Purchase to Pay API specifications](../api/oas-gelijkwaardige-beloning.mdx)
+The REST API specifications can be found here: [Purchase to Pay API specifications](../api/oas-gelijkwaardige-beloning)
 :::
 
 The exchange of pay equity (Inquiry Pay Equity) data involves communication between the staffing supplier, staffing customer, and intermediary parties, including their respective systems. The SETU Inquiry Pay Equity standard defines two different scenarios for data exchange between those parties, as depicted in the picture below:
