@@ -294,7 +294,7 @@ components:
           description: This is the resource identifier assigned by the API client to the created resource.  This is the id parameter used in path operations, for GET, PUT and DELETE operations.
   schemas:
     inquiry-pay-equity:
-      $ref: 'https://github.com/setu-standards/xml-specifications/raw/refs/heads/main/setu-inlenersbeloning/v1.0/inlenersbeloning.yml'
+      $ref: 'https://raw.githubusercontent.com/setu-standards/xml-specifications/refs/heads/main/setu-gelijkwaardige-beloning/v1.0/InquirePayEquity-v1.0.yml'
     error-object:
       type: object
       properties:
