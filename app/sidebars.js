@@ -112,18 +112,6 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Notes",
-      collapsed: true,
-      items: [
-        {
-          type: 'doc', 
-          label: "Setu & Peppol",
-          id: 'notes/Setu-Peppol',
-        },
-      ]
-    },
-    {
-      type: "category",
       label: "API documentation",
       collapsed: true,
       link: {type: 'doc', id: 'api/README'},
@@ -153,7 +141,12 @@ module.exports = {
             'api/usage-notes/response-codes',
             'api/usage-notes/attachment',
           ], 
-        }
+        },
+        {
+          type: 'doc',
+          label: "Setu & Peppol",
+          id: 'api/Setu-Peppol',
+        },
       ],
     },
   ],
