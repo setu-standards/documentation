@@ -6,47 +6,164 @@ The message models can be found in [Semantic Treehouse](https://setu.semantic-tr
 The REST API specifications can be found here: [Purchase to Pay API specifications](../api/oas-gelijkwaardige-beloning)
 :::
 
-For nearly all benefit components certain conditions may apply. This means that the component is or is not applicable to workers that meet these conditions. For example:
-* an overtime allowance might only be applicable up to salary scale 10
-* an allowance for home working costs is applicable for certain functions
+For nearly all benefit components, certain conditions may apply. This means that the component is or is not applicable to workers who meet these conditions. For example:
+* An overtime allowance might only be applicable up to a certain salary scale.
+* An allowance for home working costs might be applicable only for specific job functions.
+* A youth salary scale might only apply to employees within a certain age range.
 
-To specify those conditions, all benefit components elements can have a `conditions` list element. The element can contain zero, one or many (`0..n`) condition elements. A benefit component applies to workers that satisfy **all** conditions.
+To specify these conditions, most benefit component elements (like those in `remuneration`, `allowance`, `leave`, etc.) can have a `conditions` list element. This element can contain zero, one, or many (`0..n`) condition objects. A benefit component typically applies to workers who satisfy **all** specified conditions within that list.
 
 ## Condition types
-The SETU has identified that there are many conditions. In order to be able to automate the evaluation of conditions as much as possible, the SETU-standard introduces `condition types`. The first version of the standard contains 6 standardized condition types:
-1. Salary scale conditions
-2. Function conditions
-3. Age conditions
-4. Employment duration conditions
-5. After `x` hours per day
-6. Textual conditions; catches "other conditions"
+SETU has identified various conditions. To enable automation in evaluating these conditions, the SETU standard introduces `conditionType`. The first version of the standard includes several common condition types, such as:
+1.  Salary scale conditions
+2.  Function conditions (related to job roles)
+3.  Age conditions
+4.  Employment duration conditions
+5.  Conditions based on hours worked (e.g., "after X hours per day")
+6.  Textual conditions (for "other conditions" not covered by specific types)
 
-For next versions, more common conditions types can be added. The `conditions` list structure is designed for this.
+Future versions may include more common condition types. The `conditions` list structure is designed for this extensibility.
 
-Each condition type has its own set of object properties that are needed for the automatic evaluation. E.g. a salary scale condition can contain a `salaryScaleMaxInclusive` element to specify that a benefit component is only applicable for workers up to and including a certain salary scale.
+Each `conditionType` can be accompanied by specific properties relevant to its evaluation. However, for version 1.0, only the conditionType is implemented. The following (commented out) sections of the following examples showcase the models future capabilities. For instance, an `ageCondition` will include properties like `ageMinInclusive` or `ageMaxExclusive`. If a structured `conditionType` is not available or suitable, the `textualCondition` type can be used with a `description` field.
 
 The list of defined condition types is maintained as a codelist here: [SETU Condition types](https://setu.semantic-treehouse.nl/codelist/Codelist_89d3b9a9-8927-45de-b578-1cf96a90e6a3).
 
-## Example json
-The example below gives an impression of how the `conditions` element is used. It specifies 3 conditions that apply to the overtime allowance. A worker needs to meet ALL 3 conditions for the allowance to apply.
+## Example JSON
+The examples below illustrate how the `conditions` element is used in various parts of the pay equity specification.
+
+### 1. Function-based Condition on a Remuneration Block
+
+This example shows a condition applied to an entire remuneration block. This block is applicable to all functions, except for the function with ID "function123".
 
 ```json
-"conditions": [{
-    "conditionType": "salaryScaleCondition",
-    "salaryScaleMaxInclusive": "10" // value refer to enumerations > salaryScale > name
-},{
-    "conditionType": "functionCondition",
-    "applicableToAllFunctions": true,
-    "except": ["function123"] // values refer to positionProfile > positionId > value
-},{
-    "conditionType": "textualCondition",
-    "description": "Indien u overwerkt aansluitend aan uw dagelijkse werktijd geldt als aanvullende voorwaarde dat u dan pas recht heeft op een vergoeding als u: * minimaal 15 minuten overwerkt als uw werktijd die dag minder dan 4 uur bedraagt of * minimaal 30 minuten overwerkt als uw werktijd die dag 4 uur of meer bedraagt."
-}]
+{
+    "remuneration": [
+        {
+            // ... other remuneration details ...
+            "conditions": [ // Conditions that apply to this entire remuneration block (salary table).
+                {
+                    "conditionType": "functionCondition", // Specifies the condition relates to job functions.
+                    // "applicableToAllFunctions": true, // Indicates if it applies to all functions by default.
+                    // "except": ["function123"] // List of position IDs (from positionProfile) that are excluded from this remuneration block.
+                }
+            ]
+        }
+        // ... other remuneration blocks ...
+    ]
+}
+```
+In this case, the `remuneration` settings would apply to employees in any job function, unless their specific `positionId` is "function123".
+
+### 2. Employment Duration Condition for an Individual Salary Increase
+
+This example shows a condition for an individual salary increase. The increase is dependent on the employee meeting certain employment duration criteria.
+
+```json
+{
+    "remuneration": [
+        {
+            // ...
+            "individualSalaryIncreaseRate": [
+                {
+                    "expenseDate": "2026-01-01", // Date when this specific increase rule takes effect.
+                    "line": {
+                        // ... amount and interval details ...
+                        "conditions": [ // Conditions that must be met for this specific increase rate to apply.
+                            {
+                                "conditionType": "employmentDurationCondition" // Type of condition (e.g., based on tenure).
+                                // Other condition fields like 'durationYears' (e.g., minimum years of employment)
+                                // would be specified here, based on the detailed schema for "employmentDurationCondition".
+                            }
+                        ]
+                    }
+                }
+            ]
+            // ...
+        }
+    ]
+}
+```
+This `employmentDurationCondition` would be further detailed with specific properties like the required number of years/months of employment for the increase to apply.
+
+### 3. Textual Condition based on Performance
+
+Here, an individual salary increase is based on employee performance. The `conditionType: "textualCondition"` with a separate `description` field can be used as a way to list any type of condition in a free text field.
+
+```json
+{
+    "remuneration": [
+        {
+            // ...
+            "individualSalaryIncreaseRate": [
+                {
+                    "expenseDate": "2026-01-01",
+                    "line": {
+                        "amount": {
+                            "value": "4",
+                            "unitCode": "percentage",
+                            // ... baseAmount ...
+                        },
+                        // ... intervalCode ...
+                        "conditions": [
+                            {
+                                "conditionType": "textualCondition" // Example of a textual condition.
+                                // "description": "Based on performance of the employee."
+                            }
+                        ]
+                    }
+                }
+            ]
+            // ...
+        }
+    ]
+}
 ```
 
-## JSON schema
+### 4. Age-based Condition on a Salary Step
 
-Below is a **snippet** of how the condition types are specified in JSON schema. This is used as such in the Open API specifications.
+This example is from a salary scale for youth minimum wages. A specific salary step applies only if an age condition is met.
+
+```json
+{
+    "remuneration": [
+        {
+            // ... (details for a youth remuneration block) ...
+            "salaryScale": [
+                {
+                    "name": "Minimum wage youth",
+                    // ...
+                    "salaryStep": [
+                        {
+                            "name": "Pay for youth: Age 18",
+                            "value": 1850.75,
+                            "minimumWage": true,
+                            "conditions": [
+                                {
+                                    "conditionType": "ageCondition" // Condition is based on age.
+                                    // Specific age fields like 'ageMinInclusive': 18, 'ageMaxExclusive': 19 would be detailed here
+                                    // according to the "ageCondition" type's schema.
+                                }
+                            ]
+                        }
+                        // ... other salary steps ...
+                    ]
+                }
+            ],
+            "conditions": [ // This outer condition applies to the whole "Minimum wage youth" remuneration block
+                {
+                    "conditionType": "ageCondition"
+                    // Specific age fields like 'ageMaxExclusive': 21 (e.g., applies to employees under 21) would be detailed here.
+                }
+            ]
+        }
+    ]
+}
+```
+In this scenario, the `salaryStep` "Pay for youth: Age 18" is only applicable if the employee's age meets the criteria defined within its `ageCondition` (e.g., the employee is 18 years old). The entire "Minimum wage youth" `remuneration` block itself also has an overarching `ageCondition`.
+
+## JSON Schema Snippet
+
+Below is a **snippet** illustrating how condition types might be specified in a JSON schema, often used in Open API specifications. This demonstrates a common approach using `anyOf` to allow different structures based on `conditionType`.
 
 ```yaml
   schemas:
@@ -55,41 +172,48 @@ Below is a **snippet** of how the condition types are specified in JSON schema. 
       items:
         $ref: '#/components/schemas/Condition'
     Condition:
-      type: object
       anyOf:
         - $ref: '#/components/schemas/TextualCondition'
         - $ref: '#/components/schemas/SalaryScaleCondition'
         - $ref: '#/components/schemas/FunctionCondition'
-      required:
-        - conditionType
+        - $ref: '#/components/schemas/AgeCondition'
+        - $ref: '#/components/schemas/EmploymentDurationCondition'
     TextualCondition:
       type: object
       properties:
         conditionType:
           type: string
-          const: textualCondition
+          const: textualCondition 
         description:
           type: string
+      required:
+        - conditionType
+        - description
     SalaryScaleCondition:
       type: object
       properties:
         conditionType:
           type: string
-          const: salaryScaleCondition
+          const: salaryScaleCondition 
         salaryScaleMaxInclusive:
           type: string
         salaryScaleMinInclusive:
           type: string
+      required:
+        - conditionType
     FunctionCondition:
       type: object
       properties:
         conditionType:
           type: string
-          const: functionCondition
+          const: functionCondition 
         applicableToAllFunctions:
           type: boolean
         except:
           type: array
           items:
             type: string
+      required:
+        - conditionType
+    # AgeCondition, EmploymentDurationCondition, etc., would be similarly defined.
 ```
