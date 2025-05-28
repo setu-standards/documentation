@@ -37,10 +37,10 @@ The SETU standard for Inquiry Pay Equity is based on this MIEP and takes into ac
     - Information on leave, Individual Choice Budget (IKB), pension, and other relevant schemes
 
 **What the standard does _not_ include:**
-- **Calculations:** The standard focuses on the structure of data about remuneration components, not on the actual calculations.
-- **All terms of employment:** The focus is on components relevant for pay equity.
-- **Detailed conditions:** Although conditions may apply to remuneration components (determining when they are applicable), the first version of the standard does not yet include all possible exceptions and detailed conditions.
-- **Legal interpretation:** The correct application and interpretation of the data (remuneration components) remain the responsibility of the parties involved.
+- *Calculations:* The standard focuses on the structure of data about remuneration components, not on the actual calculations.
+- *All terms of employment:* The focus is on components relevant for pay equity.
+- *Detailed conditions:* Although conditions may apply to remuneration components (determining when they are applicable), the first version of the standard does not yet include all possible exceptions and detailed conditions.
+- *Legal interpretation:* The correct application and interpretation of the data (remuneration components) remain the responsibility of the parties involved.
 
 ## Relationship with ABU and NBBU
 Applying and interpreting these remuneration components can be challenging. To provide more clarity and a platform for questions, the ABU and NBBU are developing the **wijzerbelonen.nl** platform. This platform aims to make it easier for employers and intermediaries to determine the correct pay. The SETU is working closely with the ABU and NBBU to ensure that our standard aligns well with this initiative.
