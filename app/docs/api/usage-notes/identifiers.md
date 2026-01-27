@@ -14,32 +14,32 @@ The resource identifier is a universally unique identifier (UUID), which is eith
 
 ### Purchase to pay
 
-When a new request is made (e.g. `POST /staffing-order/request-for-quotation/{id}`) the **API client** assigns a new identifier to the requested resource. The resource identifier can be passed as a `query parameter` in the path of the POST request. If you were to use this in a POST request, the endpoint might look like this:
+When a new request is made (e.g. `PUT /staffing-order/request-for-quotation/{id}`) the **API client** assigns a new identifier to the requested resource. The resource identifier is passed in the path of the PUT request. The endpoint looks like this:
 
 ```
-POST /purchase-to-pay/staffing-order/request-for-quotation/{id}:
+PUT /purchase-to-pay/staffing-order/request-for-quotation/{id}
 ```
 
 Where {id} is replaced by the actual UUID identifier, such as:
 
 ```
-POST /purchase-to-pay/staffing-order/request-for-quotation/c93efb20-1acd-447b-87e7-fadb108d8a0e:
+PUT /purchase-to-pay/staffing-order/request-for-quotation/c93efb20-1acd-447b-87e7-fadb108d8a0e
 ```
 
 This resource identifier, assigned by the API client, might not always be distinct from the document ID in the message body. For some of the Purchase to Pay message these two identifiers might be the same, as long as they are unique for the API server.
 
 ### Inquiry Pay Equity
 
-The rules for the resource identifier that apply to purchase-to-pay also apply to inquiry pay equity. Looking like this:
+The rules for the resource identifier that apply to purchase-to-pay also apply to inquiry pay equity. Since the inquiry pay equity uses the `PUT` method for both sending and updating messages, the endpoint looks like this:
 
 ```
-POST /inquiry-pay-equity{id}:
+PUT /inquiry-pay-equity/{id}
 ```
 
 Where {id} is replaced by the actual UUID identifier, such as:
 
 ```
-POST /inquiry-pay-equity/c93efb20-1acd-447b-87e7-fadb108d8a0e:
+PUT /inquiry-pay-equity/c93efb20-1acd-447b-87e7-fadb108d8a0e
 ```
 
 This resource identifier, assigned by the API client, might not always be distinct from the document ID in the message body. For some of the Inquiry Pay Equity message these two identifiers might also be the same, as long as they are unique for the API server.

@@ -30,9 +30,9 @@ tags:
 
 paths:
   /inquiry-pay-equity/{id}:
-    post:
+    put:
       tags: ["Inquiry Pay Equity", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
-      summary: Submit a new inquiry-pay-equity message
+      summary: Submit or update an inquiry-pay-equity message. In case of an update, the request body replaces all previous shared information of the resource. 
       parameters:
         - $ref: '#/components/parameters/ResourceIdentifier'
         - $ref: '#/components/parameters/VersionId'
@@ -48,8 +48,8 @@ paths:
             schema:
               $ref: '#/components/schemas/inquiry-pay-equity'
       responses:
-        '202': 
-          $ref: '#/components/responses/202'
+        '200':
+          $ref: '#/components/responses/200'
         '201':
           $ref: '#/components/responses/201'
         '204':
@@ -92,43 +92,6 @@ paths:
         '500':
           $ref: '#/components/responses/500'
         
-    put:
-      tags: ["Inquiry Pay Equity", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
-      summary: Update an existing inquiry-pay-equity as a whole. The request body replaces all previous shared information of the resource
-      parameters:
-        - in: path
-          name: id
-          description: The resource identifier of the inquiry-pay-equity as a whole
-          required: true
-          schema:
-            type: string
-          example: 049b4540-620f-434a-bfd1-d09f9e8cdc8c
-        - $ref: '#/components/parameters/VersionId'
-        - $ref: '#/components/parameters/ContentType'
-      requestBody:
-        description: |
-          Complete inquiry-pay-equity message as specified by SETU.
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/inquiry-pay-equity'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/inquiry-pay-equity'
-      responses:
-        '200': 
-          $ref: '#/components/responses/200'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '500':
-          $ref: '#/components/responses/500'
-        
     delete:
       tags: ["Inquiry Pay Equity", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
       summary: Remove an existing inquiry-pay-equity
@@ -160,8 +123,8 @@ paths:
 
 
 /inquiry-pay-equity/request:
-    post:
-      summary: Submit a new inquiry-pay-equity
+    put:
+      summary: Send or update an inquiry-pay-equity message
       parameters:
         - $ref: '#/components/parameters/ContentType'
       requestBody:
@@ -197,38 +160,6 @@ paths:
         '200':
           description: |
             The inquiry-pay-equity as specified by SETU.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/inquiry-pay-equity'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/inquiry-pay-equity'
-    put:
-      summary: Update an existing inquiry-pay-equity as a whole. The request body replaces all previous shared information of the resource
-      parameters:
-        - in: path
-          name: id
-          description: The resource identifier of the inquiry-pay-equity as a whole
-          required: true
-          schema:
-            type: string
-          example: 049b4540-620f-434a-bfd1-d09f9e8cdc8c
-        - $ref: '#/components/parameters/VersionId'
-        - $ref: '#/components/parameters/ContentType'
-      requestBody:
-        description: |
-          Complete inquiry-pay-equity message as specified by SETU.
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/inquiry-pay-equity'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/inquiry-pay-equity'
-      responses:
-        '200':
-          description: 200 OK | The updated inquiry-pay-equity (as submitted in the request body)
           content:
             application/json:
               schema:
