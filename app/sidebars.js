@@ -107,6 +107,11 @@ module.exports = {
             "gelijkwaardige-beloning/usage-notes/rates",
             "gelijkwaardige-beloning/usage-notes/conditions",
           ],
+        },
+        {
+          type: 'doc',
+          label: "Change log",
+          id: 'gelijkwaardige-beloning/releaseNotes',
         }
       ]
     },
