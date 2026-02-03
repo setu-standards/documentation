@@ -1,5 +1,12 @@
 # Scenarios
 
+:::caution DISCLAIMER
+The SETU Standard for Inquiry Pay Equity v2.0 is currently under review.
+
+The public consultation period runs from 6 Feb till 27 May 2026.
+:::
+
+
 :::info DOCUMENTATION
 The message models can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/specifications). There you can also find example messages and validation artifacts in both XML and JSON.
 
@@ -27,7 +34,7 @@ This exchange can take place at different stages:
 * Before and during the placement of the temporary worker
 * After the placement phase
 
-As seen in the picture, the pay equity data can be sent based on a trigger/request from the staffing supplier. However, this trigger request is currently outside the scope of the SETU standard and is not standardized. *Note*: This request process should not be confused with a data request of pay equity (de uitvraag). In this scenario, the staffing customer is responsible for delivering the complete set of pay equity data for one or more positions in their organisation.
+As seen in the picture, the pay equity data can be sent based on a trigger/request from the staffing supplier. However, this trigger request is currently outside the scope of the SETU standard and is not standardized. *Note*: This request process should not be confused with a data request of pay equity (de uitvraag). In this scenario, the staffing customer is responsible for delivering the complete set of pay equity data for one or more position profiles in their organisation.
 
 ![scenario 1](../../static/img/Scenario%201%20inlenersbeloning.png)
 

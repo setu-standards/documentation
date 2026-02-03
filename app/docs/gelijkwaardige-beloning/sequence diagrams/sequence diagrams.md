@@ -1,16 +1,23 @@
 # Sequence diagrams
 
+:::caution DISCLAIMER
+The SETU Standard for Inquiry Pay Equity v2.0 is currently under review.
+
+The public consultation period runs from 6 Feb till 27 May 2026.
+:::
+
+
 :::info DOCUMENTATION
 The message models can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/specifications). There you can also find example messages and validation artifacts in both XML and JSON.
 
-The REST API specifications can be found here: [Purchase to Pay API specifications](../api/oas-gelijkwaardige-beloning)
+The REST API specifications can be found here: [Inquiry Pay Equity API specifications](../api/oas-gelijkwaardige-beloning)
 :::
 
 The page contains several sequence diagrams illustrating the communication between the backoffice systems of a staffing supplier and a staffing customer and a CAO service provider for exchanging the SETU Inquiry Pay Equity message
 
 ### Sending Inquiry Pay Equity data: Staffing Supplier to Staffing Customer
 
-The staffing supplier can request the inquiry pay equity message from the staffing customer when necessary. This is currently out-of-scope, but might be done by sending a `POST /inquiry-pay-equity /request*` to the staffing customer. Upon receiving the request, the staffing customer processes it and returns the relevant inquiry pay equity  data, typically with a `POST /inquiry-pay -quity /{ID}` response. The ID serves as the resource identifier, which the API client assigns to the requested resource. This identifier can be passed as a query parameter in the path of the POST request. It enables the API client to perform GET, PUT, and DELETE operations on the resource later. For more information, read [here](../../api/usage-notes/identifiers.md)
+The staffing supplier can request the inquiry pay equity message from the staffing customer when necessary. This is currently out-of-scope, but might be done by sending a `PUT /inquiry-pay-equity/request*` to the staffing customer. Upon receiving the request, the staffing customer processes it and returns the relevant inquiry pay equity data. This is done by sending a `PUT /inquiry-pay-equity/{resourceID}` request. The resourceID serves as the unique identifier for the resource. This identifier can be passed as a query parameter in the path of the request. It enables the API client to perform GET, PUT, and DELETE operations on the resource later. For more information, read [here](../../api/usage-notes/identifiers.md).
 
 ```mermaid
 sequenceDiagram
@@ -19,11 +26,11 @@ sequenceDiagram
     
 
     Note over Supplier,Customer: To request an inquiry-pay-equity message, the staffing supplier sends <br/> an inquiry-pay-equity message request to the staffing customer.
-    Supplier ->>+ Customer: POST /inquiry-pay-equity/request
+    Supplier ->>+ Customer: PUT /inquiry-pay-equity/request
     
-    Note over Supplier,Customer: In response, the staffing customer sends <br/> the inquiry-pay-equity  to the staffing supplier.
-    Customer ->>+ Supplier: POST /inquiry-pay-equity /{ID}
-    Supplier ->>- Customer: 201 + requestBody + /inquiry-pay-equity /{ID}  
+    Note over Supplier,Customer: In response, the staffing customer sends <br/> the inquiry-pay-equity to the staffing supplier.
+    Customer ->>+ Supplier: PUT /inquiry-pay-equity/{resourceID}
+    Supplier ->>- Customer: 200 + requestBody
 ```
 
 <figcaption align = "left">Diagram 1 - Inquiry Pay Equity process between the staffing customer and the staffing supplier.</figcaption>
@@ -41,9 +48,9 @@ These inquiry-pay-equity  request API calls are currently out of scope. The inqu
 The staffing customer may need to update the inquiry-pay-equity when there is a change in the remuneration or other relevant information.See below in the details panel how the sequence diagram looks.
 
 <details>
-<summary><strong>Updating an exiting inquiry-pay-equity</strong></summary>
+<summary><strong>Updating an existing inquiry-pay-equity</strong></summary>
 
-The staffing customer may need to update the inquiry-pay-equity when there is a change in the remuneration or other relevant information. This is initiated when the staffing customer sends a `PUT /inquiry-pay-equity/{ID}` to the staffing supplier, which includes the updated information. The staffing supplier receives this update and processes it accordingly. It responses with a `200 and a the updated request body` 
+The staffing customer may need to update the inquiry-pay-equity when there is a change in the remuneration or other relevant information. This is initiated when the staffing customer sends a `PUT /inquiry-pay-equity/{resourceID}` to the staffing supplier, which includes the updated information. The staffing supplier receives this update and processes it accordingly. It responds with a `200 and the updated request body`.
 
 ```mermaid
 sequenceDiagram
@@ -54,8 +61,8 @@ sequenceDiagram
     Note over Supplier,Customer: This change can be initiated by either <br/> the staffing customer or the staffing supplier.
     
     Note over Supplier,Customer: The staffing customer updates <br/> the inquiry-pay-equity for the staffing supplier with a PUT request.
-    Customer ->>+ Supplier: PUT /inquiry-pay-equity/{ID}
-    Supplier ->>- Customer: 200 + requestBody 
+    Customer ->>+ Supplier: PUT /inquiry-pay-equity/{resourceID}
+    Supplier ->>- Customer: 200 + requestBody
 ```
 
 <figcaption align = "left">Diagram 2 - Inquiry Pay Equity process between the staffing customer and the staffing supplier.</figcaption>
@@ -64,7 +71,7 @@ sequenceDiagram
 
 ### Getting Inquiry Pay Equity: Staffing Supplier to Staffing Customer
 
-The staffing supplier can request the inquiry-pay-equity from the staffing customer when necessary. This might be done by sending a `GET /inquiry-pay-equity/{ID}` to the staffing customer. Upon receiving the request, the staffing customer processes it and returns the relevant inquiry-pay-equity data, typically with a 200 OK response. 
+The staffing supplier can request the inquiry-pay-equity from the staffing customer when necessary. This might be done by sending a `GET /inquiry-pay-equity/{resourceID}` to the staffing customer. Upon receiving the request, the staffing customer processes it and returns the relevant inquiry-pay-equity data, typically with a 200 OK response.
 
 <details>
 <summary><strong>Getting an inquiry-pay-equity</strong></summary>
@@ -76,7 +83,7 @@ sequenceDiagram
     participant Customer as Backoffice <br/> Staffing Customer
     
     Note over Supplier,Customer: To request an inquiry-pay-equity, the staffing supplier sends <br/> a GET request to the staffing customer.
-    Supplier ->>+ Customer: GET /inquiry-pay-equity/{ID}
+    Supplier ->>+ Customer: GET /inquiry-pay-equity/{resourceID}
     
     Note over Supplier,Customer: In response, the staffing customer sends <br/> the inquiry-pay-equity to the staffing supplier.
     Customer ->>+ Supplier: 200 + responseBody
@@ -101,11 +108,11 @@ sequenceDiagram
     
 
     Note over Supplier,Customer: To request an inquiry-pay-equity, the staffing supplier sends <br/> an inquiry-pay-equity request to the CAO service provider.
-    Supplier ->>+ Customer: POST /inquiry-pay-equity/request
+    Supplier ->>+ Customer: PUT /inquiry-pay-equity/request
     
     Note over Supplier,Customer: In response, the CAO service provider sends <br/> the inquiry-pay-equity to the staffing supplier.
-    Customer ->>+ Supplier: POST /inquiry-pay-equity/{ID}
-    Supplier ->>- Customer: 201 + requestBody + /inquiry-pay-equity/{ID}  
+    Customer ->>+ Supplier: PUT /inquiry-pay-equity/{resourceID}
+    Supplier ->>- Customer: 200 + requestBody
 ```
 
 <figcaption align = "left">Diagram 4 - Inquiry Pay Equity process between the CAO service provider and the staffing supplier.</figcaption>
@@ -114,9 +121,9 @@ sequenceDiagram
 
 
 <details>
-<summary><strong>Updating an exiting inquiry-pay-equity</strong></summary>
+<summary><strong>Updating an existing inquiry-pay-equity</strong></summary>
 
-The CAO service provider may need to update the inquiry-pay-equity when there is a change in the remuneration or other relevant information. This is initiated when the CAO service provider sends a `PUT /inquiry-pay-equity/{ID}` to the staffing supplier, which includes the updated information. The staffing supplier receives this update and processes it accordingly. It responses with a `200 and a the updated request body` 
+The CAO service provider may need to update the inquiry-pay-equity when there is a change in the remuneration or other relevant information. This is initiated when the CAO service provider sends a `PUT /inquiry-pay-equity/{resourceID}` to the staffing supplier, which includes the updated information. The staffing supplier receives this update and processes it accordingly. It responds with a `200 and the updated request body`.
 
 ```mermaid
 sequenceDiagram
@@ -127,8 +134,8 @@ sequenceDiagram
     Note over Supplier,Customer: This change can be initiated by either <br/> the CAO service provider or the staffing supplier.
     
     Note over Supplier,Customer: The CAO service provider updates <br/> the inquiry-pay-equity for the staffing supplier with a PUT request.
-    Customer ->>+ Supplier: PUT /inquiry-pay-equity/{ID}
-    Supplier ->>- Customer: 200 + requestBody 
+    Customer ->>+ Supplier: PUT /inquiry-pay-equity/{resourceID}
+    Supplier ->>- Customer: 200 + requestBody
 ```
 
 <figcaption align = "left">Diagram 5 - Inquiry Pay Equity process between the CAO service provider and the staffing supplier.</figcaption>

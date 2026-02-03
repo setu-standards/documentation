@@ -80,10 +80,15 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Inquiry Pay Equity v1.0",
+      label: "Inquiry Pay Equity v2.0",
       collapsed: true,
       link: {type: 'doc', id: 'gelijkwaardige-beloning/README'},
       items: [
+        {
+          type: "doc",
+          label: "Public Consultation",
+          id: "gelijkwaardige-beloning/public-consultation",
+        },
         {
           type: "doc",
           label: "Scenarios",
@@ -102,6 +107,11 @@ module.exports = {
             "gelijkwaardige-beloning/usage-notes/rates",
             "gelijkwaardige-beloning/usage-notes/conditions",
           ],
+        },
+        {
+          type: 'doc',
+          label: "Change log",
+          id: 'gelijkwaardige-beloning/releaseNotes',
         }
       ]
     },
