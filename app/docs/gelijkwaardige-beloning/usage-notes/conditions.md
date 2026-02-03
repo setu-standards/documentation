@@ -3,7 +3,7 @@
 :::caution DISCLAIMER
 The SETU Standard for Inquiry Pay Equity v2.0 is currently under review.
 
-The public consultation period runs from 6 Feb till 27 May 2026.
+The public consultation period runs from 6 Feb till 27 Feb 2026.
 :::
 
 
