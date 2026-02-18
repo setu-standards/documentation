@@ -36,7 +36,7 @@ This exchange can take place at different stages:
 
 As seen in the picture, the pay equity data can be sent based on a trigger/request from the staffing supplier. However, this trigger request is currently outside the scope of the SETU standard and is not standardized. *Note*: This request process should not be confused with a data request of pay equity (de uitvraag). In this scenario, the staffing customer is responsible for delivering the complete set of pay equity data for one or more position profiles in their organisation.
 
-![scenario 1](../../static/img/Scenario%201%20inlenersbeloning.png)
+![scenario 1](../../static/img/Scenario%201%20inlenersbeloning.png) 
 
 ## Scenario 2
 
@@ -46,7 +46,7 @@ Either way, the CAO service provider maintains the pay equity data within their 
 
 As with Scenario 1, this data exchange can take place at different stages of the employment process.
 
-![scenario 2](../../static/img/Scenario%202.png)
+![scenario 2](../../static/img/Scenario%202%20inlenersbeloning.png)
 
 ## What is meant with a correct pay equity data exchange?
 
