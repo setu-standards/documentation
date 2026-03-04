@@ -5,3 +5,5 @@ This section provides documentation to implement the SETU standards for `Purchas
 SETU provides Open API Specifications (OAS) for the message sets, which can be implemented by software systems for standardized message exchange.
 
 In the case of `Purchase to Pay`, it is also possible to use the international Peppol network infrastructure to transport SETU messages. The Peppol-based exchange of SETU messages is described in the [Setu & Peppol](./Setu-Peppol.md) documentation.
+
+For more information on the requirements for a compliant implementation, please refer to the compliance statement.
