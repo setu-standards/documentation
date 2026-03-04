@@ -278,6 +278,12 @@ Added `effectiveDate` to `individualSalaryIncrease`:
 #### Removed Occurence Types from all elements ([#101](https://github.com/setu-standards/inquiry-pay-equity/issues/101))
 - The occurence type is per implemenation of the dynamic occurence element not required in the message model
 
+#### Bugfix PersonContacts to be in line with other SETU message ([#103](https://github.com/orgs/setu-standards/projects/1?pane=issue&itemId=162033336&issue=setu-standards%7Cinquiry-pay-equity%7C103))
+The next changes are made to be aligned with the other SETU messages:
+- Cardinality of `communication/phone` has changed from `0..1` to `0..n`
+- Cardinality of `communication/email` has changed from `0..1` to `0..n`
+- Optional element added under `communication/email` named `use code` to indicate the usage of the email (e.g., business email or private email)
+
 ---
 
 
@@ -285,7 +291,6 @@ Added `effectiveDate` to `individualSalaryIncrease`:
 
 | Issue | Description | Reason |
 |-------|-------------|--------|
-| [#72](https://github.com/setu-standards/inquiry-pay-equity/issues/72) | Non-classifiable function workers | Awaiting requirements |
 | [#59](https://github.com/setu-standards/inquiry-pay-equity/issues/59) | Replacing allowances | Needs further analysis |
 
 ---
