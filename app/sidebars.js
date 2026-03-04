@@ -86,11 +86,6 @@ module.exports = {
       items: [
         {
           type: "doc",
-          label: "Public Consultation",
-          id: "gelijkwaardige-beloning/public-consultation",
-        },
-        {
-          type: "doc",
           label: "Scenarios",
           id: "gelijkwaardige-beloning/scenarios",
         },
