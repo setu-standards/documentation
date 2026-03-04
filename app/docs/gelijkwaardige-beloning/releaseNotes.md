@@ -4,7 +4,7 @@ This documentation page records the changes made to the SETU Standard for Inquir
 
 ## From v1.0 to v2.0
 
-Version 2.0 of the Inquiry Pay Equity specification represents a significant improvement of the standard, addressing over 80 solved issues. This release focuses on three key themes:
+Version 2.0 of the Inquiry Pay Equity specification represents a significant improvement of the standard, addressing over 100 solved issues. This release focuses on three key themes:
 
 1. **Data consistency** - Harmonizing data types and structures across all blocks
 2. **Expressiveness** - Adding capabilities to capture complex compensation scenarios
