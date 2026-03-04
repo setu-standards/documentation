@@ -1,11 +1,5 @@
 # Pay Equity Structure
 
-:::caution DISCLAIMER
-The SETU Standard for Inquiry Pay Equity v2.0 is currently under review.
-
-The public consultation period runs from 6 Feb till 27 Feb 2026.
-:::
-
 :::info DOCUMENTATION
 The message models can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/specifications). There you can also find example messages and validation artifacts in both XML and JSON.
 
