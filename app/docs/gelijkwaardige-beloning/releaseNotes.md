@@ -92,27 +92,28 @@ New top-level `baseDefinition[]` array to explicitly define what components are 
 ```json
 "baseDefinition": [{
   "baseType": "actualWage",
-  "remuneration": true,
-  "holidayAllowance": true,
-  "paidLeaveDays": false,
-  "allAllowances": false,
-  "allowances": {
-    "typeCode": ["EA101", "EA102"]
-  },
+  "remunerationIndicator": true,
+  "holidayAllowanceIndicator": true,
+  "paidLeaveDayIndicator": false,
+  "allAllowancesIndicator": false,
+  "allowances": [
+    { "typeCode": "EA101" },
+    { "typeCode": "EA102" }
+  ],
   "referenceDate" : { 
-    "occurenceType":"..",
+    "occurrenceType":"..",
   }
 }]
 ```
 
-#### Supplementary Arrangements ([#49](https://github.com/setu-standards/inquiry-pay-equity/issues/49))
+#### Supplementary Arrangement ([#49](https://github.com/setu-standards/inquiry-pay-equity/issues/49))
 
-New `supplementaryArrangements[]` section for RVU (early retirement), generation pact, and other arrangements:
+New `supplementaryArrangement[]` section for RVU (early retirement), generation pact, and other arrangements:
 
 ```json
-"supplementaryArrangements": [{
+"supplementaryArrangement": [{
   "name": "Generatiepact 80-90-100",
-  "type_code": { "value": "GenerationPact"}
+  "typeCode": "GenerationPact"
 }]
 ```
 
@@ -125,7 +126,7 @@ New `lineId` field on line items enables cross-referencing between allowances:
   "line": [{
     "lineId": { "value": "shift-allowance-1" },
     "reference": [{
-      "targetId": { "value": "base-hourly-rate" }
+      "id": { "value": "base-hourly-rate" }
     }]
   }]
 }]
@@ -152,7 +153,7 @@ New `proportional` object on amount blocks to indicate pro-rata calculation:
 New `leaveDayValue` on individual leave types (ADV, paid leave, special leave, holidays, WAZO) instead of a single global value:
 
 ```json
-"adv": [{
+"workingHoursReduction": [{
   "amount": { "value": 24, "unitCode": "hour" },
   "leaveDayValue": {
     "value": 180,
@@ -172,7 +173,7 @@ Special leave restructured as an array with full amount specification:
     "value": 2,
     "unitCode": "day"
   },
-  "intervalCode": {
+  "interval": {
     "value": "1",
     "unitCode": "item"
   },
@@ -187,15 +188,15 @@ Special leave restructured as an array with full amount specification:
 New dedicated `wazo[]` array for maternity/paternity leave arrangements:
 
 ```json
-"wazo": [{
+"additionalParentalLeave": [{
   "name": "Additional birth leave",
   "amount": {
     "value": 5,
     "unitCode": "day"
   },
   "conditions": [{
-    "conditionType": "Occurence",
-      "occurenceType": "...",
+    "conditionType": "Occurrence",
+      "occurrenceType": "...",
   }]
 }]
 ```
@@ -210,7 +211,7 @@ Expanded `workDuration` with interval specification:
     "value": 40,
     "unitCode": "hour"
   },
-  "intervalCode": {
+  "interval": {
     "value": 1,
     "unitCode": "week"
   },

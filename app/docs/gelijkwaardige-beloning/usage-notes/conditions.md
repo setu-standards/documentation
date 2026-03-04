@@ -108,7 +108,7 @@ Specifies a condition that is met on a specific date.
         {
             "conditionType": "Occurrence",
             "occurrence": {
-                "occurrenceType": "SingleOccurence", // A one-time occurrence.
+                "occurrenceType": "SingleOccurrence", // A one-time occurrence.
                 "date": "2026-12-15" // The specific fixed date.
             }
         }

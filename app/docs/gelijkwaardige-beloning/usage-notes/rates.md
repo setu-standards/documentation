@@ -38,7 +38,7 @@ Most components using this structure will include some or all of the following k
     - **Unit Code (`unitCode`):** The unit of the value (e.g., `Percentage`, `Euro`, `Hour`, `Day`).
     - **Base Amount (`baseAmount`):** If the `value` is a percentage or derived, this specifies the base for the calculation (e.g., `ActualWage`, `Fixed`).
     - **Proportional (`proportional`):** Indicates whether the amount is calculated proportionally based on part-time percentage or employment duration.
-  - **Interval Code (`intervalCode`):** Defines the interval over which the `amount` is applied or earned (e.g., `1` `Hour` means per hour; `0.5` `Year` means per half year).
+  - **Interval (`interval`):** Defines the interval over which the `amount` is applied or earned (e.g., `1` `Hour` means per hour; `0.5` `Year` means per half year).
   - **Conditions (`conditions`):** Specifies any conditions that must be met for this particular line to apply (see the "Conditions" documentation page for more details).
 - **References (`reference`):** Allows linking this regulation to others, for instance, to define calculation dependencies (e.g., an allowance being compounded on another).
 - **Other specific fields:** Depending on the component (e.g., `waitingDays` for `sickPay`, `payDate` for `holidayAllowance`).
@@ -62,10 +62,7 @@ The following JSON snippet, taken from an `allowance` component, illustrates how
         "validFrom": "2025-01-01",
         "validTo": "2025-12-31"
       },
-      "typeCode": {
-        // Code identifying the type of allowance (from SETU codelist).
-        "value": "HT320" // Example: Code for shift/irregular hours allowance.
-      },
+      "typeCode": "HT320", // Example: Code for shift/irregular hours allowance.
       "period": [
         // Defines when this allowance is applicable ('earned').
         {
@@ -131,7 +128,7 @@ The `line` array within a component defines the actual benefit(s). The following
               "baseType": "GrossSalary"
             }
           },
-          "intervalCode": {
+          "interval": {
             "value": 1, // For every 1 unit.
             "unitCode": "Hour" // Unit is hour (i.e., per hour of overtime worked).
           },
@@ -153,14 +150,14 @@ The `line` array within a component defines the actual benefit(s). The following
               "unitCode": "Fixed" // It's a fixed amount of time, not percentage based.
             }
           },
-          "intervalCode": {
+          "interval": {
             "value": 1, // For every 1 unit.
             "unitCode": "Hour" // Unit is hour (i.e., per hour of overtime worked).
           },
           "conditions": [
             // Conditions for choosing this line.
             {
-              "conditionType": "textCondition",
+              "conditionType": "Text",
               "description": "Overtime compensation as time-off, if chosen by employee and operationally feasible."
             }
           ]
@@ -196,10 +193,7 @@ Allowances are additional payments made to employees for specific reasons, such 
         "validFrom": "2026-01-01",
         "validTo": "2027-12-31"
       },
-      "typeCode": {
-        // Type of allowance.
-        "value": "HT320" // Example: Shift/irregular hours code.
-      },
+      "typeCode": "HT320", // Example: Shift/irregular hours code.
       "period": [
         // When this surcharge is earned.
         {
@@ -225,7 +219,7 @@ Allowances are additional payments made to employees for specific reasons, such 
               "unitCode": "Fixed" // Indicates it's a fixed Euro amount.
             }
           },
-          "intervalCode": {
+          "interval": {
             "value": 1,
             "unitCode": "Hour" // 5 Euro per hour worked during the weekend.
           }
@@ -253,9 +247,7 @@ Reimbursements cover expenses incurred by employees, such as travel costs. The `
         "validFrom": "2026-01-01",
         "validTo": "2027-12-31"
       },
-      "typeCode": {
-        "value": "EA103" // Example: Code for travel costs home-work.
-      },
+      "typeCode": "EA103", // Example: Code for travel costs home-work.
       "period": [
         /* ... applicable workdays ... */
       ],
@@ -266,10 +258,10 @@ Reimbursements cover expenses incurred by employees, such as travel costs. The `
           "baseAmount": {
             "unitCode": "Fixed" // Indicates it's a fixed Euro amount.
           },
-          "intervalCode": { "value": 1, "unitCode": "Day" },
+          "interval": { "value": 1, "unitCode": "Day" },
           "conditions": [
             {
-              "conditionType": "textCondition",
+              "conditionType": "Text",
               "description": "For travel > 50 km"
             }
           ]
@@ -279,10 +271,10 @@ Reimbursements cover expenses incurred by employees, such as travel costs. The `
           "baseAmount": {
             "unitCode": "Fixed" // Indicates it's a fixed Euro amount.
           },
-          "intervalCode": { "value": 1, "unitCode": "Kilometer" },
+          "interval": { "value": 1, "unitCode": "Kilometer" },
           "conditions": [
             {
-              "conditionType": "textCondition",
+              "conditionType": "Text",
               "description": "For travel < 20 km or bicycle"
             }
           ]
@@ -327,7 +319,7 @@ Sick pay regulations define how employees are compensated during periods of illn
               "value": 3201 // Optional: Example monthly rate.
             }
           },
-          "intervalCode": { "value": 1, "unitCode": "Month" },
+          "interval": { "value": 1, "unitCode": "Month" },
           "conditions": [
             {
               "conditionType": "Occurrence",
@@ -369,7 +361,7 @@ Leave regulations cover various types of time off, such as annual vacation, publ
           "name": ["Christmas Day", "Easter", "etc."],
           "conditions": [
             {
-              "conditionType": "textCondition",
+              "conditionType": "Text",
               "description": "If holiday falls on a workday"
             }
           ]
@@ -379,14 +371,14 @@ Leave regulations cover various types of time off, such as annual vacation, publ
         // General paid leave (vacation days).
         {
           "amount": { "value": 25, "unitCode": "Day" }, // E.g., 25 days.
-          "intervalCode": { "value": 1, "unitCode": "Year" }, // 25 days per year.
+          "interval": { "value": 1, "unitCode": "Year" }, // 25 days per year.
         }
       ],
-      "adv": [
-        /* ... Arbeidsduurverkorting (reduction in working hours) details ... */
+      "workingHoursReduction": [
+        /* ... reduction in working hours details ... */
       ],
       "leaveDayValue": { "value": 133.0, "unitCode": "Euro" }, // Financial value of one leave day.
-      "wazo": [
+      "additionalParentalLeave": [
         {
           "name": "Parental leave supplement",
           "amount": { "value": 3, "unitCode": "Day" }
@@ -403,7 +395,7 @@ Leave regulations cover various types of time off, such as annual vacation, publ
                 "baseType": "GrossSalary"
               },
 
-              "intervalCode": {
+              "interval": {
                 "value": 1,
                 "unitCode": "hour"
               }
