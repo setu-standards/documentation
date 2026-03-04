@@ -1,9 +1,7 @@
 # Inquiry Pay Equity v2.0
 
-:::caution DISCLAIMER
-The SETU Standard for Inquiry Pay Equity v2.0 is currently under review.
-
-The public consultation period runs from 6 Feb till 27 Feb 2026.
+:::info
+Version 2.0 of the Inquiry Pay Equity standard was published on March 11, 2026. On this page, you will find all information regarding this standard, including the various [scenarios](./scenarios.md) and [business processes](./sequence%20diagrams/sequence%20diagrams.md) it covers, [usage notes](./usage-notes/rates.md) for implementing the standard, and a [changelog](./releaseNotes.md) detailing all changes from version 1.0 to 2.0 as well as future updates.
 :::
 
 ## Introduction
@@ -66,6 +64,4 @@ The exchange of pay equity (Inquiry Pay Equity) data involves communication betw
 The new Inquiry Pay Equity SETU standard is based on a standardized SETU language in which concepts and relationships with associated terminology and definitions are specified. The SETU reuses the terminology and definitions of the latest version 4.3 of the international HR Open standard as much as possible for its SETU language. Where necessary, additional relationships have been established in the SETU language between existing HR Open concepts, or new concepts have been introduced. Definitions have also been improved and made more suitable for the inquiry pay equity context.
 
 ## Public consultation
-For version 2.0 of the Inquiry Pay Equity standard, a public consultation will be performed from 6 Feb till 27 Feb 2026.
-
-Interested parties are invited to review the delivered standard and provide review comments. Those responses will be considered by the SETU, discussed with the working group and, where necessary, the draft version adjusted before final publication.
+For version 2.0 of the Inquiry Pay Equity standard, a public consultation is performed from 6 Feb till 27 Feb 2026.

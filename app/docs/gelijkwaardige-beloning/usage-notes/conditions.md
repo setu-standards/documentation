@@ -1,12 +1,5 @@
 # Conditions
 
-:::caution DISCLAIMER
-The SETU Standard for Inquiry Pay Equity v2.0 is currently under review.
-
-The public consultation period runs from 6 Feb till 27 Feb 2026.
-:::
-
-
 :::info DOCUMENTATION
 The message models can be found in [Semantic Treehouse](https://setu.semantic-treehouse.nl/specifications). There you can also find example messages and validation artifacts in both XML and JSON.
 
@@ -115,7 +108,7 @@ Specifies a condition that is met on a specific date.
         {
             "conditionType": "Occurrence",
             "occurrence": {
-                "occurrenceType": "SingleOccurence", // A one-time occurrence.
+                "occurrenceType": "SingleOccurrence", // A one-time occurrence.
                 "date": "2026-12-15" // The specific fixed date.
             }
         }

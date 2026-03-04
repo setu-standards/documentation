@@ -1,11 +1,5 @@
 # Public consultation
 
-:::caution DISCLAIMER
-The SETU Standard for Inquiry Pay Equity v2.0 is currently under review.
-
-The public consultation period runs from 6 Feb till 27 Feb 2026.
-:::
-
 ## Where to find the specification?
 
 The management and maintenance of this message specification is carried out in our [SETU standards portal](https://setu.semantic-treehouse.nl/). The message specification can be found here:
