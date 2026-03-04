@@ -27,7 +27,7 @@ All the issues are recorded on the SETU GitHub environment: [link ](https://gith
 | Reference of `positionProfile.salaryScale` moved to `remuneration.salaryScale` | [#14](https://github.com/setu-standards/inquiry-pay-equity/issues/14) | Move salary scales and add `positionProfileReference` for linking |
 | `schemeAgencyId` now required on `customer.id`, `individualChoiceBudget.id`, `other.id`, `sickPay.id`, `sustainableEmployability.id` | [#26](https://github.com/setu-standards/inquiry-pay-equity/issues/26) | |
 | `holidayAllowance.name` changed from required to optional | [#50](https://github.com/setu-standards/inquiry-pay-equity/issues/50) | |
-| Various `line` and `line.amount` fields changed from required to optional | [#56](https://github.com/setu-standards/inquiry-pay-equity/issues/56) | |
+| Various `line` and `line.amount` fields changed from required to optional | [#56](https://github.com/setu-standards/inquiry-pay-equity/issues/56), [#85](https://github.com/setu-standards/inquiry-pay-equity/issues/85) | |
 | Change `...SalaryIncreaseRate` to `...SalaryIncrease`  |  [82](https://github.com/setu-standards/inquiry-pay-equity/issues/82) | |
 |  Standardize `conditionType` values|  [#1](https://github.com/setu-standards/inquiry-pay-equity/issues/1)| Major change please see [conditions](./usage-notes/conditions.md)  |
 | Possibility to add Occurence as Conditions and as Paydates to indicate for example salary increases |  [#42](https://github.com/setu-standards/inquiry-pay-equity/issues/42) | See [conditions](./usage-notes/conditions.md) |
@@ -38,6 +38,16 @@ All the issues are recorded on the SETU GitHub environment: [link ](https://gith
 | Add `Holidays` under `allowance/period/weekday` | [#66](https://github.com/setu-standards/inquiry-pay-equity/issues/66) | Process holidays for allowances |
 | Add `referenceDate` to `baseDefinitions`| [#65](https://github.com/setu-standards/inquiry-pay-equity/issues/65) | Add valuation date to basis definitions |
 | Add `IKBReference` under each `line` in allowance, holiday allowance, ADV, Paid leave and Sustainability Employability | [#36](https://github.com/setu-standards/inquiry-pay-equity/issues/36) | Handle missing IKB information |
+| Add `description` under `holidayAllowance`, `sickPay`, `leave`, `individualChoiceBudget`, `pension` and `sustainableEmployability` | [#84](https://github.com/setu-standards/inquiry-pay-equity/issues/84)|  |
+| Standardized `supplementaryArrangement` to align it with other elements| [#87](https://github.com/setu-standards/inquiry-pay-equity/issues/87)||
+| Added `payDate`to the `allowance` element| [#89](https://github.com/setu-standards/inquiry-pay-equity/issues/89)||
+| Added `lineId` elements to all `leave` components|[#99](https://github.com/setu-standards/inquiry-pay-equity/issues/99)||
+| `interval` and `salaryScale` are made optional to allow non-mappable employees to be shared in the standard | [#72](https://github.com/setu-standards/inquiry-pay-equity/issues/72)||
+| Added `contributionSource` to each `line` (and `line`-like) element | [#91](https://github.com/setu-standards/inquiry-pay-equity/issues/91)||
+| Added `coverage` with the structure of an `amount` element to `supplementaryArrangements` and `otherArrangements`| [#100](https://github.com/setu-standards/inquiry-pay-equity/issues/100)
+
+
+
 
 
 ### Code List Changes
@@ -51,6 +61,10 @@ All the issues are recorded on the SETU GitHub environment: [link ](https://gith
 |  `typeCode` for SustainableSociety expanded | [#38](https://github.com/setu-standards/inquiry-pay-equity/issues/38) | |
 |  `typeCode` for Allowances expanded | [#21](https://github.com/setu-standards/inquiry-pay-equity/issues/21) | |
 |  `unitCode` for salary increase is expanded with `step` | [#21](https://github.com/setu-standards/inquiry-pay-equity/issues/21) | Enables to define a salarystep raise |
+| Aligned the codelist naming convention and corrected small typos | [#88](https://github.com/setu-standards/inquiry-pay-equity/issues/88) | 
+| Expanded the allowance type codes with mobility options such as `BicycleArrangement`| [#90](https://github.com/setu-standards/inquiry-pay-equity/issues/90) | 
+| Created the `Contribution source types` codelist to clarify if an element requires payment from the employee or the employer | [#91](https://github.com/setu-standards/inquiry-pay-equity/issues/91)|
+| Added `SickPay` to the codelist `Base definitions` | [#92](https://github.com/setu-standards/inquiry-pay-equity/issues/92)|
 
 
 ---
@@ -252,10 +266,23 @@ Added `effectiveDate` to `individualSalaryIncrease`:
 - Clarified `hourlyWageFactor` usage
 - Better documentation of `relationType`
 
-#### Optional Fields ([#37](https://github.com/setu-standards/inquiry-pay-equity/issues/37), [#53](https://github.com/setu-standards/inquiry-pay-equity/issues/53), [#56](https://github.com/setu-standards/inquiry-pay-equity/issues/56))
+#### Optional Fields ([#37](https://github.com/setu-standards/inquiry-pay-equity/issues/37), [#53](https://github.com/setu-standards/inquiry-pay-equity/issues/53), [#56](https://github.com/setu-standards/inquiry-pay-equity/issues/56) ,[98](https://github.com/setu-standards/inquiry-pay-equity/issues/98))
 
 - `line` and `amount` fields made optional where appropriate
 - Supports scenarios where arrangements exist but amounts are not known
+
+#### Translated Dutch terms to English ([#93](https://github.com/setu-standards/inquiry-pay-equity/issues/93), [#95](https://github.com/setu-standards/inquiry-pay-equity/issues/95))
+- Numerous Dutch terms such as WGA-hiaat are translated to English terms accompanied with a Dutch translation
+- This includes both codelist and elements
+
+#### Removed Occurence Types from all elements ([#101](https://github.com/setu-standards/inquiry-pay-equity/issues/101))
+- The occurence type is per implemenation of the dynamic occurence element not required in the message model
+
+#### Bugfix PersonContacts to be in line with other SETU message ([#103](https://github.com/orgs/setu-standards/projects/1?pane=issue&itemId=162033336&issue=setu-standards%7Cinquiry-pay-equity%7C103))
+The next changes are made to be aligned with the other SETU messages:
+- Cardinality of `communication/phone` has changed from `0..1` to `0..n`
+- Cardinality of `communication/email` has changed from `0..1` to `0..n`
+- Optional element added under `communication/email` named `use code` to indicate the usage of the email (e.g., business email or private email)
 
 ---
 
@@ -264,7 +291,6 @@ Added `effectiveDate` to `individualSalaryIncrease`:
 
 | Issue | Description | Reason |
 |-------|-------------|--------|
-| [#72](https://github.com/setu-standards/inquiry-pay-equity/issues/72) | Non-classifiable function workers | Awaiting requirements |
 | [#59](https://github.com/setu-standards/inquiry-pay-equity/issues/59) | Replacing allowances | Needs further analysis |
 
 ---
