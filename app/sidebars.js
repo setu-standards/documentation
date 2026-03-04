@@ -148,6 +148,7 @@ module.exports = {
           label: "Setu & Peppol",
           id: 'api/Setu-Peppol',
         },
+        "api/compliance",
       ],
     },
   ],
