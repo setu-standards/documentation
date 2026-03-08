@@ -1,9 +1,10 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
+import { themes } from 'prism-react-renderer';
+import { StrictMode } from 'react';
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-const { StrictMode } = require('react');
+const lightCodeTheme = themes.github;
+const darkCodeTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -78,7 +79,6 @@ const config = {
             layout: {
               title: 'API for Gelijkwaardige Beloning'
             },
-            
           },
         ],
         // Theme Options for modifying how redoc renders them
