@@ -20,7 +20,7 @@ When a new request is made (e.g. `PUT /staffing-order/request-for-quotation/{id}
 PUT /purchase-to-pay/staffing-order/request-for-quotation/{id}
 ```
 
-Where {id} is replaced by the actual UUID identifier, such as:
+Where `{id}` is replaced by the actual UUID identifier, such as:
 
 ```
 PUT /purchase-to-pay/staffing-order/request-for-quotation/c93efb20-1acd-447b-87e7-fadb108d8a0e
@@ -36,7 +36,7 @@ The rules for the resource identifier that apply to purchase-to-pay also apply t
 PUT /inquiry-pay-equity/{id}
 ```
 
-Where {id} is replaced by the actual UUID identifier, such as:
+Where `{id}` is replaced by the actual UUID identifier, such as:
 
 ```
 PUT /inquiry-pay-equity/c93efb20-1acd-447b-87e7-fadb108d8a0e
@@ -185,7 +185,7 @@ Line identifiers are also used as part of certain REST api paths. They are combi
 <summary>Example explanation</summary>
 In this scenario, we have a planning request with a single planning line. The creator of this resource intends to make two actions: modifying an existing planning line and posting a new planning line. The process begins with the staffing customer creating a planning request by sending a POST request to the API server. The planning system receives the request and responds with a 201 status code along with the request body and a UUID for the planning request, such as "c93efb20-1acd-447b-87e7-fadb108d8a0e".
 
-Next, the staffing customer wants to modify one of the lines in the existing planning request. They send a PUT request to the API server, where "{2}" represents the line ID to be updated. The staffing customer also wants to add a new planning line. They send a POST request to the API server, where "{3}" represents the new line ID.
+Next, the staffing customer wants to modify one of the lines in the existing planning request. They send a PUT request to the API server, where `{2}` represents the line ID to be updated. The staffing customer also wants to add a new planning line. They send a POST request to the API server, where `{3}` represents the new line ID.
 
 </details>
 

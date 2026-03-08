@@ -8,7 +8,7 @@ The sequence diagram below involves communication between a staffing supplier's 
 
 The backoffice system of the staffing supplier may also want to exchange the planning constraints of other human resources. This can be done by sending a `POST /planning/constraints`, and the planning system responds with a status code 201 + the requestBody + an unique resource identifier to indicate success.
 
-Subsequently, the backoffice system may need to modify an already existing planning constraint by sending a `PUT /planning/constraints/{ID}` where the {ID} denotes the unique resource identifier of the planning constraint, assigned by the API server. The planning system may respond with a status code 200 if the update is successful. Additionally, the planning system may want to retrieve information about an existing planning constraint object. This is done by sending a `GET /planning/constraints/{ID}`, and the backoffice system will respond with a status code 200 and the details of the constraint.
+Subsequently, the backoffice system may need to modify an already existing planning constraint by sending a `PUT /planning/constraints/{ID}` where the `{ID}` denotes the unique resource identifier of the planning constraint, assigned by the API server. The planning system may respond with a status code 200 if the update is successful. Additionally, the planning system may want to retrieve information about an existing planning constraint object. This is done by sending a `GET /planning/constraints/{ID}`, and the backoffice system will respond with a status code 200 and the details of the constraint.
 
 :::note
 More information about the usage of the different identifiers in certain REST API paths can be found in this [section](../../api/usage-notes/identifiers.md).
