@@ -285,6 +285,9 @@ The next changes are made to be aligned with the other SETU messages:
 - Cardinality of `communication/email` has changed from `0..1` to `0..n`
 - Optional element added under `communication/email` named `use code` to indicate the usage of the email (e.g., business email or private email)
 
+#### Added description field under all leave components ([#104](https://github.com/orgs/setu-standards/projects/1/views/1?pane=issue&itemId=163959668&issue=setu-standards%7Cinquiry-pay-equity%7C104))
+
+
 ---
 
 
