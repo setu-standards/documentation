@@ -1,5 +1,3 @@
-version: "3"
-
 services:
   docusaurus:
     image: europe-west4-docker.pkg.dev/sacred-sol-99413/setu/documentation
