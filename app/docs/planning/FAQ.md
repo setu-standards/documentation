@@ -7,7 +7,9 @@ Here, you will find answers to some of the most common questions we receive from
 
 ## Questions
 
-**If there have been modifications made to assignments that have not been communicated to the client, it is unclear which assignments will be returned by the GET /planning/requests/{id}/assignments request.**
+**If there have been modifications made to assignments that have not been communicated to the client, it is unclear which assignments will be returned by**
+
+`GET /planning/requests/{id}/assignments`
 
 Let's not make it more complicated than it is. Essentially, REST operations are stateless, which means that a GET (A->B) should not depend on whether information about that resource (in this case, an assignment) has been shared via a PUT. This means that the relevant GET should always provide current information, regardless of whether a PUT has been sent or not.
 
