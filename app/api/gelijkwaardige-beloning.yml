@@ -1757,12 +1757,12 @@ components:
         - $ref: '#/components/schemas/Single'
         - $ref: '#/components/schemas/Recurring'
         - $ref: '#/components/schemas/Relative'
-      discriminator:
-        propertyName: occurrenceType
-        mapping:
-          Single: '#/components/schemas/Single'
-          Recurring: '#/components/schemas/Recurring'
-          Relative: '#/components/schemas/Relative'
+      # discriminator:
+      #   propertyName: occurrenceType
+      #   mapping:
+      #     Single: '#/components/schemas/Single'
+      #     Recurring: '#/components/schemas/Recurring'
+      #     Relative: '#/components/schemas/Relative'
     OccurrenceCondition:
       type: object
       description: A condition based on time or an event.
@@ -1874,18 +1874,18 @@ components:
         - $ref: '#/components/schemas/AllOfCondition'
         - $ref: '#/components/schemas/AnyOfCondition'
         - $ref: '#/components/schemas/NotCondition'
-      discriminator:
-        propertyName: conditionType
-        mapping:
-          Age: '#/components/schemas/AgeCondition'
-          EmploymentDuration: '#/components/schemas/EmploymentDurationCondition'
-          Occurrence: '#/components/schemas/OccurrenceCondition'
-          PositionProfile: '#/components/schemas/PositionProfileCondition'
-          SalaryScale: '#/components/schemas/SalaryScaleCondition'
-          Text: '#/components/schemas/TextCondition'
-          AllOf: '#/components/schemas/AllOfCondition'
-          AnyOf: '#/components/schemas/AnyOfCondition'
-          Not: '#/components/schemas/NotCondition'
+      # discriminator:
+      #   propertyName: conditionType
+      #   mapping:
+      #     Age: '#/components/schemas/AgeCondition'
+      #     EmploymentDuration: '#/components/schemas/EmploymentDurationCondition'
+      #     Occurrence: '#/components/schemas/OccurrenceCondition'
+      #     PositionProfile: '#/components/schemas/PositionProfileCondition'
+      #     SalaryScale: '#/components/schemas/SalaryScaleCondition'
+      #     Text: '#/components/schemas/TextCondition'
+      #     AllOf: '#/components/schemas/AllOfCondition'
+      #     AnyOf: '#/components/schemas/AnyOfCondition'
+      #     Not: '#/components/schemas/NotCondition'
     AllOfCondition:
       type: object
       description: Combition of conditions that ALL must evaluate to true
