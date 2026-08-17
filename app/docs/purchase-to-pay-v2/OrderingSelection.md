@@ -7,53 +7,52 @@ The REST API specifications can be found here: [Purchase to Pay API specificatio
 :::
 
 The **SETU Standard for Ordering & Selection** consists of two message specifications:
-- **Staffing Order** is used by a staffing customer to request and order (an) employee(s) for an open position.
+- **Staffing Order** is used by a staffing customer to request and order one or more workers for an open position.
 - **Human Resource** is used by the staffing supplier to match a human resource to an open position.
 
-The **SETU Standard for Assignment** is used by a staffing supplier for confirming the placement of a worker on a position at the staffing customer.
+The **SETU Standard for Assignment** is used by a staffing supplier to confirm the placement of a worker in a position at the staffing customer.
 
 ## Scope Ordering & Selection
-The SETU Standard for Ordering and Selection is used for matching a human resource to an open position. It deals with electronically sending ordering and selection related information, including updates. The standard supports the exchange of ordering and selection information between two organizations; this implies that multi-party collaborations are out of scope.
+The SETU Standard for Ordering and Selection supports the electronic exchange of ordering and selection information, including updates, when matching a human resource to an open position. The standard supports exchanges between two organizations. Multi-party collaborations are out of scope.
 
-This standard is intended for use only within the domain of human resourcing, and does not deal with, nor is intended to provide a general mechanism or design of the ordering and selection process, or a general purpose template for ordering and selection of a human resource outside this domain.
+This standard is intended for use only within the human-resourcing domain. It does not provide a general mechanism or design for ordering and selection processes outside this domain.
 
 ## Process description
 ![Visual representation of the procurement system process.](../../static/img/OrderingSelection-process-2.png)
 
-1. The lifecycle of a procurement system process starts with the creation of the request for quotation at the staffing customer. The staffing customer sends the RFQ using the Staffing Order (Order type = 'RFQ') message (1) to the staffing supplier.
-2. The staffing supplier searches its databases for matching human resources. If the staffing supplier has a matching human resource, (s)he sends an offer using the Human Resource message (2) to the staffing customer.
-3. The staffing customer accepts the offer and sends a procurement order using the Staffing Order (Order type = 'Order') message (3) to the staffing supplier.
+1. The procurement process starts when the staffing customer creates a request for quotation. The staffing customer sends this request to the staffing supplier in a Staffing Order message with `order type` set to `RFQ` (1).
+2. The staffing supplier searches for matching human resources. If a suitable human resource is available, the staffing supplier sends an offer to the staffing customer in a Human Resource message (2).
+3. The staffing customer accepts the offer and sends a procurement order using the Staffing Order (`order type` = `Order`) message (3) to the staffing supplier.
 4. The staffing supplier can send additional information about the human resource using the Human Resource message (4).
-5. Parallel the staffing supplier sends the Assignment message (5) to the staffing customer to confirm the placement of the human resource.
+5. In parallel, the staffing supplier sends an Assignment message (5) to the staffing customer to confirm the placement of the human resource.
 
 ## Human Resource message
-The content of the Human Resource message is tailored to where in the process the message is exchanged, especially to take into account the exchange of privacy-sensitive information: 
-- If the **regular Human Resource message** is exchanged as an offer in response to the request for quotation (Staffing Order = 'RFQ'), the message may only contain limited personal data. Only the formatted name of the worker is shared, not the entire name. In addition, no contact details of the worker are exchanged and only limited address details, such as where the worker lives.
-- After the assignment has been created by the staffing supplier, the suppler is allowed to also share the privacy-sensitive additional personal and contact information of the worker with the staffing customer. This situation is described as the **Human Resource message with additional information**. This message contains the full name of the worker, all contact and address information of the worker, and other personal data only required when the assignment comes into effect, such as legal document (passport) information.
+The content of the Human Resource message depends on the point at which it is exchanged in the process. This distinction protects privacy-sensitive information.
+
+- When the **regular Human Resource message** is sent as an offer in response to a request for quotation (Staffing Order with `order type` set to `RFQ`), it may contain only limited personal data. It includes the worker's formatted name, but not the full name. It does not include contact details or a full address. Location information is limited to the city or municipality where the worker lives.
+- After the staffing supplier has created the assignment, the supplier may share the worker's additional privacy-sensitive personal and contact information with the staffing customer. This is the **Human Resource message with additional information**. It includes the worker's full name, contact and address information, and other personal data required when the assignment takes effect, such as passport information.
 
 ## Staffing Order message
 The Staffing Order message can be used at two different process steps. In the Staffing Order message itself the `order type` element must be used to specify for which of those two process steps the message is being exchanged:
 - The **Staffing Order 'RFQ'** is used by the staffing customer to send a request for quotation to the staffing supplier to request worker(s).
-- The **Staffing Order 'Order'** used by the staffing customer to send a procurement order to the staffing supplier to order the candidate worker(s) as proposed by the staffing supplier (in the Human Resource message).
+- The **Staffing Order 'Order'** is used by the staffing customer to send a procurement order to the staffing supplier for the candidate worker proposed in the Human Resource message.
 
 The Staffing Order message facilitates two different use cases:
 1. The Staffing Order, regardless of the order type used (either `RFQ` or `Order`), is used to request one worker for a position. Then at least the identifier and/or name of the requested worker must be specified.
-2. The Staffing Order `RFQ` can be used to request multiple workers for one position. The amount of workers requested is indicated by the `position open quantity` element. The identifiers and names of the requested workers cannot be specified in the Staffing Order `RFQ`. In the Staffing Order `Order` is not allowed to use the `position open quantity` element. Therefore a Staffing Order `Order` message needs to be send for each ordered worker.
+2. The Staffing Order `RFQ` can be used to request multiple workers for one position. The `position open quantity` element specifies the number of requested workers. In this case, the Staffing Order `RFQ` cannot specify the identifiers or names of individual workers. A Staffing Order `Order` cannot use the `position open quantity` element. Therefore, a separate Staffing Order `Order` message is required for each ordered worker.
 
-## Common variations on regular process
-It is known that in practice variations and exceptions appear in the different phases of these processes. This section details the possibilities of varying with the messages and addresses what must be kept in mind when making exceptions.
+## Variations on the regular process
+In practice, parts of the process may take place outside the SETU message exchange. Agreements about requests, human resources, and orders may be made by telephone or through another electronic channel. As a result, parties may use only part of the regular SETU message process.
 
-In practice a part of the process is not always done by exchanging SETU messages. Agreements about requests, human resources and orders are made by telephone or in another (electronic) way. This implies that the processes that are described above can also partly appear.
+SETU messages can also be exchanged in a different order. Parties must then account for possible reference issues. When a message is skipped or received later in the process, its identifier is not yet available for use in another message. Consult the [overview of identifiers and references](./usage-notes/Identifiers-overview) for the relationship between identifiers in the SETU messages.
 
-It is also possible to use the SETU messages in a different order. It must however be kept in mind that when changing the order of the messages possibly problems can occur with referencing from one message to another. When messages are skipped or messages are received at a later stage in the process the identifiers of these messages will not be available. Consult the [overview of identifiers and references](./usage-notes/Identifiers-overview) on how identifiers of all SETU messages relate to each other.
-
-## Assignment first variation
+## Assignment confirmed before Staffing Order
 ![Visual representation of the common variation on the regular process.](../../static/img/OrderingSelection-process-3.png)
 
-0. The first part of this process is done manually, without the use of SETU messages. Details about the request of the staffing customer and the first details about the proposed human resource are exchanged via telephone. Specific about this variation is that a Staffing Order (Order type = 'Order') message has not yet been exchanged and also the staffing supplier has not yet received a purchase order number via another channel.
-1. The actual exchange of electronic messages starts after the creation of the assignment. The staffing supplier sends complete information about the human resource using the Human Resource message together with the Assignment message (2).
-2. The staffing supplier sends the Assignment message (2) the staffing customer to confirm the placement of the human resource. This Assignment message does not refer to a specific staffing order, as the Staffing Order (Order type = 'Order') message or a purchase order number has not yet been exchanged.
-3. After having received the Assignment message, the staffing customer sends a procurement order using the Staffing Order (Order type = 'Order') message (3) to the staffing supplier. The staffing supplier must relate the staffing order to the assignment that already has been exchanged.
+In this variation, the staffing customer and staffing supplier have already agreed on the placement outside the SETU message exchange. Details about the request of the staffing customer and the first details about the proposed human resource are exchanged manually, for example via telephone. A defining characteristic of this variation is that a Staffing Order (Order type = 'Order') message has not yet been exchanged and also the staffing supplier has not yet received a purchase order number via another channel.
+
+1. After the placement has been agreed manually, the staffing supplier sends the Human Resource message with additional information (1) and the Assignment message (2) to the staffing customer. The Assignment message confirms the placement but does not refer to a specific Staffing Order.
+2. Once the procurement information is available, the staffing customer sends the Staffing Order `Order` to the staffing supplier. The staffing supplier links this order to the Assignment message that was already sent.
 
 ## Comparing to v1.4
 To compare Staffing Order v2.0, Human Resource v2.0 and Assignment v2.0 with their previous versions 1.4, you can view:

@@ -4,12 +4,12 @@
 
 All the 2.0 versions of the SETU 'Purchase to Pay' standards have a `payRates` container to specify a pay and/or bill rate. The content of this `payRates` container depends on the context of the message and the process step in which this message is exchanged. For example, in a Human Resource message the container specifies the pay and/or bill rate(s) the human resource is offered for, whereas in the Assignment and Timecard the container specifies the agreed pay and/or bill rate(s).
 
-During the development of the 2.0 versions, the working group decided to simplify (the use of) the `payRates` container, whereas the previous 1.x versions contained a number of difficult constructs and dependencies. On this page you will find all explanations about the `payRates` container.
+During the development of the 2.0 versions, the working group decided to simplify (the use of) the `payRates` container, as the previous 1.x versions contained a number of difficult constructs and dependencies. This page describes the `payRates` container in detail.
 
 ### `toBeBilled` and `toBePaid`
-Each `payRates` container includes a `toBeBilled` and `toBePaid` element to indicate using a boolean whether the pay rate is specified for billing purposes or not (billed by staffing supplier to staffing customer using invoice), and for payment purposes or not (staffing supplier paying the flex worker using pay slip). In practice this means a pay rate specifies the billing rate, the payment rate, or a same rate which is applied for both.
+Each `payRates` container includes a `toBeBilled` and `toBePaid` boolean element to indicate whether the pay rate applies for billing purposes (billed by the staffing supplier to the staffing customer via invoice) and/or for payment purposes (paid by the staffing supplier to the flex worker via pay slip). In practice, this means a pay rate specifies the billing rate, the payment rate, or the same rate applied to both.
 
-If multiple, different pay rates need to be specified. For example, when different rates are used for invoicing and payment, this must be specified by including the `payRates` container several times in the message.
+If multiple, different pay rates need to be specified, for example when different rates are used for invoicing and payment, this is done by including the `payRates` container multiple times in the message.
 
 :::tip Example
 Example of multiple, different `payRates` containers in a StaffingOrder message.
@@ -61,9 +61,9 @@ Example of multiple, different `payRates` containers in a StaffingOrder message.
 :::
 
 ### Multiplier
-All amounts in the messages must be specified and interpreted **excluding** multiplier. For example, when the `amount/value` of a `payRates` element is 20 euros, and the `multiplier` is 120 percent (fill in 120), then a calculation needs te be performed (outside of the message itself) to come up with the final rate of 24 euros.
+All amounts in the messages must be specified and interpreted **excluding** multiplier. For example, when the `amount/value` of a `payRates` element is 20 euros, and the `multiplier` is 120 percent (specified as `120`), then a calculation needs to be performed (outside of the message itself) to come up with the final rate of 24 euros.
 
-As opposed to the v1.x versions of the messages, where an `InclusiveRate` element existed to explicitly specify whether the `Amount` provided in the `Rates` container already included the multiplier or not.
+This is different from the v1.x versions of the messages, where an `InclusiveRate` element explicitly specified whether the `Amount` provided in the `Rates` container already included the multiplier.
 
 ## Timecard
 A Timecard mainly consists of `timeInterval` and `allowance` elements. This specifies all hours worked, allowances and expenses for a specific flex worker over a certain period of work. A separate `timeInterval` element is filled in for each hour type per shift. A separate `allowance` element is completed for each type of allowance or expense, whereby the quantity can be used to determine how often the allowance or expense applies to the specific work period.
@@ -127,7 +127,7 @@ Example of specifying regular hours, overtime hours and travel expenses on a Tim
 :::
 
 ### Pay rates in Timecard
-While the `payRates` container is defined at the root level in the Staffing Order, Human Resource and Assignment messages, the container has a different location in the Timecard message. In the Timecard, pay rates are specified within a `timeInterval` or `allowance` and can be specified at most twice. The `payRates` container has a maximum cardinality of 2, because a `timeInterval` can have different billing and paying rates. When those rates are the same, only one `payRates` container is needed with both `toBeBilled="true"` and `toBePaid="true"`. When the billing and paying rates differ, then two `payRates` containers can be specified, one with `toBeBilled="true"` and `toBePaid="false"` to specify the billing rate, and vice versa to specify the paying rate.
+While the `payRates` container is defined at the root level in the Staffing Order, Human Resource and Assignment messages, the container has a different location in the Timecard message. In the Timecard, pay rates are specified within a `timeInterval` or `allowance`, with a maximum cardinality of 2, because a `timeInterval` can have different billing and paying rates. When those rates are the same, only one `payRates` container is needed, with both `toBeBilled` and `toBePaid` set to `true`. When the billing and paying rates differ, two `payRates` containers can be specified: one with `toBeBilled` set to `true` and `toBePaid` set to `false` for the billing rate, and vice versa for the paying rate.
 
 :::tip Example
 Example of specifying the `payRates` of regular hours and overtime hours (with multiplier 120).
@@ -460,7 +460,7 @@ Example of break option 1, using a separate `timeInterval` container to specify 
       "schemeAgencyId": "Customer"
     },
     "typeCode": {
-      "value": "HT100" // Break
+      "value": "HT100" // Regular hours
     },
     "period": {
       "dateTimePeriod": {
@@ -499,9 +499,9 @@ Example of break option 2, using `timeTotal` to derive a break, for a regular wo
 :::
 
 ## Improved Hour types and Allowance/expense codelists
-To specify the type of hours within a `timeInterval` or the type of allowances/expenses with the `allowance` element, both codelists used to fill in the `typeCode` values have been renewed. This means that for both the [Hour types codelist](https://setu.semantic-treehouse.nl/codelist/Codelist_0658da4b-c46c-4c5d-afb5-1c3d8bbed57b) and the [Expense/Allowance types codelist](https://setu.semantic-treehouse.nl/codelist/Codelist_ffcefb0c-142c-46c3-8f63-63fcb2b1f862) a second version of the codelists is introduced to be used with the 'Purchase to Pay' version 2 messages.
+The codelists used to fill in the `typeCode` value of a `timeInterval` (hour types) or `allowance` (allowance/expense types) element have been renewed. A second version of both the [Hour types codelist](https://setu.semantic-treehouse.nl/codelist/Codelist_0658da4b-c46c-4c5d-afb5-1c3d8bbed57b) and the [Expense/Allowance types codelist](https://setu.semantic-treehouse.nl/codelist/Codelist_ffcefb0c-142c-46c3-8f63-63fcb2b1f862) has been introduced for use with the 'Purchase to Pay' version 2 messages.
 
-Updating the code lists was necessary to:
+Updating the codelists was necessary to:
 - Remove unnecessary, unused codes;
 - Make the codes themselves more usable by using a strict format of prefix and digits; and
 - Add the hour code to specify breaks.
